@@ -1815,7 +1815,7 @@ header.header .header-control ul li .count_item_pr {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--hover);
+    background: #ffb700;
 }
 
 @media (max-width: 1400px) {
@@ -1966,7 +1966,7 @@ header.header .header-control ul li .count_item_pr {
 }
 
 .menu_mega .aside-vetical-menu .list_menu_header .ul_menu {
-    background: var(--hover);
+    background: #ffb700;
     position: relative;
     padding: 0px 0px;
     display: block;
@@ -3082,7 +3082,7 @@ header.header .header-control ul li .count_item_pr {
 }
 
 .footer {
-    background: var(--hover);
+    background: #008641;
     padding-top: 30px;
 }
 
