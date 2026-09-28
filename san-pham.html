@@ -1083,7 +1083,179 @@
 </head>
 
 <body>
+    <style>
+        .dp-success-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            background: rgba(0, 0, 0, 0.55);
 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            animation: dpFadeIn .2s ease;
+        }
+
+        .dp-success-box {
+            position: relative;
+
+            width: 100%;
+            max-width: 430px;
+
+            background: #fff;
+
+            border-radius: 18px;
+
+            padding: 35px 28px 28px;
+
+            text-align: center;
+
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
+
+            animation: dpSuccessIn .3s ease;
+        }
+
+        .dp-success-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+            font-weight: 700;
+
+            background: #e9f9ef;
+            color: #18a957;
+        }
+
+        .dp-success-box.error .dp-success-icon {
+            background: #fff1f1;
+            color: #e53935;
+        }
+
+        .dp-success-box h3 {
+            margin: 0 0 10px;
+
+            font-size: 23px;
+            font-weight: 700;
+
+            color: #222;
+        }
+
+        .dp-success-box p {
+            margin: 0 auto 24px;
+
+            max-width: 350px;
+
+            font-size: 15px;
+            line-height: 1.6;
+
+            color: #666;
+        }
+
+        .dp-success-btn {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 10px;
+
+            padding: 12px 20px;
+
+            background: #1687d9;
+            color: #fff;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .dp-success-btn:hover {
+            background: #0875c3;
+        }
+
+        .dp-success-close {
+            position: absolute;
+
+            top: 12px;
+            right: 15px;
+
+            width: 35px;
+            height: 35px;
+
+            border: none;
+            background: transparent;
+
+            font-size: 28px;
+            line-height: 1;
+
+            color: #999;
+
+            cursor: pointer;
+        }
+
+        .dp-success-close:hover {
+            color: #222;
+        }
+
+        .dp-loading {
+            display: inline-block;
+
+            width: 15px;
+            height: 15px;
+
+            margin-right: 7px;
+
+            vertical-align: -2px;
+
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-top-color: #fff;
+
+            border-radius: 50%;
+
+            animation: dpSpin .7s linear infinite;
+        }
+
+        @keyframes dpSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dpFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes dpSuccessIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
     <section class="dp-product-section">
         <div class="dp-product-container">
 
@@ -1426,70 +1598,187 @@
     </script>
 
     <script>
-        
-document.getElementById("dpQuoteForm").addEventListener("submit", async function (event) {
-    event.preventDefault();
+        document.addEventListener("DOMContentLoaded", function () {
 
-    const store = document.getElementById("dpStore").value.trim();
-    const phone = document.getElementById("dpPhone").value.trim();
-    const quantity = document.getElementById("dpQuantity").value.trim();
-    const sku = document.getElementById("dpSku").value.trim();
-    const address = document.getElementById("dpAddress").value.trim();
-    const note = document.getElementById("dpNote").value.trim();
+            const quoteForm = document.getElementById("dpQuoteForm");
+            const quoteModal = document.getElementById("dpQuoteModal");
 
-    if (!store || !phone) {
-        alert("Vui lòng nhập tên cửa hàng và số điện thoại/Zalo.");
-        return;
-    }
+            if (!quoteForm) return;
 
-    const message =
-        "YÊU CẦU BÁO GIÁ ĐẠI LÝ / GARA - ĐÀO PHÁT\n\n" +
-        "Tên cửa hàng/Gara: " + store + "\n" +
-        "Số điện thoại/Zalo: " + phone + "\n" +
-        "Sản phẩm: Nước làm mát 绿色 -5℃ 1L\n" +
-        "Mã sản phẩm: " + sku + "\n" +
-        "Số lượng dự kiến: " + (quantity || "Chưa cung cấp") + "\n" +
-        "Khu vực/Địa chỉ: " + (address || "Chưa cung cấp") + "\n" +
-        "Ghi chú: " + (note || "Không có");
+            quoteForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
 
-    // Mở Zalo cá nhân Đào Phát
-    // Mở ngay trong thao tác click để hạn chế trình duyệt chặn popup.
-    const zaloWindow = window.open(
-        "https://zalo.me/0867860834",
-        "_blank"
-    );
+                const button = quoteForm.querySelector(".dp-send");
 
-    try {
-        if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(message);
+                const store = document.getElementById("dpStore").value.trim();
+                const phone = document.getElementById("dpPhone").value.trim();
+                const quantity = document.getElementById("dpQuantity").value.trim();
+                const sku = document.getElementById("dpSku").value.trim();
+                const address = document.getElementById("dpAddress").value.trim();
+                const note = document.getElementById("dpNote").value.trim();
 
-            alert(
-                "Đã sao chép thông tin báo giá!\n\n" +
-                "Vui lòng chuyển sang Zalo Đào Phát, " +
-                "dán nội dung và nhấn Gửi."
-            );
-        } else {
-            window.prompt(
-                "Sao chép nội dung bên dưới và gửi vào Zalo Đào Phát:",
-                message
-            );
-        }
-    } catch (error) {
-        window.prompt(
-            "Sao chép nội dung bên dưới và gửi vào Zalo Đào Phát:",
-            message
-        );
-    }
+                if (!store || !phone || !quantity) {
+                    showQuoteMessage(
+                        "Vui lòng điền đầy đủ thông tin",
+                        "Bạn hãy nhập tên cửa hàng, số điện thoại và số lượng cần báo giá.",
+                        false
+                    );
+                    return;
+                }
 
-    if (!zaloWindow) {
-        alert(
-            "Trình duyệt chặn mở Zalo. " +
-            "Vui lòng cho phép cửa sổ bật lên hoặc mở Zalo thủ công."
-        );
-    }
-});
+                const oldButtonText = button.innerHTML;
+
+                button.disabled = true;
+                button.innerHTML = `
+            <span class="dp-loading"></span>
+            Đang gửi yêu cầu...
+        `;
+
+                try {
+
+                    const response = await fetch("/api/quote", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            store: store,
+                            phone: phone,
+                            quantity: quantity,
+                            sku: sku,
+                            address: address,
+                            note: note,
+
+                            product: "Nước làm mát 绿色 -5℃ 1L"
+                        })
+                    });
+
+                    const result = await response.json().catch(() => ({}));
+
+                    if (!response.ok) {
+                        throw new Error(
+                            result.message || "Không thể gửi yêu cầu báo giá."
+                        );
+                    }
+
+                    /*
+                     * GỬI THÀNH CÔNG
+                     */
+
+                    quoteForm.reset();
+
+                    document.getElementById("dpSku").value =
+                        "NUOC-LAM-MAT-XANH-5-DO-1L";
+
+                    // Đóng popup báo giá
+                    if (quoteModal) {
+                        quoteModal.classList.remove("show");
+                        quoteModal.style.display = "none";
+                        document.body.classList.remove("dp-modal-open");
+                        document.body.style.overflow = "";
+                    }
+
+                    // Hiện thông báo thành công
+                    showQuoteMessage(
+                        "Gửi yêu cầu thành công!",
+                        "Yêu cầu báo giá của bạn đã được gửi đến Đào Phát. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.",
+                        true
+                    );
+
+                } catch (error) {
+
+                    console.error("QUOTE ERROR:", error);
+
+                    showQuoteMessage(
+                        "Gửi yêu cầu chưa thành công",
+                        error.message || "Có lỗi xảy ra. Vui lòng thử lại sau.",
+                        false
+                    );
+
+                } finally {
+
+                    button.disabled = false;
+                    button.innerHTML = oldButtonText;
+
+                }
+            });
+
+
+            /*
+             * THÔNG BÁO ĐẸP
+             */
+
+            function showQuoteMessage(title, message, success) {
+
+                const oldAlert = document.getElementById("dpQuoteSuccess");
+
+                if (oldAlert) {
+                    oldAlert.remove();
+                }
+
+                const alertBox = document.createElement("div");
+
+                alertBox.id = "dpQuoteSuccess";
+
+                alertBox.innerHTML = `
+            <div class="dp-success-overlay">
+                <div class="dp-success-box ${success ? "success" : "error"}">
+
+                    <button class="dp-success-close" type="button">
+                        ×
+                    </button>
+
+                    <div class="dp-success-icon">
+                        ${success ? "✓" : "!"}
+                    </div>
+
+                    <h3>${title}</h3>
+
+                    <p>${message}</p>
+
+                    <button type="button" class="dp-success-btn">
+                        Đã hiểu
+                    </button>
+
+                </div>
+            </div>
+        `;
+
+                document.body.appendChild(alertBox);
+
+                document.body.style.overflow = "hidden";
+
+                const closePopup = () => {
+                    alertBox.remove();
+                    document.body.style.overflow = "";
+                };
+
+                alertBox
+                    .querySelector(".dp-success-close")
+                    .addEventListener("click", closePopup);
+
+                alertBox
+                    .querySelector(".dp-success-btn")
+                    .addEventListener("click", closePopup);
+
+                alertBox
+                    .querySelector(".dp-success-overlay")
+                    .addEventListener("click", function (e) {
+                        if (e.target === this) {
+                            closePopup();
+                        }
+                    });
+
+                // Tự động đóng sau 5 giây
+                setTimeout(() => {
+                    if (document.getElementById("dpQuoteSuccess")) {
+                        closePopup();
+                    }
+                }, 5000);
+            }
+
+        });
     </script>
-
 </body>
 
 </html>
