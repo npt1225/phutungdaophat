@@ -40,9 +40,13 @@ export default async function handler(req, res) {
     const resendApiKey = process.env.RESEND_API_KEY;
 
     // Email nhận báo giá
-    const toEmail =
-      process.env.QUOTE_TO_EMAIL ||
-      "nguyenphuthinhse@gmail.com";
+const toEmail = process.env.QUOTE_TO_EMAIL;
+
+if (!toEmail) {
+    return res.status(500).json({
+        message: "Chưa cấu hình QUOTE_TO_EMAIL trên Vercel."
+    });
+}
 
     // =======================================================
     // KIỂM TRA RESEND API KEY
