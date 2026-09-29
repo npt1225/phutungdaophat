@@ -2387,7 +2387,7 @@
 	<div id="compare-popup" class="compare-popup"></div>
 
 	<!-- Nút mở danh sách so sánh -->
-	<button id="open-compare-popup" class="open-compare-popup">So sánh</button>
+	
 
 	<div id="compare-products-popup" class="compare-products-popup">
 		<div class="popup-header">
@@ -2398,131 +2398,7 @@
 		<a href="pages/so-sanh.html">Đến trang so sánh</a>
 	</div>
 
-	<script>
-		function initCompareFeature() {
-			var maxCompare = 4;
-			var buttons = document.querySelectorAll(".btn-compare");
-			var compareList = JSON.parse(localStorage.getItem("compareProducts")) || [];
-
-			// Giữ trạng thái active cho sản phẩm đã lưu
-			updateActiveButtons();
-
-			// Gắn sự kiện click cho các nút so sánh ở sản phẩm
-			buttons.forEach(btn => {
-				btn.addEventListener("click", function () {
-					var product = {
-						handle: this.dataset.handle,
-						url: this.dataset.url,
-						title: this.dataset.title,
-						image: this.dataset.image,
-						price: this.dataset.price,
-						vendor: this.dataset.vendor,
-						type: this.dataset.type,
-						sku: this.dataset.sku,
-						status: this.dataset.status,
-						excerpt: this.dataset.excerpt,
-						description: this.dataset.description
-					};
-
-					var compareList = JSON.parse(localStorage.getItem("compareProducts")) || [];
-					var exists = compareList.some(p => p.handle === product.handle);
-
-					if (exists) {
-						showPopup("Sản phẩm đã có trong danh sách!", true);
-					} else if (compareList.length >= maxCompare) {
-						showPopup("Chỉ so sánh tối đa 4 sản phẩm!", true);
-					} else {
-						compareList.push(product);
-						localStorage.setItem("compareProducts", JSON.stringify(compareList));
-						this.classList.add("active");
-						showPopup("Đã thêm sản phẩm vào so sánh!");
-						renderComparePopup();
-					}
-				});
-			});
-
-			// Nút mở popup
-			var openPopupBtn = document.getElementById("open-compare-popup");
-			if (openPopupBtn) {
-				openPopupBtn.addEventListener("click", renderComparePopup);
-			}
-
-			// Nút đóng popup
-			var closePopupBtn = document.getElementById("close-compare-popup");
-			if (closePopupBtn) {
-				closePopupBtn.addEventListener("click", function () {
-					document.getElementById("compare-products-popup").style.display = "none";
-				});
-			}
-		}
-
-		// Hàm hiển thị popup danh sách so sánh
-		function renderComparePopup() {
-			var compareList = JSON.parse(localStorage.getItem("compareProducts")) || [];
-			var popupContent = document.getElementById("compare-popup-content");
-
-			if (compareList.length === 0) {
-				popupContent.innerHTML = "<p>Chưa có sản phẩm nào trong danh sách.</p>";
-			} else {
-				popupContent.innerHTML = compareList.map(p => `
-      <div class="compare-item">
-        <img src="https://phutungnhapkhaudaophat.com/images/items/${p.image}" alt="${p.title}">
-        <div>
-          <div>${p.title}</div>
-          <small>${p.price}</small>
-        </div>
-        <button class="remove-compare" data-handle="${p.handle}" >Bỏ</button>
-      </div>
-    `).join('');
-			}
-
-			// Gắn sự kiện cho nút xóa
-			document.querySelectorAll(".remove-compare").forEach(btn => {
-				btn.addEventListener("click", function () {
-					removeFromCompare(this.dataset.handle);
-				});
-			});
-
-			document.getElementById("compare-products-popup").style.display = "block";
-		}
-
-		// Hàm xóa sản phẩm khỏi danh sách so sánh
-		function removeFromCompare(handle) {
-			var compareList = JSON.parse(localStorage.getItem("compareProducts")) || [];
-			compareList = compareList.filter(p => p.handle !== handle);
-			localStorage.setItem("compareProducts", JSON.stringify(compareList));
-
-			updateActiveButtons();
-			renderComparePopup();
-			showPopup("Đã bỏ sản phẩm khỏi danh sách!");
-		}
-
-		// Cập nhật trạng thái active của nút so sánh
-		function updateActiveButtons() {
-			var compareList = JSON.parse(localStorage.getItem("compareProducts")) || [];
-			document.querySelectorAll(".btn-compare").forEach(btn => {
-				if (compareList.some(p => p.handle === btn.dataset.handle)) {
-					btn.classList.add("active");
-				} else {
-					btn.classList.remove("active");
-				}
-			});
-		}
-
-		// Popup thông báo nhỏ góc phải
-		function showPopup(message, isError = false) {
-			const popup = document.getElementById("compare-popup");
-			popup.textContent = message;
-			popup.style.background = isError ? "#e74c3c" : "#27ae60";
-			popup.classList.add("show");
-			setTimeout(() => {
-				popup.classList.remove("show");
-			}, 2500);
-		}
-
-		// Gọi 1 lần khi DOM sẵn sàng
-		document.addEventListener("DOMContentLoaded", initCompareFeature);
-	</script>
+	
 
 	<link href='https://cdn.hstatic.net/themes/200001062954/1001400088/14/compare.scss.css?v=862' rel='stylesheet'
 		type='text/css' media='all' />
