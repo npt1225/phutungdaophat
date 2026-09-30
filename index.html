@@ -4115,6 +4115,301 @@
 				}
 			}
 		</style>
+		<!-- TINH CHỈNH GIAO DIỆN MÀN HÌNH NHỎ (điện thoại / máy tính bảng dọc) -->
+		<style id="dp-mobile-polish">
+			/* ---------- Máy tính bảng dọc & điện thoại ---------- */
+			@media (max-width: 767px) {
+
+				/* HERO: căn giữa, các hàng cân đối */
+				.dp-hero-in {
+					padding: 32px 16px 40px;
+					gap: 26px;
+					text-align: center
+				}
+
+				.dp-badge {
+					max-width: 100%;
+					padding: 7px 14px;
+					gap: 8px;
+					font-size: 11.5px;
+					line-height: 1.35;
+					text-align: center
+				}
+
+				.dp-hero h1 {
+					margin-top: 18px;
+					font-size: clamp(26px, 8vw, 38px);
+					line-height: 1.12;
+					letter-spacing: -.3px
+				}
+
+				.dp-hero p {
+					margin: 16px auto 0;
+					font-size: 14.5px;
+					line-height: 1.7
+				}
+
+				/* 3 điểm nổi bật: xếp dọc, cùng độ rộng, chữ căn trái trong khung */
+				.dp-feats {
+					display: grid;
+					grid-template-columns: 1fr;
+					gap: 10px;
+					max-width: 420px;
+					margin: 22px auto 0;
+					font-size: 14px;
+					text-align: left
+				}
+
+				.dp-feats span {
+					gap: 12px;
+					padding: 11px 16px;
+					border-radius: 12px;
+					background: rgba(255, 255, 255, .06);
+					border: 1px solid rgba(148, 163, 184, .22)
+				}
+
+				.dp-feats span i {
+					width: 20px;
+					text-align: center;
+					flex: none
+				}
+
+				/* 3 nút: cùng chiều rộng, cùng chiều cao, chữ giữa nút */
+				.dp-btns {
+					flex-direction: column;
+					align-items: stretch;
+					gap: 12px;
+					max-width: 420px;
+					margin: 24px auto 0
+				}
+
+				.dp-btn {
+					width: 100%;
+					min-height: 50px;
+					justify-content: center;
+					text-align: center;
+					padding: 12px 18px;
+					font-size: 14.5px
+				}
+
+				/* Thẻ ảnh showroom */
+				.dp-card {
+					max-width: 460px;
+					width: 100%;
+					margin: 0 auto;
+					padding: 12px;
+					text-align: left
+				}
+
+				.dp-card img {
+					height: 210px
+				}
+
+				/* GIỚI THIỆU */
+				.dp-intro h2 {
+					margin-bottom: 20px;
+					font-size: clamp(21px, 6.2vw, 28px);
+					line-height: 1.25
+				}
+
+				/* dấu × nằm riêng 1 dòng giữa hai thương hiệu, không bị rơi cuối dòng */
+				.dp-intro h2 .x {
+					display: block;
+					margin: 2px 0;
+					font-size: .7em;
+					line-height: 1
+				}
+
+				.dp-intro h2 .g {
+					display: block
+				}
+
+				.dp-pair {
+					max-width: 420px
+				}
+
+				.dp-brand {
+					padding: 18px 16px 16px
+				}
+
+				.dp-link {
+					height: 52px
+				}
+
+				.dp-link i {
+					width: 46px;
+					height: 46px;
+					font-size: 20px
+				}
+
+				.dp-quote {
+					margin: 20px auto;
+					gap: 10px;
+					font-size: 14px;
+					line-height: 1.6
+				}
+
+				.dp-quote b:first-child {
+					align-self: flex-start
+				}
+
+				.dp-quote b:last-child {
+					align-self: flex-end
+				}
+
+				/* ===== 3 Ô SỐ LIỆU: mỗi ô 1 hàng, icon tròn bên trái, số lớn bên phải ===== */
+				.dp-stats {
+					grid-template-columns: 1fr;
+					gap: 12px;
+					max-width: 440px
+				}
+
+				.dp-stat {
+					flex-direction: row;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 16px;
+					padding: 14px 18px;
+					text-align: left;
+					border-top: 0;
+					border-left: 5px solid var(--c);
+					border-radius: 14px;
+					box-shadow: 0 8px 22px rgba(15, 23, 42, .09)
+				}
+
+				.dp-stat i {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex: none;
+					width: 52px;
+					height: 52px;
+					border-radius: 50%;
+					background: #f1f5f9;
+					background: color-mix(in srgb, var(--c) 12%, #fff);
+					font-size: 22px
+				}
+
+				.dp-stat strong {
+					font-family: 'Montserrat', 'Be Vietnam Pro', 'Mulish', sans-serif;
+					font-size: 28px;
+					font-weight: 800;
+					letter-spacing: -.02em;
+					line-height: 1
+				}
+
+				.dp-stat strong small {
+					margin-left: 2px;
+					font-size: 15px;
+					font-weight: 800;
+					letter-spacing: .02em
+				}
+
+				.dp-stat span {
+					margin-top: 6px;
+					font-size: 14px;
+					font-weight: 600;
+					line-height: 1.35;
+					color: #334155
+				}
+			}
+
+			/* ---------- Điện thoại nhỏ ---------- */
+			@media (max-width: 400px) {
+				.dp-badge {
+					font-size: 10.5px;
+					padding: 6px 12px
+				}
+
+				.dp-hero p {
+					font-size: 14px
+				}
+
+				.dp-feats {
+					font-size: 13.5px
+				}
+
+			}
+
+			/* ---------- HEADER trên điện thoại: logo + nút không bị chen nhau ---------- */
+			@media (max-width: 575px) {
+				.header-index .flex.items-center.justify-between {
+					flex-wrap: nowrap
+				}
+
+				.header-index a.shrink-0.group {
+					min-width: 0
+				}
+
+				.header-index a.shrink-0.group span.italic {
+					font-size: 8px;
+					letter-spacing: -.1px
+				}
+			}
+
+			@media (max-width: 380px) {
+				.header-index a.shrink-0.group span.italic {
+					display: none
+				}
+			}
+		</style>
+
+		<!-- FONT TIÊU ĐỀ: dùng chung Montserrat như tiêu đề "TRỞ THÀNH ĐẠI LÝ CWORKS CÙNG ĐÀO PHÁT" -->
+		<style id="dp-heading-font">
+			.dp-hero h1,
+			.dp-hero .dp-card h3,
+			.dp-intro h2,
+			.dp-intro h2 .x,
+			.dp-intro h2 .g,
+			main h3.font-heading,
+			main h4.font-heading {
+				font-family: 'Montserrat', 'Be Vietnam Pro', 'Mulish', sans-serif;
+				font-weight: 800;
+				letter-spacing: -.025em;
+				text-transform: uppercase
+			}
+
+			.dp-hero h1 {
+				font-size: clamp(28px, 4vw, 52px);
+				line-height: 1.12
+			}
+
+			.dp-hero .dp-card h3 {
+				font-size: 18px;
+				line-height: 1.3
+			}
+
+			.dp-intro h2 {
+				font-size: clamp(22px, 3.2vw, 38px);
+				line-height: 1.2
+			}
+
+			@media (max-width: 767px) {
+				.dp-hero h1 {
+					font-size: clamp(24px, 7vw, 34px);
+					line-height: 1.15;
+					letter-spacing: -.02em
+				}
+
+				.dp-hero .dp-card h3 {
+					font-size: 16.5px
+				}
+
+				.dp-intro h2 {
+					font-size: clamp(20px, 5.6vw, 26px);
+					line-height: 1.3
+				}
+			}
+		</style>
+
+		<style>
+			.dp-stat strong small {
+				font-size: inherit;
+				font-weight: inherit;
+				letter-spacing: inherit
+			}
+		</style>
+
 		<section id="partner-section" class="dp-intro">
 			<div class="dp-intro-in">
 				<h2>CWORKS Toàn Cầu <span class="x">×</span> <span class="g"><span class="ul">Đào Phát</span> Tại Miền
@@ -4134,10 +4429,10 @@
 						nghiệm thị trường và năng lực phân phối của Đào Phát.</span><b>&rdquo;</b></div>
 				<div class="dp-stats">
 					<div class="dp-stat" style="--c:#1d4ed8"><i class="fa-solid fa-globe"></i>
-						<div><strong>70+ NĂM</strong><span>Uy tín Toyota Tsusho</span></div>
+						<div><strong>70+ <small>NĂM</small></strong><span>Uy tín Toyota Tsusho</span></div>
 					</div>
 					<div class="dp-stat" style="--c:#15803d"><i class="fa-solid fa-users"></i>
-						<div><strong>40+ NƯỚC</strong><span>Mạng lưới toàn cầu</span></div>
+						<div><strong>40+ <small>NƯỚC</small></strong><span>Mạng lưới toàn cầu</span></div>
 					</div>
 					<div class="dp-stat" style="--c:#dc2626"><i class="fa-solid fa-shield-halved"></i>
 						<div><strong>100%</strong><span>Tiêu chuẩn Nhật Bản</span></div>
