@@ -2680,7 +2680,8 @@
 								ĐÀO PHÁT
 							</span>
 							<span
-								class="text-[9px] sm:text-[10px] text-slate-500 italic font-medium tracking-tight mt-0.5 whitespace-nowrap">
+								class="text-[9px] sm:text-[10px] text-brandGreen italic font-semibold tracking-tight mt-0.5 whitespace-nowrap"
+								style="color:#006838">
 								Hãy để chúng tôi đồng hành cùng bạn
 							</span>
 						</div>
@@ -3188,9 +3189,9 @@
 												<!-- ========================= -->
 
 												<li class="level1 parent item fix-navs" data-title="Dầu nhớt"
-													data-link="/danh-muc/cworks/dau-nhot.html">
+													data-link="/danh-muc/cworks/dau-nhot-xe-may.html">
 
-													<a class="hmega" href="/danh-muc/cworks/dau-nhot.html"
+													<a class="hmega" href="/danh-muc/cworks/dau-nhot-xe-may.html"
 														title="Dầu nhớt">
 														Dầu nhớt
 													</a>
@@ -3436,7 +3437,7 @@
 											<!-- DẦU NHỚT -->
 											<li>
 
-												<a class="caret-down" href="../../danh-muc/cworks/dau-nhot.html"
+												<a class="caret-down" href="../../danh-muc/cworks/dau-nhot-xe-may.html"
 													title="Dầu nhớt">
 													Dầu nhớt
 												</a>
@@ -3752,117 +3753,270 @@
 			</div>
 		</section>
 
-		<!-- MAIN PROMOTIONAL CARD SECTION -->
-		<section id="partner-section"
-			class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-12 relative z-20 mb-10">
-			<div class="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-5 sm:p-8">
+		<!-- GIỚI THIỆU: CWORKS x ĐÀO PHÁT -->
+		<style>
+			.dp-intro {
+				font-family: 'Be Vietnam Pro', 'Mulish', sans-serif;
+				background: linear-gradient(180deg, #f8fbff 0%, #eef4fa 100%);
+				padding: 34px 20px 40px
+			}
 
-				<div class="text-center mb-6 sm:mb-8">
-					<h2
-						class="text-2xl sm:text-3xl md:text-4xl font-black font-heading tracking-tight text-brandNavy uppercase">
-						CWORKS TOÀN CẦU <span class="text-brandRed">×</span> ĐÀO PHÁT TẠI MIỀN NAM
-					</h2>
-					<div class="w-16 h-1 bg-brandGreen mx-auto mt-2 rounded-full"></div>
+			.dp-intro-in {
+				max-width: 1180px;
+				margin: 0 auto
+			}
+
+			.dp-intro h2 {
+				margin: 0 0 26px;
+				text-align: center;
+				font-size: clamp(24px, 3.6vw, 44px);
+				font-weight: 900;
+				letter-spacing: -.5px;
+				line-height: 1.15;
+				text-transform: uppercase;
+				color: #0a4cb8
+			}
+
+			.dp-intro h2 .x {
+				color: #9ca3af;
+				font-weight: 700;
+				margin: 0 6px
+			}
+
+			.dp-intro h2 .g {
+				color: #006838
+			}
+
+			.dp-intro h2 .g .ul {
+				display: inline-block;
+				border-bottom: 3px solid #dc2626;
+				padding-bottom: 4px
+			}
+
+			.dp-pair {
+				display: grid;
+				grid-template-columns: 1fr 150px 1fr;
+				align-items: center;
+				gap: 0;
+				max-width: 1000px;
+				margin: 0 auto
+			}
+
+			.dp-brand {
+				background: #fff;
+				border: 1px solid #dbe6f3;
+				border-radius: 14px;
+				padding: 22px 20px 18px;
+				text-align: center;
+				box-shadow: 0 10px 26px rgba(15, 23, 42, .08)
+			}
+
+			.dp-brand.gr {
+				border-color: #cfe8d9;
+				background: linear-gradient(180deg, #fff, #f4fbf7)
+			}
+
+			.dp-brand .lg {
+				height: 64px;
+				display: flex;
+				align-items: center;
+				justify-content: center
+			}
+
+			.dp-brand .lg img {
+				max-height: 64px;
+				max-width: 100%;
+				object-fit: contain
+			}
+
+			.dp-brand p {
+				margin: 12px 0 0;
+				font-size: 13px;
+				font-weight: 800;
+				letter-spacing: .3px;
+				text-transform: uppercase;
+				color: #1d4ed8
+			}
+
+			.dp-brand.gr p {
+				color: #006838
+			}
+
+			.dp-link {
+				display: flex;
+				align-items: center;
+				justify-content: center
+			}
+
+			.dp-link::before,
+			.dp-link::after {
+				content: "";
+				flex: 1;
+				height: 3px;
+				border-radius: 3px
+			}
+
+			.dp-link::before {
+				background: #dc2626
+			}
+
+			.dp-link::after {
+				background: #16a34a
+			}
+
+			.dp-link i {
+				width: 54px;
+				height: 54px;
+				flex: none;
+				border-radius: 50%;
+				background: #fff;
+				border: 3px solid #fff;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 24px;
+				color: #dc2626;
+				box-shadow: 0 6px 16px rgba(220, 38, 38, .3);
+				margin: 0 -6px;
+				position: relative;
+				z-index: 1
+			}
+
+			.dp-quote {
+				max-width: 1000px;
+				margin: 24px auto;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 14px;
+				text-align: center;
+				color: #006838;
+				font-size: clamp(13px, 1.35vw, 17px);
+				font-weight: 600
+			}
+
+			.dp-quote b {
+				font-family: Georgia, serif;
+				font-size: 54px;
+				line-height: .6;
+				color: #16a34a;
+				font-weight: 900;
+				flex: none
+			}
+
+			.dp-stats {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 22px;
+				max-width: 1000px;
+				margin: 0 auto
+			}
+
+			.dp-stat {
+				background: #fff;
+				border-radius: 10px;
+				border-top: 4px solid var(--c);
+				padding: 16px 14px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 14px;
+				box-shadow: 0 8px 20px rgba(15, 23, 42, .08)
+			}
+
+			.dp-stat i {
+				font-size: clamp(28px, 3vw, 42px);
+				color: var(--c)
+			}
+
+			.dp-stat strong {
+				display: block;
+				font-size: clamp(20px, 2.4vw, 30px);
+				font-weight: 900;
+				line-height: 1.1;
+				color: var(--c)
+			}
+
+			.dp-stat span {
+				display: block;
+				font-size: 13px;
+				font-weight: 600;
+				color: #1e293b;
+				margin-top: 2px
+			}
+
+			@media(max-width:767px) {
+				.dp-intro {
+					padding: 26px 14px 30px
+				}
+
+				.dp-pair {
+					grid-template-columns: 1fr
+				}
+
+				.dp-link {
+					height: 64px;
+					flex-direction: column
+				}
+
+				.dp-link::before,
+				.dp-link::after {
+					width: 3px;
+					height: auto;
+					flex: 1
+				}
+
+				.dp-quote b {
+					font-size: 34px
+				}
+
+				.dp-stats {
+					gap: 8px
+				}
+
+				.dp-stat {
+					flex-direction: column;
+					gap: 6px;
+					padding: 12px 6px;
+					text-align: center
+				}
+
+				.dp-stat span {
+					font-size: 11px
+				}
+			}
+		</style>
+		<section id="partner-section" class="dp-intro">
+			<div class="dp-intro-in">
+				<h2>CWORKS Toàn Cầu <span class="x">×</span> <span class="g"><span class="ul">Đào Phát</span> Tại Miền
+						Nam</span></h2>
+				<div class="dp-pair">
+					<div class="dp-brand">
+						<div class="lg"><img src="./images/logo-cworks.png" alt="CWORKS Toyota Tsusho"></div>
+						<p>Thương hiệu phụ tùng toàn cầu</p>
+					</div>
+					<div class="dp-link"><i class="fa-solid fa-handshake"></i></div>
+					<div class="dp-brand gr">
+						<div class="lg"><img src="./images/logo-dao-phat-text.png" alt="Đào Phát"></div>
+						<p>Đối tác phân phối tại khu vực phía Nam</p>
+					</div>
 				</div>
-
-				<div class="grid grid-cols-1 md:grid-cols-11 gap-4 items-center mb-8">
-
-					<div
-						class="md:col-span-5 bg-gradient-to-br from-blue-50/80 to-indigo-50/40 border border-blue-100 rounded-xl p-5 text-center flex flex-col items-center justify-center h-full shadow-2xs">
-						<div class="flex items-center space-x-2 mb-2">
-							<div
-								class="w-9 h-9 bg-brandBlue text-white font-black text-xl rounded flex items-center justify-center italic font-heading">
-							</div>
-							<span class="text-brandBlue font-black text-2xl tracking-tighter font-heading"><img
-									src="./images/logo-cworks.png" alt="CWORKS Logo" class="object-contain"></span>
-							<!-- <div
-                                class="bg-brandBlue text-white text-[8px] font-bold px-1.5 py-0.5 rounded leading-tight text-left">
-                                <span>TOYOTA TSUSHO</span><br>
-                                <span class="text-yellow-300">SERVICE PARTS</span>
-                            </div> -->
-						</div>
-						<p class="text-brandBlue font-bold text-xs uppercase tracking-wider mt-1">
-							THƯƠNG HIỆU PHỤ TÙNG TOÀN CẦU
-						</p>
+				<div class="dp-quote"><b>&ldquo;</b><span>Kết hợp nền tảng thương hiệu quốc tế của CWORKS với kinh
+						nghiệm thị trường và năng lực phân phối của Đào Phát.</span><b>&rdquo;</b></div>
+				<div class="dp-stats">
+					<div class="dp-stat" style="--c:#1d4ed8"><i class="fa-solid fa-globe"></i>
+						<div><strong>70+ NĂM</strong><span>Uy tín Toyota Tsusho</span></div>
 					</div>
-
-					<div class="md:col-span-1 flex justify-center items-center py-2 md:py-0">
-						<div
-							class="w-12 h-12 bg-gradient-to-r from-brandRed to-red-600 rounded-full flex items-center justify-center text-white text-xl shadow-md border-4 border-white">
-							<i class="fa-solid fa-handshake"></i>
-						</div>
+					<div class="dp-stat" style="--c:#15803d"><i class="fa-solid fa-users"></i>
+						<div><strong>40+ NƯỚC</strong><span>Mạng lưới toàn cầu</span></div>
 					</div>
-
-					<div
-						class="md:col-span-5 bg-gradient-to-br from-emerald-50/80 to-green-50/40 border border-green-100 rounded-xl p-5 text-center flex flex-col items-center justify-center h-full shadow-2xs">
-						<div class="flex items-center space-x-2 mb-2">
-							<span class="text-brandBlue font-black text-2xl tracking-tighter font-heading"><img
-									src="./images/logo-dao-phat-text.png" alt="CWORKS Logo"
-									class="object-contain"></span>
-							<!-- <div class="text-left">
-                                <div class="text-brandGreen font-black text-xl leading-none font-heading">ĐÀO PHÁT</div>
-                                <div class="text-[10px] text-slate-500 italic font-medium">Hãy để chúng tôi đồng hành
-                                    cùng bạn</div>
-                            </div> -->
-						</div>
-						<p class="text-brandGreen font-bold text-xs uppercase tracking-wider mt-1">
-							ĐỐI TÁC PHÂN PHỐI TẠI KHU VỰC PHÍA NAM
-						</p>
-					</div>
-
-				</div>
-
-				<div class="bg-slate-50 rounded-xl p-4 text-center mb-8 border border-slate-200/80 relative">
-					<span class="text-2xl text-brandGreen/40 font-serif absolute left-3 top-1">“</span>
-					<p class="text-slate-700 font-medium text-xs sm:text-sm italic px-6">
-						Kết hợp nền tảng thương hiệu quốc tế của CWORKS với kinh nghiệm thị trường và năng lực phân phối
-						của Đào Phát.
-					</p>
-					<span class="text-2xl text-brandGreen/40 font-serif absolute right-3 bottom-0">”</span>
-				</div>
-
-				<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-					<div
-						class="bg-white border border-slate-200 rounded-xl p-4 text-center hover:border-blue-400 transition shadow-2xs flex items-center space-x-3 sm:flex-col sm:space-x-0 sm:justify-center">
-						<div
-							class="w-10 h-10 bg-blue-50 text-brandBlue rounded-full flex items-center justify-center text-lg shrink-0 sm:mb-2">
-							<i class="fa-solid fa-globe"></i>
-						</div>
-						<div>
-							<div class="text-brandBlue font-extrabold text-xl sm:text-2xl font-heading">70+ NĂM</div>
-							<div class="text-slate-500 text-xs font-medium">Uy tín Toyota Tsusho</div>
-						</div>
-					</div>
-
-					<div
-						class="bg-white border border-slate-200 rounded-xl p-4 text-center hover:border-emerald-400 transition shadow-2xs flex items-center space-x-3 sm:flex-col sm:space-x-0 sm:justify-center">
-						<div
-							class="w-10 h-10 bg-emerald-50 text-brandGreen rounded-full flex items-center justify-center text-lg shrink-0 sm:mb-2">
-							<i class="fa-solid fa-network-wired"></i>
-						</div>
-						<div>
-							<div class="text-brandGreen font-extrabold text-xl sm:text-2xl font-heading">40+ NƯỚC</div>
-							<div class="text-slate-500 text-xs font-medium">Mạng lưới toàn cầu</div>
-						</div>
-					</div>
-
-					<div
-						class="bg-white border border-slate-200 rounded-xl p-4 text-center hover:border-red-400 transition shadow-2xs flex items-center space-x-3 sm:flex-col sm:space-x-0 sm:justify-center">
-						<div
-							class="w-10 h-10 bg-red-50 text-brandRed rounded-full flex items-center justify-center text-lg shrink-0 sm:mb-2">
-							<i class="fa-solid fa-shield-halved"></i>
-						</div>
-						<div>
-							<div class="text-brandRed font-extrabold text-xl sm:text-2xl font-heading">100%</div>
-							<div class="text-slate-500 text-xs font-medium">Tiêu chuẩn Nhật Bản</div>
-						</div>
+					<div class="dp-stat" style="--c:#dc2626"><i class="fa-solid fa-shield-halved"></i>
+						<div><strong>100%</strong><span>Tiêu chuẩn Nhật Bản</span></div>
 					</div>
 				</div>
-
 			</div>
 		</section>
 
-		<!-- FULL WIDTH CWORKS DESCRIPTION & HIGHLIGHTS SECTION -->
 		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
 			<div
 				class="bg-gradient-to-br from-brandNavyDark via-brandNavy to-slate-900 text-white rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-800">
@@ -3972,7 +4126,7 @@
 				</h3>
 			</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-xs text-slate-600">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-[15px] text-slate-600">
 
 				<div class="flex items-start space-x-3">
 					<div
@@ -3980,9 +4134,10 @@
 						<i class="fa-solid fa-location-dot"></i>
 					</div>
 					<div>
-						<strong class="block font-bold text-slate-900 uppercase text-[11px]">VĂN PHÒNG LÀM VIỆC</strong>
-						<p class="mt-0.5 leading-relaxed text-slate-600">
-							Số 257, Đường 11, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ Chí
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">VĂN PHÒNG LÀM VIỆC</strong>
+						<p class="mt-1 leading-relaxed text-slate-600">
+							Số 257, Đường III, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ
+							Chí
 							Minh.
 						</p>
 					</div>
@@ -3994,9 +4149,9 @@
 						<i class="fa-solid fa-warehouse"></i>
 					</div>
 					<div>
-						<strong class="block font-bold text-slate-900 uppercase text-[11px]">KHO HÀNG</strong>
-						<p class="mt-0.5 leading-relaxed text-slate-600">
-							Số S2, Đường 11, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ Chí
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">KHO HÀNG</strong>
+						<p class="mt-1 leading-relaxed text-slate-600">
+							Số 52, Đường 11, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ Chí
 							Minh.
 						</p>
 					</div>
@@ -4008,8 +4163,8 @@
 						<i class="fa-solid fa-clock"></i>
 					</div>
 					<div>
-						<strong class="block font-bold text-slate-900 uppercase text-[11px]">THỜI GIAN LÀM VIỆC</strong>
-						<p class="mt-0.5 text-slate-600">T2 – T7 (8h00 – 17h00)</p>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">THỜI GIAN LÀM VIỆC</strong>
+						<p class="mt-1 text-slate-600">T2 – T7 (8h00 – 17h00)</p>
 					</div>
 				</div>
 
@@ -4019,12 +4174,12 @@
 						<i class="fa-solid fa-headset"></i>
 					</div>
 					<div>
-						<strong class="block font-bold text-slate-900 uppercase text-[11px]">HOTLINE / ZALO</strong>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">HOTLINE / ZALO</strong>
 						<a href="tel:0978229468"
-							class="text-brandRed font-black text-sm hover:underline block my-0.5">0978 229 468</a>
-						<strong class="block font-bold text-slate-900 uppercase text-[10px] mt-1">EMAIL</strong>
+							class="text-brandRed font-black text-lg hover:underline block my-0.5">0978 229 468</a>
+						<strong class="block font-bold text-slate-900 uppercase text-[13px] mt-2">EMAIL</strong>
 						<a href="mailto:phutungnhapkhaudaophat@gmail.com"
-							class="text-slate-600 hover:text-brandGreen text-xs break-all">
+							class="text-slate-600 hover:text-brandGreen text-[15px] break-all">
 							phutungnhapkhaudaophat@gmail.com
 						</a>
 					</div>
@@ -4032,7 +4187,8 @@
 
 			</div>
 
-			<div class="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-400">
+			<div class="mt-8 pt-6 border-t border-slate-100 text-center text-[13px] font-semibold"
+				style="color:#006838">
 				&copy; 2026 CÔNG TY TNHH THƯƠNG MẠI ĐÀO PHÁT. Tất cả quyền được bảo lưu. Nhà phân phối chính thức CWORKS
 				Toyota Tsusho tại Miền Nam.
 			</div>

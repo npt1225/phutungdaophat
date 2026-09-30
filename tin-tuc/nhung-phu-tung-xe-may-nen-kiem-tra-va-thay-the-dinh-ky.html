@@ -2051,6 +2051,919 @@
             transform: translate(-50%, 0);
         }
     </style>
+	<!-- ===== NAVBAR MỚI: nền #0f172a ===== -->
+	<style>
+		:root {
+			--nav-bg: #0f172a;
+			--nav-bg-2: #1e293b;
+			--nav-accent: #ffb700;
+			--nav-text: #e2e8f0;
+		}
+
+		@media (min-width: 992px) {
+			.header-menu {
+				background: linear-gradient(180deg, #16213b 0%, var(--nav-bg) 100%) !important;
+				border-top: 1px solid rgba(255, 255, 255, .06);
+				border-bottom: 3px solid var(--nav-accent);
+				box-shadow: 0 6px 20px rgba(15, 23, 42, .35);
+				position: relative;
+				z-index: 50;
+			}
+
+			.header-menu .container {
+				position: relative;
+			}
+
+			.header-menu .row {
+				margin: 0;
+			}
+
+			.header-menu [class*="col-"] {
+				padding: 0;
+			}
+
+			.header-menu .header-menu-des,
+			.header-menu .header-nav {
+				background: transparent !important;
+			}
+
+			.header-menu ul.item_big {
+				display: flex !important;
+				align-items: center;
+				justify-content: center;
+				gap: 6px;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.header-menu ul.item_big>li.nav-item {
+				position: static;
+				display: flex;
+				align-items: center;
+				background: transparent !important;
+			}
+
+			.header-menu ul.item_big>li.nav-item>a.a-img {
+				position: relative;
+				display: block;
+				padding: 18px 20px !important;
+				font-family: 'Mulish', sans-serif;
+				font-size: 14.5px;
+				font-weight: 700;
+				letter-spacing: .6px;
+				text-transform: uppercase;
+				color: var(--nav-text) !important;
+				background: transparent !important;
+				transition: color .25s ease, transform .25s ease;
+			}
+
+			/* gạch chân chạy khi hover */
+			.header-menu ul.item_big>li.nav-item>a.a-img::after {
+				content: "";
+				position: absolute;
+				left: 20px;
+				right: 20px;
+				bottom: 10px;
+				height: 3px;
+				border-radius: 3px;
+				background: var(--nav-accent);
+				transform: scaleX(0);
+				transform-origin: left;
+				transition: transform .3s ease;
+			}
+
+			.header-menu ul.item_big>li.nav-item:hover>a.a-img,
+			.header-menu ul.item_big>li.nav-item.active>a.a-img {
+				color: var(--nav-accent) !important;
+			}
+
+			.header-menu ul.item_big>li.nav-item:hover>a.a-img::after,
+			.header-menu ul.item_big>li.nav-item.active>a.a-img::after {
+				transform: scaleX(1);
+			}
+
+			.header-menu ul.item_big>li.nav-item.active>a.a-img {
+				background: rgba(255, 183, 0, .10) !important;
+				border-radius: 8px 8px 0 0;
+			}
+
+			/* mũi tên dropdown */
+			.header-menu ul.item_big>li.nav-item>.fa-caret-down {
+				margin-left: -14px;
+				margin-right: 6px;
+				font-size: 13px;
+				color: var(--nav-text);
+				pointer-events: none;
+				transition: transform .3s ease, color .25s ease;
+			}
+
+			.header-menu ul.item_big>li.has-mega>a.a-img:hover+.fa-caret-down {
+				transform: rotate(180deg);
+				color: var(--nav-accent);
+			}
+
+			.header-menu ul.item_big>li.nav-item>a.caret-down::before,
+			.header-menu ul.item_big>li.nav-item>a.caret-down::after {}
+
+			.header-menu ul.item_big>li.has-mega>a.a-img {
+				padding-right: 26px !important;
+			}
+
+			/* ===== Mega dropdown ===== */
+			.header-menu li.has-mega>.mega-content {
+				display: block !important;
+				position: absolute !important;
+				top: 100% !important;
+				left: 0 !important;
+				right: 0 !important;
+				width: 100% !important;
+				max-height: 70vh;
+				overflow-y: auto;
+				padding: 24px 26px;
+				background: var(--nav-bg) !important;
+				border-top: 3px solid var(--nav-accent);
+				border-radius: 0 0 14px 14px;
+				box-shadow: 0 24px 50px rgba(2, 6, 23, .45);
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transform: translateY(12px);
+				transition: opacity .25s ease, transform .25s ease, visibility 0s linear .2s;
+				z-index: 999;
+			}
+
+			.header-menu li.has-mega>a.a-img:hover~.mega-content,
+			.header-menu li.has-mega>.mega-content:hover {
+				transition-delay: 0s !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: translateY(0);
+				transition-delay: 0s;
+			}
+
+			.header-menu .mega-content ul.level0 {
+				display: grid !important;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 22px 28px;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: 100% !important;
+				background: transparent !important;
+			}
+
+			.header-menu .mega-content li.level1 {
+				display: block !important;
+				position: static !important;
+				width: auto !important;
+				float: none !important;
+				padding: 14px 16px;
+				background: var(--nav-bg-2) !important;
+				border: 1px solid rgba(255, 255, 255, .06);
+				border-radius: 12px;
+				transition: border-color .25s, transform .25s;
+			}
+
+			.header-menu .mega-content li.level1:hover {
+				border-color: var(--nav-accent);
+				transform: translateY(-2px);
+			}
+
+			.header-menu .mega-content a.hmega {
+				display: block;
+				margin-bottom: 8px;
+				padding-bottom: 8px;
+				border-bottom: 1px dashed rgba(255, 255, 255, .15);
+				font-size: 14px;
+				font-weight: 800;
+				text-transform: uppercase;
+				color: var(--nav-accent) !important;
+				background: transparent !important;
+			}
+
+			.header-menu .mega-content ul.level1,
+			.header-menu .mega-content ul.level2 {
+				display: block !important;
+				position: static !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+				width: auto !important;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				background: transparent !important;
+				box-shadow: none !important;
+				border: 0 !important;
+			}
+
+			.header-menu .mega-content li.level2,
+			.header-menu .mega-content li.level3 {
+				display: block !important;
+				background: transparent !important;
+				padding: 0 !important;
+			}
+
+			.header-menu .mega-content li.level3 a {
+				display: block;
+				padding: 4px 0 4px 12px;
+				font-size: 13px;
+				color: #cbd5e1 !important;
+				background: transparent !important;
+				position: relative;
+				transition: color .2s, padding-left .2s;
+			}
+
+			.header-menu .mega-content li.level3 a::before {
+				content: "›";
+				position: absolute;
+				left: 0;
+				color: var(--nav-accent);
+			}
+
+			.header-menu .mega-content li.level3 a:hover {
+				color: #fff !important;
+				padding-left: 16px;
+			}
+		}
+
+		@media (min-width: 992px) and (max-width: 1199px) {
+			.header-menu .mega-content ul.level0 {
+				grid-template-columns: repeat(3, 1fr);
+			}
+
+			.header-menu ul.item_big>li.nav-item>a.a-img {
+				padding: 18px 12px !important;
+				font-size: 13px;
+			}
+		}
+
+		/* ===== MOBILE: drawer trượt từ trái, cùng tông #0f172a ===== */
+		.nav-drawer-head {
+			display: none;
+		}
+
+		@media (min-width: 992px) {
+			.nav-drawer-head {
+				display: none !important;
+			}
+		}
+
+		@media (max-width: 991.98px) {
+
+			/* nút 3 gạch đồng bộ màu */
+			.mobile-menu-toggle {
+				background: #0f172a !important;
+				color: #ffb700 !important;
+				border-color: #0f172a !important;
+				box-shadow: 0 2px 8px rgba(15, 23, 42, .35) !important;
+			}
+
+			/* lớp phủ */
+			.opacity_menu {
+				display: block !important;
+				position: fixed !important;
+				top: 0 !important;
+				left: 0 !important;
+				width: 100% !important;
+				height: 100% !important;
+				background: rgba(2, 6, 23, .6) !important;
+				backdrop-filter: blur(2px);
+				opacity: 0 !important;
+				visibility: hidden !important;
+				transition: opacity .3s ease, visibility .3s;
+				z-index: 100000 !important;
+			}
+
+			body.nav-open .opacity_menu {
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+
+			body.nav-open {
+				overflow: hidden !important;
+			}
+
+			/* khung drawer */
+			.header-menu {
+				display: block !important;
+				position: fixed !important;
+				top: 0 !important;
+				left: 0 !important;
+				bottom: 0 !important;
+				width: 86% !important;
+				max-width: 360px !important;
+				height: 100% !important;
+				overflow-y: auto !important;
+				-webkit-overflow-scrolling: touch;
+				background: linear-gradient(180deg, #16213b 0%, #0f172a 100%) !important;
+				border-right: 3px solid #ffb700;
+				box-shadow: 12px 0 40px rgba(2, 6, 23, .5);
+				transform: translateX(-105%) !important;
+				visibility: hidden;
+				transition: transform .35s cubic-bezier(.22, .8, .3, 1), visibility .35s;
+				z-index: 100001 !important;
+			}
+
+			body.nav-open .header-menu {
+				transform: translateX(0) !important;
+				visibility: visible;
+			}
+
+			.header-menu .container {
+				max-width: 100% !important;
+				width: 100% !important;
+				padding: 0 !important;
+			}
+
+			.header-menu .row {
+				margin: 0 !important;
+			}
+
+			.header-menu [class*="col-"] {
+				padding: 0 !important;
+			}
+
+			.header-menu .header-menu-des,
+			.header-menu .header-nav {
+				position: static !important;
+				transform: none !important;
+				display: block !important;
+				width: 100% !important;
+				height: auto !important;
+				overflow: visible !important;
+				background: transparent !important;
+			}
+
+			/* đầu drawer */
+			.nav-drawer-head {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 16px 20px;
+				background: rgba(255, 255, 255, .04);
+				border-bottom: 3px solid #ffb700;
+				position: sticky;
+				top: 0;
+				z-index: 5;
+			}
+
+			.nav-drawer-head span {
+				font-family: 'Mulish', sans-serif;
+				font-size: 16px;
+				font-weight: 800;
+				letter-spacing: 1.5px;
+				color: #ffb700;
+			}
+
+			.nav-drawer-head .nav-close {
+				width: 36px;
+				height: 36px;
+				border: 1px solid rgba(255, 255, 255, .2);
+				border-radius: 50%;
+				background: transparent;
+				color: #fff;
+				font-size: 16px;
+				line-height: 1;
+				cursor: pointer;
+			}
+
+			/* danh sách */
+			.header-menu ul.item_big {
+				display: block !important;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			.header-menu li.title-danhmuc {
+				display: none !important;
+			}
+
+			.header-menu ul.item_big>li.nav-item {
+				display: block !important;
+				position: relative;
+				background: transparent !important;
+				border-bottom: 1px solid rgba(255, 255, 255, .07);
+			}
+
+			.header-menu ul.item_big>li.nav-item>a.a-img {
+				display: block !important;
+				padding: 16px 56px 16px 20px !important;
+				border-left: 4px solid transparent;
+				font-family: 'Mulish', sans-serif;
+				font-size: 14px;
+				font-weight: 700;
+				letter-spacing: .5px;
+				text-transform: uppercase;
+				color: #e2e8f0 !important;
+				background: transparent !important;
+			}
+
+			.header-menu ul.item_big>li.nav-item.active>a.a-img {
+				color: #ffb700 !important;
+				background: rgba(255, 183, 0, .10) !important;
+				border-left-color: #ffb700;
+			}
+
+			.header-menu ul.item_big>li.nav-item>a.a-img:active {
+				background: rgba(255, 255, 255, .06) !important;
+			}
+
+			/* mũi tên mở/đóng */
+			.header-menu i.fa-caret-down {
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 56px;
+				height: 52px;
+				display: flex !important;
+				align-items: center;
+				justify-content: center;
+				color: #e2e8f0;
+				font-size: 16px;
+				cursor: pointer;
+				z-index: 2;
+				transition: transform .3s ease, color .2s;
+			}
+
+			.header-menu li.open>i.fa-caret-down {
+				transform: rotate(180deg);
+				color: #ffb700;
+			}
+
+			/* submenu */
+			.header-menu .mega-content {
+				display: none !important;
+			}
+
+			.header-menu ul.item_big>li.nav-item>ul.item_small {
+				display: none !important;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				background: rgba(0, 0, 0, .25);
+			}
+
+			.header-menu ul.item_big>li.nav-item.open>ul.item_small {
+				display: block !important;
+			}
+
+			.header-menu ul.item_small>li {
+				position: relative;
+				border-top: 1px solid rgba(255, 255, 255, .05);
+			}
+
+			.header-menu ul.item_small>li>a {
+				display: block;
+				padding: 14px 56px 14px 32px;
+				font-size: 13.5px;
+				font-weight: 700;
+				color: #cbd5e1 !important;
+			}
+
+			.header-menu ul.item_small>li.open>a {
+				color: #ffb700 !important;
+			}
+
+			.header-menu ul.item_small>li>i.fa-caret-down {
+				height: 46px;
+				font-size: 14px;
+			}
+
+			.header-menu ul.item_small>li>ul {
+				display: none !important;
+				margin: 0;
+				padding: 4px 0 8px;
+				list-style: none;
+				background: rgba(0, 0, 0, .2);
+			}
+
+			.header-menu ul.item_small>li.open>ul {
+				display: block !important;
+			}
+
+			.header-menu ul.item_small>li>ul>li>a {
+				position: relative;
+				display: block;
+				padding: 10px 20px 10px 52px;
+				font-size: 13px;
+				color: #94a3b8 !important;
+			}
+
+			.header-menu ul.item_small>li>ul>li>a::before {
+				content: "›";
+				position: absolute;
+				left: 36px;
+				color: #ffb700;
+			}
+
+			.header-menu ul.item_small>li>ul>li>a:active {
+				color: #fff !important;
+			}
+		}
+	</style>
+
+
+	<!-- ===== MENU MOBILE: nút chevron riêng, căn theo hàng ===== -->
+	<style>
+		.dp-toggle {
+			display: none !important;
+		}
+
+		@media (max-width: 991.98px) {
+
+			/* ẩn ký hiệu cũ của theme */
+			html body .header-menu i.fa-caret-down.fa-caret-down {
+				display: none !important;
+			}
+
+			/* mỗi hàng có nút: flex để nút luôn cao bằng dòng chữ */
+			html body .header-menu ul li.dp-row.dp-row.dp-row {
+				display: flex !important;
+				flex-wrap: wrap !important;
+				align-items: stretch !important;
+				padding: 0 !important;
+				position: relative !important;
+			}
+
+			html body .header-menu ul li.dp-row.dp-row.dp-row>a {
+				flex: 1 1 0 !important;
+				min-width: 0 !important;
+				width: auto !important;
+				box-sizing: border-box !important;
+				display: block !important;
+				text-indent: 0 !important;
+			}
+
+			html body .header-menu ul li.dp-row.dp-row.dp-row>ul,
+			html body .header-menu ul li.dp-row.dp-row.dp-row>.mega-content {
+				flex: 0 0 100% !important;
+				width: 100% !important;
+			}
+
+			html body .header-menu ul li.dp-row.dp-row.dp-row>.mega-content {
+				display: none !important;
+			}
+
+			/* nút chevron */
+			html body .header-menu button.dp-toggle.dp-toggle {
+				display: flex !important;
+				align-items: center !important;
+				justify-content: center !important;
+				flex: 0 0 54px !important;
+				width: 54px !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				border: 0 !important;
+				border-left: 1px solid rgba(255, 255, 255, .10) !important;
+				border-radius: 0 !important;
+				background: rgba(255, 255, 255, .04) !important;
+				cursor: pointer;
+				-webkit-tap-highlight-color: transparent;
+				outline: none !important;
+				transition: background .25s;
+			}
+
+			html body .header-menu ul.item_small button.dp-toggle.dp-toggle {
+				flex-basis: 48px !important;
+				width: 48px !important;
+			}
+
+			html body .header-menu button.dp-toggle.dp-toggle:active {
+				background: rgba(255, 255, 255, .12) !important;
+			}
+
+			html body .header-menu button.dp-toggle::before {
+				content: "" !important;
+				display: block !important;
+				width: 8px;
+				height: 8px;
+				border-right: 2px solid #fff;
+				border-bottom: 2px solid #fff;
+				transform: translateY(-2px) rotate(45deg);
+				transition: transform .3s ease, border-color .25s;
+			}
+
+			html body .header-menu button.dp-toggle::after {
+				content: none !important;
+			}
+
+			html body .header-menu li.open>button.dp-toggle {
+				background: rgba(255, 183, 0, .14) !important;
+			}
+
+			html body .header-menu li.open>button.dp-toggle::before {
+				border-color: #ffb700;
+				transform: translateY(2px) rotate(225deg);
+			}
+
+			html body .header-menu ul li.dp-row.dp-row.open.open>a {
+				color: #ffb700 !important;
+			}
+
+			/* chữ menu cấp 1 */
+			html body .header-menu ul.item_big>li.nav-item>a.a-img {
+				padding: 16px 12px 16px 20px !important;
+				line-height: 20px !important;
+			}
+
+			/* nhóm con (Vòng bi, Bố thắng...) */
+			html body .header-menu ul.item_small.item_small>li>a {
+				padding: 14px 12px 14px 32px !important;
+				margin: 0 !important;
+				font-size: 13.5px !important;
+				font-weight: 700 !important;
+				line-height: 18px !important;
+				color: #e2e8f0 !important;
+				background: transparent !important;
+				text-indent: 0 !important;
+			}
+
+			html body .header-menu ul.item_small.item_small>li.open {
+				background: rgba(255, 183, 0, .04) !important;
+			}
+
+			/* sản phẩm cấp 3 */
+			html body .header-menu ul.item_small.item_small>li>ul {
+				padding: 4px 0 10px !important;
+				margin: 0 !important;
+				background: rgba(0, 0, 0, .22) !important;
+			}
+
+			html body .header-menu ul.item_small.item_small>li>ul>li {
+				padding: 0 !important;
+				margin: 0 !important;
+				background: transparent !important;
+			}
+
+			html body .header-menu ul.item_small.item_small>li>ul>li>a,
+			html body .header-menu ul.item_small.item_small>li>ul>li>a.a3 {
+				display: block !important;
+				position: relative !important;
+				padding: 10px 20px 10px 54px !important;
+				margin: 0 !important;
+				font-size: 13px !important;
+				font-weight: 500 !important;
+				line-height: 18px !important;
+				color: #cbd5e1 !important;
+				background: transparent !important;
+				text-indent: 0 !important;
+			}
+
+			html body .header-menu ul.item_small.item_small>li>ul>li>a::before {
+				content: "›" !important;
+				position: absolute !important;
+				left: 38px !important;
+				top: 50% !important;
+				transform: translateY(-55%);
+				color: #ffb700 !important;
+				font-size: 16px;
+				line-height: 1;
+			}
+
+			/* đầu menu đặc */
+			body .header-menu .nav-drawer-head {
+				position: sticky !important;
+				top: 0 !important;
+				z-index: 20 !important;
+				background: #16213b !important;
+				box-shadow: 0 6px 12px rgba(2, 6, 23, .45);
+			}
+		}
+	</style>
+	<script>
+			/* Điều khiển drawer menu mobile - thay thế JS cũ của theme, ép style bằng inline !important */
+			(function () {
+				var MQ = 992, placeholder = null, forced = [];
+
+				function q(sel, root) { return (root || document).querySelector(sel); }
+				function qa(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+				function force(el, props) {
+					for (var k in props) el.style.setProperty(k, props[k], 'important');
+					forced.push([el, Object.keys(props)]);
+				}
+				function unforce() {
+					forced.forEach(function (f) { f[1].forEach(function (k) { f[0].style.removeProperty(k); }); });
+					forced = [];
+				}
+
+				/* Đưa .header-menu ra ngoài <header> khi ở mobile để không bị ảnh hưởng bởi transform/overflow của cha */
+				function sync() {
+					var menu = q('.header-menu'); if (!menu) return;
+					buildToggles();
+					var mobile = window.innerWidth < MQ;
+					if (!placeholder) { placeholder = document.createComment('header-menu'); menu.parentNode.insertBefore(placeholder, menu); }
+					if (mobile && menu.parentNode !== document.body) document.body.appendChild(menu);
+					if (!mobile && menu.parentNode === document.body) placeholder.parentNode.insertBefore(menu, placeholder.nextSibling);
+					if (!mobile) closeNav();
+				}
+
+				/* Tạo nút chevron riêng cho từng mục có submenu (không phụ thuộc icon của theme) */
+				function buildToggles() {
+					qa('.header-menu li').forEach(function (li) {
+						var hasCaret = false, anchor = null, i;
+						for (i = 0; i < li.children.length; i++) {
+							var c = li.children[i];
+							if (c.tagName === 'A' && !anchor) anchor = c;
+							if (c.tagName === 'I' && c.classList.contains('fa-caret-down')) hasCaret = true;
+						}
+						if (!hasCaret || !anchor || li.querySelector(':scope > .dp-toggle')) return;
+						var btn = document.createElement('button');
+						btn.type = 'button';
+						btn.className = 'dp-toggle';
+						btn.setAttribute('aria-label', 'Mở rộng mục con');
+						btn.setAttribute('aria-expanded', 'false');
+						anchor.parentNode.insertBefore(btn, anchor.nextSibling);
+						li.classList.add('dp-row');
+					});
+				}
+
+				function openNav() {
+					var menu = q('.header-menu'); if (!menu) return;
+					document.body.classList.add('nav-open');
+					force(menu, { display: 'block', position: 'fixed', top: '0', left: '0', bottom: '0', transform: 'none', visibility: 'visible', opacity: '1', 'z-index': '100001' });
+					qa('.header-menu-des, .header-nav, ul.item_big', menu).forEach(function (el) {
+						force(el, { display: 'block', visibility: 'visible', opacity: '1', height: 'auto', 'max-height': 'none', transform: 'none', position: 'static' });
+					});
+					/* ép lề chữ bằng inline để theme không ghi đè được */
+					qa('ul.item_big > li.nav-item > a.a-img', menu).forEach(function (el) {
+						force(el, { padding: '16px 12px 16px 20px', 'line-height': '20px', display: 'block' });
+					});
+					qa('ul.item_small > li > a', menu).forEach(function (el) {
+						force(el, { padding: '14px 12px 14px 32px', 'line-height': '18px', display: 'block', 'text-indent': '0' });
+					});
+					qa('ul.item_small > li > ul > li > a', menu).forEach(function (el) {
+						force(el, { padding: '10px 20px 10px 54px', 'line-height': '18px', display: 'block', position: 'relative', 'text-indent': '0' });
+					});
+					qa('ul.item_big > li.nav-item', menu).forEach(function (el) {
+						force(el, { display: el.classList.contains('dp-row') ? 'flex' : 'block', visibility: 'visible', opacity: '1', height: 'auto' });
+					});
+				}
+				function closeNav() {
+					document.body.classList.remove('nav-open');
+					unforce();
+				}
+
+				document.addEventListener('click', function (e) {
+					var t = e.target;
+					if (!t || !t.closest) return;
+					if (t.closest('.menu-bar')) {
+						e.preventDefault(); e.stopImmediatePropagation();
+						document.body.classList.contains('nav-open') ? closeNav() : openNav();
+						return;
+					}
+					if (t.closest('.opacity_menu') || t.closest('.nav-close')) {
+						e.preventDefault(); e.stopImmediatePropagation();
+						closeNav();
+						return;
+					}
+					var tg = t.closest('.header-menu .dp-toggle');
+					if (tg) {
+						e.preventDefault(); e.stopImmediatePropagation();
+						var li = tg.parentNode;
+						li.classList.toggle('open');
+						tg.setAttribute('aria-expanded', li.classList.contains('open') ? 'true' : 'false');
+						return;
+					}
+					var caret = t.closest('.header-menu i.fa-caret-down');
+					if (caret && window.innerWidth < MQ) {
+						e.preventDefault(); e.stopImmediatePropagation();
+						caret.parentNode.classList.toggle('open');
+					}
+				}, true);
+
+				document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+				window.addEventListener('resize', sync);
+				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync); else sync();
+				window.addEventListener('load', sync);
+			})();
+	</script>
+	<style>
+		/* Menu Cworks: chỉ mở khi con trỏ nằm TRÚNG chữ (xác định bằng JS ở cuối trang) */
+		@media (min-width: 992px) {
+			.header-menu ul.item_big>li.has-mega {
+				padding: 18px 20px !important;
+				align-items: center;
+			}
+
+			.header-menu ul.item_big>li.has-mega>a.a-img {
+				display: inline-block !important;
+				padding: 0 !important;
+				line-height: 1.4;
+			}
+
+			.header-menu ul.item_big>li.has-mega>a.a-img::after {
+				left: 0 !important;
+				right: 0 !important;
+				bottom: -8px !important;
+				pointer-events: none;
+			}
+
+			.header-menu ul.item_big>li.has-mega>.fa-caret-down {
+				margin-left: 6px !important;
+				margin-right: 0 !important;
+			}
+
+			/* Tắt hoàn toàn cơ chế :hover của CSS cho mục này */
+			.header-menu ul.item_big>li.has-mega:not(.is-open)>a.a-img,
+			.header-menu ul.item_big>li.has-mega:not(.is-open):hover>a.a-img {
+				color: var(--nav-text) !important;
+			}
+
+			.header-menu ul.item_big>li.has-mega:not(.is-open)>a.a-img::after,
+			.header-menu ul.item_big>li.has-mega:not(.is-open):hover>a.a-img::after {
+				transform: scaleX(0) !important;
+			}
+
+			.header-menu li.has-mega:not(.is-open)>.mega-content,
+			.header-menu li.has-mega:not(.is-open)>a.a-img:hover~.mega-content,
+			.header-menu li.has-mega:not(.is-open)>.mega-content:hover {
+				opacity: 0 !important;
+				visibility: hidden !important;
+				pointer-events: none !important;
+			}
+
+			/* Trạng thái mở (JS thêm class is-open) */
+			.header-menu li.has-mega.is-open>.mega-content {
+				opacity: 1 !important;
+				visibility: visible !important;
+				pointer-events: auto !important;
+				transform: translateY(0) !important;
+				transition-delay: 0s !important;
+			}
+
+			.header-menu ul.item_big>li.has-mega.is-open>a.a-img {
+				color: var(--nav-accent) !important;
+			}
+
+			.header-menu ul.item_big>li.has-mega.is-open>a.a-img::after {
+				transform: scaleX(1) !important;
+			}
+
+			/* Mục Cworks luôn nằm trên 1 hàng, và chỉ có DUY NHẤT 1 mũi tên (::after của <li>) */
+			.header-menu ul.item_big>li.has-mega {
+				display: flex !important;
+				flex-wrap: nowrap !important;
+				align-items: center !important;
+				white-space: nowrap;
+			}
+
+			.header-menu ul.item_big>li.has-mega>a.a-img {
+				white-space: nowrap;
+				flex: 0 0 auto;
+			}
+
+			/* chặn mọi icon do theme/JS tự thêm vào mục này */
+			.header-menu ul.item_big>li.has-mega::before,
+			.header-menu ul.item_big>li.has-mega>a.a-img::before,
+			.header-menu ul.item_big>li.has-mega>button.dp-toggle,
+			.header-menu ul.item_big>li.has-mega>button.dp-toggle::before,
+			.header-menu ul.item_big>li.has-mega>button.dp-toggle::after,
+			.header-menu ul.item_big>li.has-mega>i {
+				content: none !important;
+				display: none !important;
+			}
+
+			/* ::after của thẻ <a> chỉ là gạch chân, xóa mọi viền/hình do theme thêm */
+			.header-menu ul.item_big>li.has-mega>a.a-img::after {
+				border: 0 !important;
+				margin: 0 !important;
+				width: auto !important;
+				top: auto !important;
+				font-family: inherit !important;
+			}
+
+			/* Mũi tên báo "còn menu con": luôn hiện, vẽ bằng ::after của <li>,
+			   không dùng thẻ <i> (theme có thể ẩn thẻ này khi chưa hover) */
+			.header-menu ul.item_big>li.has-mega>i.fa-caret-down {
+				display: none !important;
+			}
+
+			.header-menu ul.item_big>li.has-mega::after {
+				content: "" !important;
+				display: block !important;
+				position: static !important;
+				flex: 0 0 auto;
+				width: 8px !important;
+				height: 8px !important;
+				margin: 0 0 5px 12px !important;
+				border: 0 !important;
+				border-right: 2.5px solid var(--nav-accent) !important;
+				border-bottom: 2.5px solid var(--nav-accent) !important;
+				background: none !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+				transform: rotate(45deg);
+				transition: transform .3s ease, margin .3s ease;
+				pointer-events: none;
+			}
+
+			.header-menu ul.item_big>li.has-mega.is-open::after {
+				margin: 5px 0 0 12px !important;
+				transform: rotate(-135deg);
+			}
+		}
+	</style>
 </head>
 
 <body>
@@ -2059,79 +2972,80 @@
 
 
 
-    <header class="header header-index">
-        <div class="container">
-            <div class="max-w-[1380px] mx-auto px-3 sm:px-6 py-2">
-                <div class="flex items-center justify-between gap-2 sm:gap-4">
+	<header class="header header-index">
+		<div class="container">
+			<div class="max-w-[1380px] mx-auto px-3 sm:px-6 py-2">
+				<div class="flex items-center justify-between gap-2 sm:gap-4">
 
-                    <!-- 1. LOGO ĐÀO PHÁT -->
-                    <a href="../index.html" class="flex items-center space-x-2 shrink-0 group">
-                        <div class="flex flex-col items-center justify-center">
-                            <div class="flex items-center">
-                                <img src="../images/favicon.png" alt="Đào Phát Logo" class="h-8 sm:h-10 w-auto">
-                            </div>
-                            <div class="w-full h-1 bg-brandGreen rounded-full -mt-1"></div>
-                        </div>
-                        <div class="flex flex-col">
-                            <span
-                                class="font-heading font-extrabold text-base sm:text-xl text-brandGreen tracking-tight leading-none group-hover:text-brandGreenLight transition">
-                                ĐÀO PHÁT
-                            </span>
-                            <span
-                                class="text-[9px] sm:text-[10px] text-slate-500 italic font-medium tracking-tight mt-0.5 whitespace-nowrap">
-                                Hãy để chúng tôi đồng hành cùng bạn
-                            </span>
-                        </div>
-                    </a>
+					<!-- 1. LOGO ĐÀO PHÁT -->
+					<a href="../index.html" class="flex items-center space-x-2 shrink-0 group">
+						<div class="flex flex-col items-center justify-center">
+							<div class="flex items-center">
+								<img src="../images/favicon.png" alt="Đào Phát Logo" class="h-8 sm:h-10 w-auto">
+							</div>
+							<div class="w-full h-1 bg-brandGreen rounded-full -mt-1"></div>
+						</div>
+						<div class="flex flex-col">
+							<span
+								class="font-heading font-extrabold text-base sm:text-xl text-brandGreen tracking-tight leading-none group-hover:text-brandGreenLight transition">
+								ĐÀO PHÁT
+							</span>
+							<span
+								class="text-[9px] sm:text-[10px] text-brandGreen italic font-semibold tracking-tight mt-0.5 whitespace-nowrap"
+								style="color:#006838">
+								Hãy để chúng tôi đồng hành cùng bạn
+							</span>
+						</div>
+					</a>
 
-                    <!-- 2. SKEWED GREEN BADGE -->
-                    <div class="hidden xl:flex items-center shrink-0 my-0.5">
-                        <div
-                            class="skew-badge bg-gradient-to-r from-brandGreen to-[#00522c] text-white px-5 py-2 relative overflow-hidden border-b-4 border-brandRed shadow-xs">
-                            <div class="absolute bottom-0 right-0 w-8 h-1 bg-brandYellow"></div>
-                            <div
-                                class="skew-badge-content text-center uppercase font-bold font-heading text-[11px] leading-tight tracking-wider">
-                                <div>ĐỐI TÁC PHÂN PHỐI CWORKS</div>
-                                <div class="text-white font-extrabold">TẠI KHU VỰC MIỀN NAM</div>
-                            </div>
-                        </div>
-                    </div>
+					<!-- 2. SKEWED GREEN BADGE -->
+					<div class="hidden xl:flex items-center shrink-0 my-0.5">
+						<div
+							class="skew-badge bg-gradient-to-r from-brandGreen to-[#00522c] text-white px-5 py-2 relative overflow-hidden border-b-4 border-brandRed shadow-xs">
+							<div class="absolute bottom-0 right-0 w-8 h-1 bg-brandYellow"></div>
+							<div
+								class="skew-badge-content text-center uppercase font-bold font-heading text-[11px] leading-tight tracking-wider">
+								<div>ĐỐI TÁC PHÂN PHỐI CWORKS</div>
+								<div class="text-white font-extrabold">TẠI KHU VỰC MIỀN NAM</div>
+							</div>
+						</div>
+					</div>
 
-                    <!-- 3. CWORKS x TOYOTA TSUSHO LOGO BLOCK -->
-                    <div
-                        class="hidden md:flex items-center space-x-1.5 border border-slate-200 rounded-md p-1 px-2.5 bg-white shadow-2xs shrink-0">
-                        <img src="../images/logo-cworks.png" alt="Đào Phát Logo" class="h-8 sm:h-10 w-auto">
-                        <span class="text-brandBlue font-black text-lg sm:text-xl tracking-tighter font-heading">
-                            <span class="text-[9px] align-top font-normal">®</span>
-                        </span>
-                        <div
-                            class="bg-brandBlue text-white text-[8px] font-bold px-1.5 py-0.5 rounded leading-tight flex flex-col text-left border border-blue-400">
-                            <span>TOYOTA TSUSHO</span>
-                            <span class="text-yellow-300 font-extrabold">SERVICE PARTS</span>
-                        </div>
-                    </div>
+					<!-- 3. CWORKS x TOYOTA TSUSHO LOGO BLOCK -->
+					<div
+						class="hidden md:flex items-center space-x-1.5 border border-slate-200 rounded-md p-1 px-2.5 bg-white shadow-2xs shrink-0">
+						<img src="../images/logo-cworks.png" alt="Đào Phát Logo" class="h-8 sm:h-10 w-auto">
+						<span class="text-brandBlue font-black text-lg sm:text-xl tracking-tighter font-heading">
+							<span class="text-[9px] align-top font-normal">®</span>
+						</span>
+						<div
+							class="bg-brandBlue text-white text-[8px] font-bold px-1.5 py-0.5 rounded leading-tight flex flex-col text-left border border-blue-400">
+							<span>TOYOTA TSUSHO</span>
+							<span class="text-yellow-300 font-extrabold">SERVICE PARTS</span>
+						</div>
+					</div>
 
-                    <!-- 4. SEARCH INPUT BOX -->
-                    <div class="hidden lg:flex flex-1 max-w-xs mx-2">
-                        <div class="relative w-full">
-                            <input type="text" placeholder="Tìm tên hoặc mã sản phẩm..."
-                                class="w-full pl-3 pr-8 py-1.5 text-xs text-slate-700 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandNavy focus:bg-white transition">
-                            <button
-                                class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-brandNavy transition">
-                                <i class="fa-solid fa-magnifying-glass text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
+					<!-- 4. SEARCH INPUT BOX -->
+					<div class="hidden lg:flex flex-1 max-w-xs mx-2">
+						<div class="relative w-full">
+							<input type="text" placeholder="Tìm tên hoặc mã sản phẩm..."
+								class="w-full pl-3 pr-8 py-1.5 text-xs text-slate-700 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandNavy focus:bg-white transition">
+							<button
+								class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-brandNavy transition">
+								<i class="fa-solid fa-magnifying-glass text-xs"></i>
+							</button>
+						</div>
+					</div>
 
-                    <!-- 5. RED HOTLINE BUTTON & MOBILE MENU TOGGLE -->
-                    <!-- 5. LIÊN HỆ BÁO GIÁ + ZALO + GIỎ HÀNG + MOBILE MENU -->
-                    <div class="header-action-buttons flex items-center gap-1 sm:gap-2 shrink-0">
+					<!-- 5. RED HOTLINE BUTTON & MOBILE MENU TOGGLE -->
+					<!-- 5. LIÊN HỆ BÁO GIÁ + ZALO + GIỎ HÀNG + MOBILE MENU -->
+					<div class="header-action-buttons flex items-center gap-1 sm:gap-2 shrink-0">
 
-                        <!-- =========================
+						<!-- =========================
          NÚT BÁO GIÁ SỈ
          MỞ POPUP BÁO GIÁ
     ========================== -->
-                        <button type="button" onclick="dpOpenQuote()" class="bg-gradient-to-r from-brandRed via-red-600 to-brandRedDark
+						<button type="button" onclick="dpOpenQuote()" class="bg-gradient-to-r from-brandRed via-red-600 to-brandRedDark
                hover:from-red-600 hover:to-red-800
                text-white font-bold
                text-xs sm:text-sm
@@ -2143,28 +3057,28 @@
                gap-1.5
                border border-red-500" title="Yêu cầu báo giá">
 
-                            <span class="w-5 h-5 bg-white/20 rounded-full
+							<span class="w-5 h-5 bg-white/20 rounded-full
                    flex items-center justify-center shrink-0">
 
-                                <i class="fa-solid fa-phone text-[10px]"></i>
+								<i class="fa-solid fa-phone text-[10px]"></i>
 
-                            </span>
+							</span>
 
-                            <span class="hidden sm:inline uppercase tracking-wide font-heading">
-                                LIÊN HỆ BÁO GIÁ SỈ
-                            </span>
+							<span class="hidden sm:inline uppercase tracking-wide font-heading">
+								LIÊN HỆ BÁO GIÁ SỈ
+							</span>
 
-                            <span class="sm:hidden">
-                                BÁO GIÁ
-                            </span>
+							<span class="sm:hidden">
+								BÁO GIÁ
+							</span>
 
-                        </button>
+						</button>
 
 
-                        <!-- =========================
+						<!-- =========================
          NÚT ZALO
     ========================== -->
-                        <a href="https://zalo.me/0978229468" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-[#008f5a] to-[#006f46]
+						<a href="https://zalo.me/0978229468" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-[#008f5a] to-[#006f46]
                hover:from-[#007a4d] hover:to-[#005c3b]
                text-white font-bold
                text-xs sm:text-sm
@@ -2176,30 +3090,30 @@
                gap-1.5
                border border-[#008f5a]" title="Chat Zalo Đào Phát">
 
-                            <span class="w-5 h-5 bg-white/20 rounded-full
+							<span class="w-5 h-5 bg-white/20 rounded-full
                    flex items-center justify-center
                    shrink-0 font-extrabold text-[10px]">
 
-                                Z
+								Z
 
-                            </span>
+							</span>
 
-                            <span class="hidden sm:inline font-heading">
-                                ZALO
-                            </span>
+							<span class="hidden sm:inline font-heading">
+								ZALO
+							</span>
 
-                            <span class="hidden lg:inline">
-                                0978 229 468
-                            </span>
+							<span class="hidden lg:inline">
+								0978 229 468
+							</span>
 
-                        </a>
+						</a>
 
 
-                        <!-- =========================
+						<!-- =========================
          NÚT GIỎ HÀNG
          MỞ DRAWER GIỎ HÀNG
     ========================== -->
-                        <button type="button" onclick="dpOpenCart()" class="relative
+						<button type="button" onclick="dpOpenCart()" class="relative
                bg-brandBlue
                hover:bg-brandNavy
                text-white font-bold
@@ -2212,898 +3126,678 @@
                gap-1.5
                border border-brandBlue" title="Xem giỏ hàng">
 
-                            <span class="w-5 h-5 bg-white/15 rounded-full
+							<span class="w-5 h-5 bg-white/15 rounded-full
                    flex items-center justify-center shrink-0">
 
-                                <i class="fa-solid fa-cart-shopping text-[10px]"></i>
+								<i class="fa-solid fa-cart-shopping text-[10px]"></i>
 
-                            </span>
+							</span>
 
-                            <span class="hidden sm:inline font-heading">
-                                GIỎ HÀNG
-                            </span>
+							<span class="hidden sm:inline font-heading">
+								GIỎ HÀNG
+							</span>
 
-                            <span id="dpCartCount" class="min-w-[20px] h-5 px-1
+							<span id="dpCartCount" class="min-w-[20px] h-5 px-1
                    bg-brandRed text-white
                    rounded-full
                    flex items-center justify-center
                    text-[10px] font-extrabold">
 
-                                0
+								0
 
-                            </span>
+							</span>
 
-                        </button>
+						</button>
 
-                        <!-- =========================
+						<!-- =========================
                              MOBILE MENU
                              HIỂN THỊ TRÊN ĐIỆN THOẠI
                         ========================== -->
-                        <a href="javascript:void(0)" class="menu-bar mobile-menu-toggle" aria-label="Mở menu"
-                            title="Menu">
-
-                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none"
-                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-
-                                <path d="M4 6H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                                </path>
-
-                                <path d="M4 12H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                                </path>
-
-                                <path d="M4 18H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                                </path>
-                            </svg>
-                        </a>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="header-menu">
-            <div class="container" style="    position: relative;">
-                <div class="row">
-                    <div class="col-lg-3 d-lg-block d-none">
-                        <div class="menu_mega indexs">
-                            <div class="title_menu">
-                                <span class="title_">Danh mục sản phẩm</span>
-                            </div>
-                            <div id="section-verticalmenu"
-                                class="block block-verticalmenu float-vertical float-vertical-left">
-                                <div class="aside-vetical-menu">
-                                    <aside class="blog-aside">
-                                        <div class="block_content aside-content ">
-                                            <div id="verticalmenu" class="list_menu_header verticalmenu nav-category "
-                                                role="navigation">
-                                                <div class="ul nav vertical-nav ul_menu site-nav-vetical">
-                                                    <p title="Cworks"
-                                                        style="color: white; padding: 10px 10px 0px 10px; font-size: 20px;">
-                                                        Cworks</p>
-
-                                                    <div class="nav_item nav-item lv1 li_check ">
-                                                        <a href="/danh-muc/cworks.html" title="Cworks"
-                                                            style="background-image: url('https://phutungdaophat.com/images/logo-cworks.png')">Cworks
-                                                            <i class="fas fa-angle-right">
-                                                                <svg xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                                                                    <path
-                                                                        d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                                                                </svg>
-                                                            </i>
-                                                        </a>
-
-                                                        <div class="ul_content_right_1">
-                                                            <div class="row">
-
-                                                                <!-- CITY → Vòng bi / bạc đạn -->
-                                                                <div class="nav_item nav-item lv2 col-lg-3 col-md-3">
-
-                                                                    <a href="../danh-muc/cworks/vong-bi-bac-dan.html"
-                                                                        title="Vòng bi / bạc đạn">Vòng bi / bạc đạn</a>
-
-                                                                    <div class="ul_content_right_2">
-
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6004-2rs.html"
-                                                                                title="Vòng bi 6004-2RS">6004-2RS</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6200-2rs.html"
-                                                                                title="Vòng bi 6200-2RS">6200-2RS</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6201-2rs.html"
-                                                                                title="Vòng bi 6201-2RS">6201-2RS</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6202-2rs.html"
-                                                                                title="Vòng bi 6202-2RS">6202-2RS</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6203-2rs.html"
-                                                                                title="Vòng bi 6203-2RS">6203-2RS</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6204-2rs.html"
-                                                                                title="Vòng bi 6204-2RS">6204-2RS</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6205-2rs.html"
-                                                                                title="Vòng bi 6205-2RS">6205-2RS</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6300-2rs.html"
-                                                                                title="Vòng bi 6300-2RS">6300-2RS</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/vong-bi-bac-dan-6301-2rs.html"
-                                                                                title="Vòng bi 6301-2RS">6301-2RS</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- CRV → Bố thắng / má phanh -->
-                                                                <div class="nav_item nav-item lv2 col-lg-3 col-md-3">
-
-                                                                    <a href="../danh-muc/cworks/bo-thang-ma-phanh.html"
-                                                                        title="Bố thắng / má phanh">Bố thắng / má
-                                                                        phanh</a>
-
-                                                                    <div class="ul_content_right_2">
-
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/bo-thang-abl2012-2013-lead-125-vision.html"
-                                                                                title="Bố thắng ABL2012-2013 (mọi), LEAD 125, VISION">ABL2012-2013,
-                                                                                LEAD 125, VISION</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/bo-thang-rs-future-fu-neo.html"
-                                                                                title="Bố thắng RS FUTURE, FU NEO">RS
-                                                                                FUTURE, FU NEO</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/bo-thang-rsx-wave110-future-fi-winner-truoc.html"
-                                                                                title="Bố thắng RSX WAVE110, FUTURE FI, WINNER (Truoc)">RSX
-                                                                                WAVE110, FUTURE FI, WINNER</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/bo-thang-vario.html"
-                                                                                title="Bố thắng VARIO">VARIO</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/bo-thang-wave-w100-fu-w100-zx.html"
-                                                                                title="Bố thắng WAVE(W100), FU(W100), ZX">WAVE(W100),
-                                                                                FU(W100), ZX</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/bo-thang-winner-150-sau.html"
-                                                                                title="Bố thắng WINNER 150 (sau)">WINNER
-                                                                                150 (sau)</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- CIVIC → Nước làm mát -->
-                                                                <div class="nav_item nav-item lv2 col-lg-3 col-md-3">
-
-                                                                    <a href="../danh-muc/cworks/nuoc-mat.html"
-                                                                        title="Nước mát">Nước làm mát</a>
-
-                                                                    <div class="ul_content_right_2">
-
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/nuoc-lam-mat-xanh-5-do-1l.html"
-                                                                                title="绿色 -5℃ 1L">绿色 -5℃ 1L</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- CIVIC TURBO → Dây curoa -->
-                                                                <div class="nav_item nav-item lv2 col-lg-3 col-md-3">
-
-                                                                    <a href="../danh-muc/cworks/day-curoa-xe-may.html"
-                                                                        title="Dây curoa">Dây curoa</a>
-
-                                                                    <div class="ul_content_right_2">
-
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="/an-pham/cworks/day-curoa-k44.html"
-                                                                                title="Dây curoa K44">K44</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/day-curoa-kvb.html"
-                                                                                title="Dây curoa KVB">KVB</a>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- CIVIC 1.8 Bản Mới → Bugi -->
-                                                                <div class="nav_item nav-item lv2 col-lg-3 col-md-3">
-
-                                                                    <a href="../danh-muc/cworks/bugi.html"
-                                                                        title="Bugi">Bugi</a>
-
-                                                                    <div class="ul_content_right_2">
-
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="/san-pham/cworks/bugi-tcb7r-9.html"
-                                                                                title="BUGI TCB7R-9">BUGI TCB7R-9</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="/san-pham/cworks/bugi-tcb6r.html"
-                                                                                title="BUGI TCB6R">BUGI TCB6R</a>
-                                                                        </div>
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/bugi-tca6.html"
-                                                                                title="BUGI TCA6">BUGI TCA6</a>
-                                                                        </div>
-
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="../san-pham/cworks/bugi-tcb8r.html"
-                                                                                title="BUGI TCB8R">BUGI TCB8R</a>
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <!-- JAZZ → Dầu nhớt -->
-                                                                <div class="nav_item nav-item lv2 col-lg-3 col-md-3">
-
-                                                                    <a href="../danh-muc/cworks/dau-nhot.html"
-                                                                        title="Dầu nhớt">Dầu nhớt</a>
-
-                                                                    <div class="ul_content_right_2">
-
-
-                                                                        <div class="nav_item nav-item lv3">
-                                                                            <a href="/danh-muc/cworks/dau-nhot-xe-may.html"
-                                                                                title="Dầu nhớt Xe Máy">Dầu nhớt Xe
-                                                                                Máy</a>
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </aside>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="header-menu-des">
-                            <nav class="header-nav">
-                                <ul class="item_big">
-                                    <li class="d-block d-lg-none title-danhmuc"><span>Menu chính</span></li>
-                                    <li class="nav-item  ">
-                                        <a class="a-img" href="../index.html" title="Trang chủ">
-                                            Trang chủ
-                                        </a>
-                                    </li>
-                                    <li class="nav-item  ">
-                                        <a class="a-img" href="../gioi-thieu/gioi-thieu.html" title="Giới thiệu">
-                                            Giới thiệu
-                                        </a>
-                                    </li>
-                                    <li class="nav-item has-mega">
-
-                                        <a class="a-img caret-down" href="../danh-muc/cworks.html" title="Cworks">
-                                            Phụ tùng xe máy Cworks
-                                        </a>
-
-                                        <i class="fa fa-caret-down"></i>
-
-                                        <!-- ========================= -->
-                                        <!-- DESKTOP MEGA MENU -->
-                                        <!-- ========================= -->
-
-                                        <div class="mega-content d-lg-block d-none">
-
-                                            <ul class="level0">
-
-                                                <!-- ========================= -->
-                                                <!-- VÒNG BI / BẠC ĐẠN -->
-                                                <!-- ========================= -->
-
-                                                <li class="level1 parent item fix-navs" data-title="Vòng bi / bạc đạn"
-                                                    data-link="/danh-muc/cworks/vong-bi-bac-dan.html">
-
-                                                    <a class="hmega" href="/danh-muc/cworks/vong-bi-bac-dan.html"
-                                                        title="Vòng bi / bạc đạn">
-                                                        Vòng bi / bạc đạn
-                                                    </a>
-
-                                                    <ul class="level1">
-
-                                                        <li class="level2">
-
-                                                            <ul class="level2">
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6004-2rs.html"
-                                                                        title="Vòng bi 6004-2RS">
-                                                                        6004-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6200-2rs.html"
-                                                                        title="Vòng bi 6200-2RS">
-                                                                        6200-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6201-2rs.html"
-                                                                        title="Vòng bi 6201-2RS">
-                                                                        6201-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6202-2rs.html"
-                                                                        title="Vòng bi 6202-2RS">
-                                                                        6202-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6203-2rs.html"
-                                                                        title="Vòng bi 6203-2RS">
-                                                                        6203-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6204-2rs.html"
-                                                                        title="Vòng bi 6204-2RS">
-                                                                        6204-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6205-2rs.html"
-                                                                        title="Vòng bi 6205-2RS">
-                                                                        6205-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6300-2rs.html"
-                                                                        title="Vòng bi 6300-2RS">
-                                                                        6300-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/vong-bi-bac-dan-6301-2rs.html"
-                                                                        title="Vòng bi 6301-2RS">
-                                                                        6301-2RS
-                                                                    </a>
-                                                                </li>
-
-                                                            </ul>
-
-                                                        </li>
-
-                                                    </ul>
-
-                                                </li>
-
-
-                                                <!-- ========================= -->
-                                                <!-- BỐ THẮNG / MÁ PHANH -->
-                                                <!-- ========================= -->
-
-                                                <li class="level1 parent item fix-navs" data-title="Bố thắng / má phanh"
-                                                    data-link="/danh-muc/cworks/bo-thang-ma-phanh.html">
-
-                                                    <a class="hmega" href="/danh-muc/cworks/bo-thang-ma-phanh.html"
-                                                        title="Bố thắng / má phanh">
-                                                        Bố thắng / má phanh
-                                                    </a>
-
-                                                    <ul class="level1">
-
-                                                        <li class="level2">
-
-                                                            <ul class="level2">
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bo-thang-abl2012-2013-lead-125-vision.html"
-                                                                        title="Bố thắng ABL2012-2013, LEAD 125, VISION">
-                                                                        ABL2012-2013, LEAD 125, VISION
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bo-thang-rs-future-fu-neo.html"
-                                                                        title="Bố thắng RS FUTURE, FU NEO">
-                                                                        RS FUTURE, FU NEO
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bo-thang-rsx-wave110-future-fi-winner-truoc.html"
-                                                                        title="Bố thắng RSX WAVE110, FUTURE FI, WINNER">
-                                                                        RSX WAVE110, FUTURE FI, WINNER
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bo-thang-vario.html"
-                                                                        title="Bố thắng VARIO">
-                                                                        VARIO
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bo-thang-wave-w100-fu-w100-zx.html"
-                                                                        title="Bố thắng WAVE, FU, ZX">
-                                                                        WAVE(W100), FU(W100), ZX
-                                                                    </a>
-                                                                </li>
+						<a href="javascript:void(0)" class="menu-bar mobile-menu-toggle" aria-label="Mở menu"
+							title="Menu">
+
+							<svg viewBox="0 0 24 24" width="26" height="26" fill="none"
+								xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+								<path d="M4 6H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+								</path>
+
+								<path d="M4 12H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+								</path>
+
+								<path d="M4 18H20" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+								</path>
+							</svg>
+						</a>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-menu">
+			<div class="container" style="    position: relative;">
+				<div class="row">
+					<div class="col-12">
+						<div class="header-menu-des">
+							<div class="nav-drawer-head"><span>MENU</span><button type="button" class="nav-close"
+									aria-label="Đóng menu">&#10005;</button></div>
+							<nav class="header-nav">
+								<ul class="item_big">
+									<li class="d-block d-lg-none title-danhmuc"><span>Menu chính</span></li>
+									<li class="nav-item  ">
+										<a class="a-img" href="../index.html" title="Trang chủ">
+											Trang chủ
+										</a>
+									</li>
+									<li class="nav-item  ">
+										<a class="a-img" href="../gioi-thieu/gioi-thieu.html" title="Giới thiệu">
+											Giới thiệu
+										</a>
+									</li>
+									<li class="nav-item has-mega">
+
+										<a class="a-img caret-down" href="../danh-muc/cworks.html" title="Cworks">
+											Phụ tùng xe máy Cworks
+										</a>
+
+										<i class="fa fa-caret-down"></i>
+
+										<!-- ========================= -->
+										<!-- DESKTOP MEGA MENU -->
+										<!-- ========================= -->
+
+										<div class="mega-content d-lg-block d-none">
+
+											<ul class="level0">
+
+												<!-- ========================= -->
+												<!-- VÒNG BI / BẠC ĐẠN -->
+												<!-- ========================= -->
+
+												<li class="level1 parent item fix-navs" data-title="Vòng bi / bạc đạn"
+													data-link="/danh-muc/cworks/vong-bi-bac-dan.html">
+
+													<a class="hmega" href="/danh-muc/cworks/vong-bi-bac-dan.html"
+														title="Vòng bi / bạc đạn">
+														Vòng bi / bạc đạn
+													</a>
+
+													<ul class="level1">
+
+														<li class="level2">
+
+															<ul class="level2">
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6004-2rs.html"
+																		title="Vòng bi 6004-2RS">
+																		6004-2RS
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6200-2rs.html"
+																		title="Vòng bi 6200-2RS">
+																		6200-2RS
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6201-2rs.html"
+																		title="Vòng bi 6201-2RS">
+																		6201-2RS
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6202-2rs.html"
+																		title="Vòng bi 6202-2RS">
+																		6202-2RS
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6203-2rs.html"
+																		title="Vòng bi 6203-2RS">
+																		6203-2RS
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6204-2rs.html"
+																		title="Vòng bi 6204-2RS">
+																		6204-2RS
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6205-2rs.html"
+																		title="Vòng bi 6205-2RS">
+																		6205-2RS
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6300-2rs.html"
+																		title="Vòng bi 6300-2RS">
+																		6300-2RS
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/vong-bi-bac-dan-6301-2rs.html"
+																		title="Vòng bi 6301-2RS">
+																		6301-2RS
+																	</a>
+																</li>
+
+															</ul>
+
+														</li>
+
+													</ul>
 
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bo-thang-winner-150-sau.html"
-                                                                        title="Bố thắng WINNER 150 sau">
-                                                                        WINNER 150 (sau)
-                                                                    </a>
-                                                                </li>
+												</li>
 
-                                                            </ul>
 
-                                                        </li>
+												<!-- ========================= -->
+												<!-- BỐ THẮNG / MÁ PHANH -->
+												<!-- ========================= -->
 
-                                                    </ul>
-
-                                                </li>
+												<li class="level1 parent item fix-navs" data-title="Bố thắng / má phanh"
+													data-link="/danh-muc/cworks/bo-thang-ma-phanh.html">
 
+													<a class="hmega" href="/danh-muc/cworks/bo-thang-ma-phanh.html"
+														title="Bố thắng / má phanh">
+														Bố thắng / má phanh
+													</a>
 
-                                                <!-- ========================= -->
-                                                <!-- NƯỚC LÀM MÁT -->
-                                                <!-- ========================= -->
-
-                                                <li class="level1 parent item fix-navs" data-title="Nước làm mát"
-                                                    data-link="/danh-muc/cworks/nuoc-mat.html">
-
-                                                    <a class="hmega" href="/danh-muc/cworks/nuoc-mat.html"
-                                                        title="Nước làm mát">
-                                                        Nước làm mát
-                                                    </a>
-
-                                                    <ul class="level1">
-
-                                                        <li class="level2">
-
-                                                            <ul class="level2">
-
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/nuoc-lam-mat-xanh-5-do-1l.html"
-                                                                        title="Nước làm mát 绿色 -5℃ 1L">
-                                                                        绿色 -5℃ 1L
-                                                                    </a>
-                                                                </li>
-
-                                                            </ul>
-
-                                                        </li>
-
-                                                    </ul>
-
-                                                </li>
-
-
-                                                <!-- ========================= -->
-                                                <!-- DÂY CUROA -->
-                                                <!-- ========================= -->
-
-                                                <li class="level1 parent item fix-navs" data-title="Dây curoa"
-                                                    data-link="/danh-muc/cworks/day-curoa-xe-may.html">
-
-                                                    <a class="hmega" href="/danh-muc/cworks/day-curoa-xe-may.html"
-                                                        title="Dây curoa">
-                                                        Dây curoa
-                                                    </a>
-
-                                                    <ul class="level1">
-
-                                                        <li class="level2">
-
-                                                            <ul class="level2">
+													<ul class="level1">
 
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/day-curoa-k44.html"
-                                                                        title="Dây curoa K44">
-                                                                        K44
-                                                                    </a>
-                                                                </li>
+														<li class="level2">
 
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/day-curoa-kvb.html"
-                                                                        title="Dây curoa KVB">
-                                                                        KVB
-                                                                    </a>
-                                                                </li>
+															<ul class="level2">
 
-                                                            </ul>
+																<li class="level3">
+																	<a href="/san-pham/cworks/bo-thang-abl2012-2013-lead-125-vision.html"
+																		title="Bố thắng ABL2012-2013, LEAD 125, VISION">
+																		ABL2012-2013, LEAD 125, VISION
+																	</a>
+																</li>
 
-                                                        </li>
+																<li class="level3">
+																	<a href="/san-pham/cworks/bo-thang-rs-future-fu-neo.html"
+																		title="Bố thắng RS FUTURE, FU NEO">
+																		RS FUTURE, FU NEO
+																	</a>
+																</li>
 
-                                                    </ul>
+																<li class="level3">
+																	<a href="/san-pham/cworks/bo-thang-rsx-wave110-future-fi-winner-truoc.html"
+																		title="Bố thắng RSX WAVE110, FUTURE FI, WINNER">
+																		RSX WAVE110, FUTURE FI, WINNER
+																	</a>
+																</li>
 
-                                                </li>
+																<li class="level3">
+																	<a href="/san-pham/cworks/bo-thang-vario.html"
+																		title="Bố thắng VARIO">
+																		VARIO
+																	</a>
+																</li>
 
+																<li class="level3">
+																	<a href="/san-pham/cworks/bo-thang-wave-w100-fu-w100-zx.html"
+																		title="Bố thắng WAVE, FU, ZX">
+																		WAVE(W100), FU(W100), ZX
+																	</a>
+																</li>
 
-                                                <!-- ========================= -->
-                                                <!-- BUGI -->
-                                                <!-- ========================= -->
+																<li class="level3">
+																	<a href="/san-pham/cworks/bo-thang-winner-150-sau.html"
+																		title="Bố thắng WINNER 150 sau">
+																		WINNER 150 (sau)
+																	</a>
+																</li>
 
-                                                <li class="level1 parent item fix-navs" data-title="Bugi"
-                                                    data-link="/danh-muc/cworks/bugi.html">
+															</ul>
 
-                                                    <a class="hmega" href="/danh-muc/cworks/bugi.html" title="Bugi">
-                                                        Bugi
-                                                    </a>
-                                                    <ul class="level1">
+														</li>
 
-                                                        <li class="level2">
+													</ul>
 
-                                                            <ul class="level2">
+												</li>
 
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bugi-tcb7r-9.html"
-                                                                        title="BUGI TCB7R-9">
-                                                                        BUGI TCB7R-9
-                                                                    </a>
-                                                                </li>
 
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bugi-tcb6r.html"
-                                                                        title="BUGI TCB6R">
-                                                                        BUGI TCB6R
-                                                                    </a>
-                                                                </li>
-                                                                <li class="level3">
-                                                                    <a href="/san-pham/cworks/bugi-tca6.html"
-                                                                        title="BUGI TCA6">
-                                                                        BUGI TCA6
-                                                                    </a>
-                                                                </li>
+												<!-- ========================= -->
+												<!-- NƯỚC LÀM MÁT -->
+												<!-- ========================= -->
 
-                                                                <li class="level3">
-                                                                    <a href=/san-pham/cworks/bugi-tcb8r.html"
-                                                                        title="BUGI TCB8R">
-                                                                        BUGI TCB8R
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
+												<li class="level1 parent item fix-navs" data-title="Nước làm mát"
+													data-link="/danh-muc/cworks/nuoc-mat.html">
 
-                                                        </li>
-
-                                                    </ul>
-                                                </li>
+													<a class="hmega" href="/danh-muc/cworks/nuoc-mat.html"
+														title="Nước làm mát">
+														Nước làm mát
+													</a>
 
-
-                                                <!-- ========================= -->
-                                                <!-- DẦU NHỚT -->
-                                                <!-- ========================= -->
-
-                                                <li class="level1 parent item fix-navs" data-title="Dầu nhớt"
-                                                    data-link="/danh-muc/cworks/dau-nhot.html">
-
-                                                    <a class="hmega" href="/danh-muc/cworks/dau-nhot.html"
-                                                        title="Dầu nhớt">
-                                                        Dầu nhớt
-                                                    </a>
-                                                    <ul class="level1">
-
-                                                        <li class="level2">
-
-                                                            <ul class="level2">
-
-                                                                <li class="level3">
-                                                                    <a href="/danh-muc/cworks/dau-nhot-xe-may.html"
-                                                                        title="Dầu nhớt xe máy">
-                                                                        Dầu nhớt xe máy
-                                                                    </a>
-                                                                </li>
-
-
-
-                                                            </ul>
-
-                                                        </li>
-
-                                                    </ul>
-                                                </li>
-
-                                            </ul>
+													<ul class="level1">
 
-                                        </div>
+														<li class="level2">
 
+															<ul class="level2">
 
-                                        <!-- ========================= -->
-                                        <!-- MOBILE MENU -->
-                                        <!-- ========================= -->
-
-                                        <ul class="item_small d-lg-none d-block">
-
-                                            <!-- VÒNG BI / BẠC ĐẠN -->
-                                            <li>
-
-                                                <a class="caret-down" href="../danh-muc/cworks/vong-bi-bac-dan.html"
-                                                    title="Vòng bi / bạc đạn">
-                                                    Vòng bi / bạc đạn
-                                                </a>
-
-                                                <i class="fa fa-caret-down"></i>
-
-                                                <ul>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6004-2rs.html"
-                                                            title="Vòng bi 6004-2RS" class="a3">
-                                                            6004-2RS
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6200-2rs.html"
-                                                            title="Vòng bi 6200-2RS" class="a3">
-                                                            6200-2RS
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6201-2rs.html"
-                                                            title="Vòng bi 6201-2RS" class="a3">
-                                                            6201-2RS
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6202-2rs.html"
-                                                            title="Vòng bi 6202-2RS" class="a3">
-                                                            6202-2RS
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6203-2rs.html"
-                                                            title="Vòng bi 6203-2RS" class="a3">
-                                                            6203-2RS
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6204-2rs.html"
-                                                            title="Vòng bi 6204-2RS" class="a3">
-                                                            6204-2RS
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6205-2rs.html"
-                                                            title="Vòng bi 6205-2RS" class="a3">
-                                                            6205-2RS
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6300-2rs.html"
-                                                            title="Vòng bi 6300-2RS" class="a3">
-                                                            6300-2RS
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/vong-bi-bac-dan-6301-2rs.html"
-                                                            title="Vòng bi 6301-2RS" class="a3">
-                                                            6301-2RS
-                                                        </a>
-                                                    </li>
+																<li class="level3">
+																	<a href="/san-pham/cworks/nuoc-lam-mat-xanh-5-do-1l.html"
+																		title="Nước làm mát 绿色 -5℃ 1L">
+																		绿色 -5℃ 1L
+																	</a>
+																</li>
 
-                                                </ul>
+															</ul>
 
-                                            </li>
+														</li>
 
-
-                                            <!-- BỐ THẮNG / MÁ PHANH -->
-                                            <li>
+													</ul>
 
-                                                <a class="caret-down" href="../danh-muc/cworks/bo-thang-ma-phanh.html"
-                                                    title="Bố thắng / má phanh">
-                                                    Bố thắng / má phanh
-                                                </a>
-
-                                                <i class="fa fa-caret-down"></i>
-
-                                                <ul>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/bo-thang-abl2012-2013-lead-125-vision.html"
-                                                            title="Bố thắng ABL2012-2013, LEAD 125, VISION" class="a3">
-                                                            ABL2012-2013, LEAD 125, VISION
-                                                        </a>
-                                                    </li>
+												</li>
 
-                                                    <li>
-                                                        <a href="../san-pham/cworks/bo-thang-rs-future-fu-neo.html"
-                                                            title="Bố thắng RS FUTURE, FU NEO" class="a3">
-                                                            RS FUTURE, FU NEO
-                                                        </a>
-                                                    </li>
 
-                                                    <li>
-                                                        <a href="../san-pham/cworks/bo-thang-rsx-wave110-future-fi-winner-truoc.html"
-                                                            title="Bố thắng RSX WAVE110, FUTURE FI, WINNER" class="a3">
-                                                            RSX WAVE110, FUTURE FI, WINNER
-                                                        </a>
-                                                    </li>
+												<!-- ========================= -->
+												<!-- DÂY CUROA -->
+												<!-- ========================= -->
 
-                                                    <li>
-                                                        <a href="../san-pham/cworks/bo-thang-vario.html"
-                                                            title="Bố thắng VARIO" class="a3">
-                                                            VARIO
-                                                        </a>
-                                                    </li>
+												<li class="level1 parent item fix-navs" data-title="Dây curoa"
+													data-link="/danh-muc/cworks/day-curoa-xe-may.html">
 
-                                                    <li>
-                                                        <a href="../san-pham/cworks/bo-thang-wave-w100-fu-w100-zx.html"
-                                                            title="Bố thắng WAVE, FU, ZX" class="a3">
-                                                            WAVE(W100), FU(W100), ZX
-                                                        </a>
-                                                    </li>
+													<a class="hmega" href="/danh-muc/cworks/day-curoa-xe-may.html"
+														title="Dây curoa">
+														Dây curoa
+													</a>
 
-                                                    <li>
-                                                        <a href="../san-pham/cworks/bo-thang-winner-150-sau.html"
-                                                            title="Bố thắng WINNER 150 sau" class="a3">
-                                                            WINNER 150 (sau)
-                                                        </a>
-                                                    </li>
+													<ul class="level1">
 
-                                                </ul>
+														<li class="level2">
 
-                                            </li>
+															<ul class="level2">
 
+																<li class="level3">
+																	<a href="/san-pham/cworks/day-curoa-k44.html"
+																		title="Dây curoa K44">
+																		K44
+																	</a>
+																</li>
 
-                                            <!-- NƯỚC LÀM MÁT -->
-                                            <li>
-
-                                                <a class="caret-down" href="../danh-muc/cworks/nuoc-mat.html"
-                                                    title="Nước làm mát">
-                                                    Nước làm mát
-                                                </a>
-
-                                                <i class="fa fa-caret-down"></i>
-
-                                                <ul>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/nuoc-lam-mat-xanh-5-do-1l.html"
-                                                            title="Nước làm mát 绿色 -5℃ 1L" class="a3">
-                                                            绿色 -5℃ 1L
-                                                        </a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </li>
-
-
-                                            <!-- DÂY CUROA -->
-                                            <li>
-
-                                                <a class="caret-down" href="../danh-muc/cworks/day-curoa-xe-may.html"
-                                                    title="Dây curoa">
-                                                    Dây curoa
-                                                </a>
-
-                                                <i class="fa fa-caret-down"></i>
-
-                                                <ul>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/day-curoa-k44.html"
-                                                            title="Dây curoa K44" class="a3">
-                                                            K44
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="../san-pham/cworks/day-curoa-kvb.html"
-                                                            title="Dây curoa KVB" class="a3">
-                                                            KVB
-                                                        </a>
-                                                    </li>
-
-                                                </ul>
-
-                                            </li>
-
-
-                                            <!-- BUGI -->
-                                            <li>
-
-                                                <a class="caret-down" href="../danh-muc/cworks/bugi.html" title="Bugi">
-                                                    Bugi
-                                                </a>
-
-                                            </li>
-
-
-                                            <!-- DẦU NHỚT -->
-                                            <li>
-
-                                                <a class="caret-down" href="../danh-muc/cworks/dau-nhot.html"
-                                                    title="Dầu nhớt">
-                                                    Dầu nhớt
-                                                </a>
-
-                                            </li>
-
-                                        </ul>
-
-                                    </li>
-                                    <li class="nav-item  ">
-                                        <a class="a-img" href="../hinh-anh-video/hinh-anh-video.html"
-                                            title="Hình ảnh video">
-                                            Hình ảnh/Video
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item  ">
-                                        <a class="a-img" href="../tin-tuc/tin-tuc.html" title="Tin tức">
-                                            Tin Tức
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item  ">
-                                        <a class="a-img" href="../lien-he.html" title="Liên hệ">
-                                            Liên hệ
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <div class="control-menu d-none">
-                                <a href="../index.html#" id="prev">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                        <path fill="#fff"
-                                            d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-                                    </svg>
-                                </a>
-                                <a href="../index.html#" id="next">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                                        <path fill="#fff"
-                                            d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </header>
+																<li class="level3">
+																	<a href="/san-pham/cworks/day-curoa-kvb.html"
+																		title="Dây curoa KVB">
+																		KVB
+																	</a>
+																</li>
+
+															</ul>
+
+														</li>
+
+													</ul>
+
+												</li>
+
+
+												<!-- ========================= -->
+												<!-- BUGI -->
+												<!-- ========================= -->
+
+												<li class="level1 parent item fix-navs" data-title="Bugi"
+													data-link="/danh-muc/cworks/bugi.html">
+
+													<a class="hmega" href="/danh-muc/cworks/bugi.html" title="Bugi">
+														Bugi
+													</a>
+													<ul class="level1">
+
+														<li class="level2">
+
+															<ul class="level2">
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/bugi-tcb7r-9.html"
+																		title="BUGI TCB7R-9">
+																		BUGI TCB7R-9
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href="/san-pham/cworks/bugi-tcb6r.html"
+																		title="BUGI TCB6R">
+																		BUGI TCB6R
+																	</a>
+																</li>
+																<li class="level3">
+																	<a href="/san-pham/cworks/bugi-tca6.html"
+																		title="BUGI TCA6">
+																		BUGI TCA6
+																	</a>
+																</li>
+
+																<li class="level3">
+																	<a href=/san-pham/cworks/bugi-tcb8r.html"
+																		title="BUGI TCB8R">
+																		BUGI TCB8R
+																	</a>
+																</li>
+															</ul>
+
+														</li>
+
+													</ul>
+												</li>
+
+
+												<!-- ========================= -->
+												<!-- DẦU NHỚT -->
+												<!-- ========================= -->
+
+												<li class="level1 parent item fix-navs" data-title="Dầu nhớt"
+													data-link="/danh-muc/cworks/dau-nhot-xe-may.html">
+
+													<a class="hmega" href="/danh-muc/cworks/dau-nhot-xe-may.html"
+														title="Dầu nhớt">
+														Dầu nhớt
+													</a>
+													<ul class="level1">
+
+														<li class="level2">
+
+															<ul class="level2">
+
+																<li class="level3">
+																	<a href="/danh-muc/cworks/dau-nhot-xe-may.html"
+																		title="Dầu nhớt xe máy">
+																		Dầu nhớt xe máy
+																	</a>
+																</li>
+
+
+
+															</ul>
+
+														</li>
+
+													</ul>
+												</li>
+
+											</ul>
+
+										</div>
+
+
+										<!-- ========================= -->
+										<!-- MOBILE MENU -->
+										<!-- ========================= -->
+
+										<ul class="item_small d-lg-none d-block">
+
+											<!-- VÒNG BI / BẠC ĐẠN -->
+											<li>
+
+												<a class="caret-down" href="../danh-muc/cworks/vong-bi-bac-dan.html"
+													title="Vòng bi / bạc đạn">
+													Vòng bi / bạc đạn
+												</a>
+
+												<i class="fa fa-caret-down"></i>
+
+												<ul>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6004-2rs.html"
+															title="Vòng bi 6004-2RS" class="a3">
+															6004-2RS
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6200-2rs.html"
+															title="Vòng bi 6200-2RS" class="a3">
+															6200-2RS
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6201-2rs.html"
+															title="Vòng bi 6201-2RS" class="a3">
+															6201-2RS
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6202-2rs.html"
+															title="Vòng bi 6202-2RS" class="a3">
+															6202-2RS
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6203-2rs.html"
+															title="Vòng bi 6203-2RS" class="a3">
+															6203-2RS
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6204-2rs.html"
+															title="Vòng bi 6204-2RS" class="a3">
+															6204-2RS
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6205-2rs.html"
+															title="Vòng bi 6205-2RS" class="a3">
+															6205-2RS
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6300-2rs.html"
+															title="Vòng bi 6300-2RS" class="a3">
+															6300-2RS
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/vong-bi-bac-dan-6301-2rs.html"
+															title="Vòng bi 6301-2RS" class="a3">
+															6301-2RS
+														</a>
+													</li>
+
+												</ul>
+
+											</li>
+
+
+											<!-- BỐ THẮNG / MÁ PHANH -->
+											<li>
+
+												<a class="caret-down" href="../danh-muc/cworks/bo-thang-ma-phanh.html"
+													title="Bố thắng / má phanh">
+													Bố thắng / má phanh
+												</a>
+
+												<i class="fa fa-caret-down"></i>
+
+												<ul>
+
+													<li>
+														<a href="../san-pham/cworks/bo-thang-abl2012-2013-lead-125-vision.html"
+															title="Bố thắng ABL2012-2013, LEAD 125, VISION" class="a3">
+															ABL2012-2013, LEAD 125, VISION
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/bo-thang-rs-future-fu-neo.html"
+															title="Bố thắng RS FUTURE, FU NEO" class="a3">
+															RS FUTURE, FU NEO
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/bo-thang-rsx-wave110-future-fi-winner-truoc.html"
+															title="Bố thắng RSX WAVE110, FUTURE FI, WINNER" class="a3">
+															RSX WAVE110, FUTURE FI, WINNER
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/bo-thang-vario.html"
+															title="Bố thắng VARIO" class="a3">
+															VARIO
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/bo-thang-wave-w100-fu-w100-zx.html"
+															title="Bố thắng WAVE, FU, ZX" class="a3">
+															WAVE(W100), FU(W100), ZX
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/bo-thang-winner-150-sau.html"
+															title="Bố thắng WINNER 150 sau" class="a3">
+															WINNER 150 (sau)
+														</a>
+													</li>
+
+												</ul>
+
+											</li>
+
+
+											<!-- NƯỚC LÀM MÁT -->
+											<li>
+
+												<a class="caret-down" href="../danh-muc/cworks/nuoc-mat.html"
+													title="Nước làm mát">
+													Nước làm mát
+												</a>
+
+												<i class="fa fa-caret-down"></i>
+
+												<ul>
+
+													<li>
+														<a href="../san-pham/cworks/nuoc-lam-mat-xanh-5-do-1l.html"
+															title="Nước làm mát 绿色 -5℃ 1L" class="a3">
+															绿色 -5℃ 1L
+														</a>
+													</li>
+
+												</ul>
+
+											</li>
+
+
+											<!-- DÂY CUROA -->
+											<li>
+
+												<a class="caret-down" href="../danh-muc/cworks/day-curoa-xe-may.html"
+													title="Dây curoa">
+													Dây curoa
+												</a>
+
+												<i class="fa fa-caret-down"></i>
+
+												<ul>
+
+													<li>
+														<a href="../san-pham/cworks/day-curoa-k44.html"
+															title="Dây curoa K44" class="a3">
+															K44
+														</a>
+													</li>
+
+													<li>
+														<a href="../san-pham/cworks/day-curoa-kvb.html"
+															title="Dây curoa KVB" class="a3">
+															KVB
+														</a>
+													</li>
+
+												</ul>
+
+											</li>
+
+
+											<!-- BUGI -->
+											<li>
+
+												<a class="caret-down" href="../danh-muc/cworks/bugi.html" title="Bugi">
+													Bugi
+												</a>
+
+											</li>
+
+
+											<!-- DẦU NHỚT -->
+											<li>
+
+												<a class="caret-down" href="../danh-muc/cworks/dau-nhot-xe-may.html"
+													title="Dầu nhớt">
+													Dầu nhớt
+												</a>
+
+											</li>
+
+										</ul>
+
+									</li>
+									<li class="nav-item  ">
+										<a class="a-img" href="../hinh-anh-video/hinh-anh-video.html"
+											title="Hình ảnh video">
+											Hình ảnh/Video
+										</a>
+									</li>
+
+									<li class="nav-item  ">
+										<a class="a-img" href="../tin-tuc/tin-tuc.html" title="Tin tức">
+											Tin Tức
+										</a>
+									</li>
+
+									<li class="nav-item  ">
+										<a class="a-img" href="../lien-he.html" title="Liên hệ">
+											Liên hệ
+										</a>
+									</li>
+								</ul>
+							</nav>
+							<div class="control-menu d-none">
+								<a href="../index.html#" id="prev">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+										<path fill="#fff"
+											d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 278.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+									</svg>
+								</a>
+								<a href="../index.html#" id="next">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+										<path fill="#fff"
+											d="M342.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L274.7 256 105.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</header>
 
 
     <h1 class="d-none"> - </h1>
@@ -4415,254 +5109,84 @@
 
     </article>
 
-    <footer class="footer" style="color:#fff;">
-
-        <div class="container">
-
-            <div class="mid-footer">
-
-                <div class="row row-fix">
-
-                    <!-- THÔNG TIN CÔNG TY -->
-                    <div class="col-12 col-md-12 col-lg-12 col-xl-5 ft-info col-fix">
-
-                        <a href="../index.html" class="logo-ft" title="Phụ Tùng Đào Phát">
-                            <img style="max-height:50px; width:auto;" width="414" height="85" class="lazyload"
-                                src="../images/logo-dao-phat-text.png" data-src="../images/logo-dao-phat-text.png"
-                                alt="Phụ Tùng Đào Phát">
-                        </a>
-
-                        <div class="content-ft" style="color:#fff !important; line-height:1.6; margin-top:15px;">
-
-                            <b style="color:#fff;">
-                                Phụ Tùng Đào Phát
-                            </b>
-                            chuyên cung cấp phụ tùng xe máy và ô tô,
-                            đặc biệt các dòng phụ tùng Honda nhập khẩu Thái Lan.
-                            Sản phẩm đa dạng, nguồn gốc rõ ràng, đáp ứng nhu cầu
-                            thay thế, bảo dưỡng và sửa chữa xe.
-
-                        </div>
-
-                        <div class="group-address" style="color:#fff !important;">
-
-                            <ul style="margin-top:15px;">
-
-                                <li style="color:#fff !important; margin-bottom:8px;">
-                                    <b style="color:#fff !important;">Địa chỉ:</b>
-                                    <span style="color:#fff !important;">
-                                        257 Đường III KDC Khang Điền, Phường Phước Long, TP.HCM
-                                    </span>
-                                </li>
-
-                                <li style="color:#fff !important; margin-bottom:8px;">
-                                    <b style="color:#fff !important;">Hotline:</b>
-                                    <a href="tel:0978229468" style="color:#fff !important; text-decoration:none;">
-                                        0978 229 468
-                                    </a>
-                                </li>
-
-                                <li style="color:#fff !important; margin-bottom:8px;">
-                                    <b style="color:#fff !important;">Điện thoại:</b>
-                                    <a href="tel:02822474357" style="color:#fff !important; text-decoration:none;">
-                                        028 22 47 43 57
-                                    </a>
-                                </li>
-
-                                <li style="color:#fff !important;">
-                                    <b style="color:#fff !important;">Email:</b>
-                                    <a href="mailto:phutungnhapkhaudaophat@gmail.com"
-                                        style="color:#fff !important; text-decoration:none;">
-                                        phutungnhapkhaudaophat@gmail.com
-                                    </a>
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- GIỚI THIỆU -->
-                    <div class="col-6 col-md-6 col-lg-4 col-xl-2 link-list col-footer footer-click col-fix">
-
-                        <h4 class="title-menu" style="color:#ffb400 !important;">
-                            Giới thiệu
-                        </h4>
-
-                        <ul class="list-menu hidden-mobile">
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Về chúng tôi
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Phụ tùng xe máy
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Phụ tùng ô tô
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Thương hiệu
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Hệ thống phân phối
-                                </span>
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-
-                    <!-- ĐIỀU KHOẢN -->
-                    <div class="col-6 col-md-6 col-lg-4 col-xl-2 link-list col-footer footer-click col-fix">
-
-                        <h4 class="title-menu" style="color:#ffb400 !important;">
-                            Điều khoản
-                        </h4>
-
-                        <ul class="list-menu hidden-mobile">
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Chính sách riêng tư
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Điều khoản &amp; điều kiện
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Thỏa thuận người dùng
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Chính sách đổi trả
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    Chính sách bảo hành
-                                </span>
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-
-                    <!-- CAM KẾT -->
-                    <div class="col-12 col-md-12 col-lg-4 col-xl-3 link-list col-footer footer-click col-fix">
-
-                        <h4 class="title-menu" style="color:#ffb400 !important;">
-                            Cam kết từ Đào Phát
-                        </h4>
-
-                        <ul class="list-menu hidden-mobile">
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    ✓ Phụ tùng nguồn gốc rõ ràng
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    ✓ Đa dạng phụ tùng xe máy &amp; ô tô
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    ✓ Hỗ trợ tư vấn chọn đúng sản phẩm
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    ✓ Đóng gói cẩn thận trước khi giao
-                                </span>
-                            </li>
-
-                            <li>
-                                <span style="color:#fff !important;">
-                                    ✓ Hỗ trợ khách hàng tận tình
-                                </span>
-                            </li>
-
-                        </ul>
-
-
-                        <!-- HỖ TRỢ -->
-                        <div style="margin-top:20px;">
-
-                            <h4 class="title-menu" style="color:#ffb400 !important; margin-bottom:8px;">
-                                Hỗ trợ tư vấn
-                            </h4>
-
-                            <a href="tel:0978229468" style="
-								color:#fff !important;
-								text-decoration:none;
-								font-size:18px;
-								font-weight:700;
-							">
-                                0978 229 468
-                            </a>
-
-                            <div style="
-								color:#fff !important;
-								margin-top:5px;
-							">
-                                Tư vấn phụ tùng xe máy &amp; ô tô
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- COPYRIGHT -->
-        <div id="copyright" class="copyright" style="color:#fff !important;">
-
-            <span class="copy-right" style="color:#fff !important;">
-
-                © Bản quyền thuộc về
-                <b style="color:#fff !important;">
-                    Phụ Tùng Đào Phát
-                </b>
-
-            </span>
-
-        </div>
-
-    </footer>
+	<footer class="bg-white border-t border-slate-200 pt-8 pb-10">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+			<div class="border-b border-slate-100 pb-4 mb-6">
+				<h3 class="font-extrabold font-heading text-base sm:text-lg text-brandGreen uppercase tracking-tight">
+					CÔNG TY TNHH THƯƠNG MẠI ĐÀO PHÁT
+				</h3>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-[15px] text-slate-600">
+
+				<div class="flex items-start space-x-3">
+					<div
+						class="w-8 h-8 bg-red-50 text-brandRed rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						<i class="fa-solid fa-location-dot"></i>
+					</div>
+					<div>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">VĂN PHÒNG LÀM VIỆC</strong>
+						<p class="mt-1 leading-relaxed text-slate-600">
+							Số 257, Đường III, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ
+							Chí
+							Minh.
+						</p>
+					</div>
+				</div>
+
+				<div class="flex items-start space-x-3">
+					<div
+						class="w-8 h-8 bg-red-50 text-brandRed rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						<i class="fa-solid fa-warehouse"></i>
+					</div>
+					<div>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">KHO HÀNG</strong>
+						<p class="mt-1 leading-relaxed text-slate-600">
+							Số 52, Đường 11, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ Chí
+							Minh.
+						</p>
+					</div>
+				</div>
+
+				<div class="flex items-start space-x-3">
+					<div
+						class="w-8 h-8 bg-blue-50 text-brandBlue rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						<i class="fa-solid fa-clock"></i>
+					</div>
+					<div>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">THỜI GIAN LÀM VIỆC</strong>
+						<p class="mt-1 text-slate-600">T2 – T7 (8h00 – 17h00)</p>
+					</div>
+				</div>
+
+				<div class="flex items-start space-x-3">
+					<div
+						class="w-8 h-8 bg-green-50 text-brandGreen rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						<i class="fa-solid fa-headset"></i>
+					</div>
+					<div>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">HOTLINE / ZALO</strong>
+						<a href="tel:0978229468"
+							class="text-brandRed font-black text-lg hover:underline block my-0.5">0978 229 468</a>
+						<strong class="block font-bold text-slate-900 uppercase text-[13px] mt-2">EMAIL</strong>
+						<a href="mailto:phutungnhapkhaudaophat@gmail.com"
+							class="text-slate-600 hover:text-brandGreen text-[15px] break-all">
+							phutungnhapkhaudaophat@gmail.com
+						</a>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="mt-8 pt-6 border-t border-slate-100 text-center text-[13px] font-semibold"
+				style="color:#006838">
+				&copy; 2026 CÔNG TY TNHH THƯƠNG MẠI ĐÀO PHÁT. Tất cả quyền được bảo lưu. Nhà phân phối chính thức CWORKS
+				Toyota Tsusho tại Miền Nam.
+			</div>
+
+		</div>
+	</footer>
 
     <a href="../index.html#" class="backtop" title="Lên đầu trang">
         <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-up" role="img"
@@ -6978,6 +7502,64 @@
             });
         })();
     </script>
+
+	<script>
+		/* Menu Cworks: chỉ mở khi con trỏ nằm đúng trên chữ */
+		(function () {
+			var li = document.querySelector('.header-menu li.has-mega');
+			if (!li) return;
+			var link = li.querySelector(':scope > a.a-img');
+			var mega = li.querySelector(':scope > .mega-content');
+			if (!link || !mega) return;
+			var desktop = window.matchMedia('(min-width: 992px)');
+			var closeTimer = null;
+
+			function textRect() {
+				var r = document.createRange();
+				r.selectNodeContents(link);
+				var b = r.getBoundingClientRect();
+				var padY = 2; // thu bớt trên/dưới cho sát thân chữ
+				return { l: b.left, r: b.right, t: b.top + padY, b: b.bottom - padY };
+			}
+			function inText(x, y) {
+				var t = textRect();
+				return x >= t.l && x <= t.r && y >= t.t && y <= t.b;
+			}
+			function inMega(x, y) {
+				var m = mega.getBoundingClientRect();
+				return x >= m.left && x <= m.right && y >= m.top && y <= m.bottom;
+			}
+			// hành lang hẹp ngay dưới chữ, để kéo chuột xuống bảng không bị đóng
+			function inBridge(x, y) {
+				var t = textRect(), m = mega.getBoundingClientRect();
+				return x >= t.l && x <= t.r && y >= t.b && y <= m.top;
+			}
+			function open() {
+				clearTimeout(closeTimer); closeTimer = null;
+				li.classList.add('is-open');
+			}
+			function close() {
+				clearTimeout(closeTimer); closeTimer = null;
+				li.classList.remove('is-open');
+			}
+
+			document.addEventListener('mousemove', function (e) {
+				if (!desktop.matches) { close(); return; }
+				var x = e.clientX, y = e.clientY;
+				if (inText(x, y)) { open(); return; }
+				if (li.classList.contains('is-open') && (inMega(x, y) || inBridge(x, y))) {
+					clearTimeout(closeTimer); closeTimer = null; return;
+				}
+				if (li.classList.contains('is-open') && !closeTimer) {
+					closeTimer = setTimeout(close, 120);
+				}
+			}, { passive: true });
+
+			document.addEventListener('mouseleave', close);
+			document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+			window.addEventListener('resize', function () { if (!desktop.matches) close(); });
+		})();
+	</script>
 </body>
 
 </html>
