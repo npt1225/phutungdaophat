@@ -1,444 +1,75 @@
-export default async function handler(req, res) {
+// Vercel Serverless Function: /api/quote
+// Nhận yêu cầu báo giá từ các trang HTML, chuyển tiếp sang Google Apps Script
+// (Apps Script sẽ gửi mail về Gmail + ghi vào Google Sheet).
+//
+// Có thể đổi link bằng biến môi trường QUOTE_SCRIPT_URL trong Vercel
+// (Project Settings -> Environment Variables). Không đặt thì dùng link bên dưới.
 
-  // =========================================================
-  // CHỈ CHO PHÉP POST
-  // =========================================================
+const SCRIPT_URL =
+  process.env.QUOTE_SCRIPT_URL ||
+  "https://script.google.com/macros/s/AKfycbw9ylqepOi_Sf-j5rMOhGc4N5M84SYssmJD7vi8RmG1YxcTWo7cB5aEADFJIdZEMBeQNg/exec";
+
+const s = (v, max = 2000) => (v == null ? "" : String(v)).trim().slice(0, max);
+
+module.exports = async function handler(req, res) {
+  res.setHeader("Cache-Control", "no-store");
+
   if (req.method !== "POST") {
-    return res.status(405).json({
-      success: false,
-      message: "Phương thức không được phép."
-    });
+    return res.status(405).json({ ok: false, message: "Phương thức không được hỗ trợ." });
   }
 
   try {
+    let d = req.body;
+    if (typeof d === "string") d = JSON.parse(d);
+    d = d || {};
 
-    // =========================================================
-    // KIỂM TRA ENV
-    // =========================================================
-    const resendApiKey = process.env.RESEND_API_KEY;
-    const toEmail = process.env.QUOTE_TO_EMAIL;
-
-    if (!resendApiKey) {
-      console.error("❌ Thiếu RESEND_API_KEY");
-
-      return res.status(500).json({
-        success: false,
-        message: "Chưa cấu hình RESEND_API_KEY trên Vercel."
-      });
+    const store = s(d.store);
+    const phone = s(d.phone);
+    if (!store || !phone) {
+      return res.status(400).json({ ok: false, message: "Vui lòng nhập tên cửa hàng và số điện thoại." });
     }
 
-    if (!toEmail) {
-      console.error("❌ Thiếu QUOTE_TO_EMAIL");
-
-      return res.status(500).json({
-        success: false,
-        message: "Chưa cấu hình QUOTE_TO_EMAIL trên Vercel."
-      });
+    // Danh sách sản phẩm (ưu tiên items, nếu không có thì dùng product)
+    let product = s(d.product);
+    if (Array.isArray(d.items) && d.items.length) {
+      product = d.items
+        .map((i) => `${s(i.name, 300)}${i.sku ? " (Mã: " + s(i.sku, 100) + ")" : ""} × ${s(i.quantity, 20) || 1}`)
+        .join("\n");
     }
 
-    // =========================================================
-    // NHẬN DỮ LIỆU
-    // =========================================================
-    const {
+    // Chỉ đặt ký tự tiếng Việt trong BODY, không đặt vào header (tránh lỗi ByteString)
+    const payload = {
       store,
       phone,
       product,
-      sku,
-      quantity,
-      address,
-      note
-    } = req.body || {};
-
-    // =========================================================
-    // KIỂM TRA FORM
-    // =========================================================
-    if (!store || !phone || !quantity) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Vui lòng nhập đầy đủ Tên cửa hàng, Số điện thoại/Zalo và Số lượng."
-      });
-    }
-
-    // =========================================================
-    // ESCAPE HTML
-    // =========================================================
-    const emailSubject =
-      "YÊU CẦU BÁO GIÁ - " +
-      (product || "Sản phẩm từ Phụ Tùng Đào Phát");
-
-    const emailHtml = `
-<!DOCTYPE html>
-<html lang="vi">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yêu cầu báo giá</title>
-</head>
-
-<body style="
-margin:0;
-padding:0;
-background:#f3f4f6;
-font-family:Arial,Helvetica,sans-serif;
-color:#222;
-">
-
-<div style="
-max-width:680px;
-margin:30px auto;
-background:#ffffff;
-border-radius:12px;
-overflow:hidden;
-border:1px solid #e5e7eb;
-">
-
-<!-- HEADER -->
-
-<div style="
-background:#0d6efd;
-padding:25px;
-color:#ffffff;
-">
-
-<div style="
-font-size:24px;
-font-weight:bold;
-margin-bottom:8px;
-">
-YÊU CẦU BÁO GIÁ MỚI
-</div>
-
-<div style="
-font-size:14px;
-opacity:.95;
-">
-Phụ Tùng Đào Phát
-</div>
-
-</div>
-
-
-<!-- CONTENT -->
-
-<div style="padding:25px;">
-
-<h3 style="
-margin:0 0 15px;
-font-size:18px;
-">
-👤 Thông tin khách hàng
-</h3>
-
-<table width="100%" cellpadding="0" cellspacing="0"
-style="border-collapse:collapse;font-size:14px;">
-
-<tr>
-<td style="
-width:190px;
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-font-weight:bold;
-">
-Cửa hàng / Gara / Đại lý
-</td>
-
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-">
-${escapeHtml(store)}
-</td>
-</tr>
-
-
-<tr>
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-font-weight:bold;
-">
-Điện thoại / Zalo
-</td>
-
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-">
-${escapeHtml(phone)}
-</td>
-</tr>
-
-
-<tr>
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-font-weight:bold;
-">
-Khu vực / Địa chỉ
-</td>
-
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-">
-${escapeHtml(address || "Chưa cung cấp")}
-</td>
-</tr>
-
-</table>
-
-
-<h3 style="
-margin:28px 0 15px;
-font-size:18px;
-">
-📦 Thông tin sản phẩm
-</h3>
-
-<table width="100%" cellpadding="0" cellspacing="0"
-style="border-collapse:collapse;font-size:14px;">
-
-<tr>
-<td style="
-width:190px;
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-font-weight:bold;
-">
-Sản phẩm
-</td>
-
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-">
-${escapeHtml(product || "Chưa xác định")}
-</td>
-</tr>
-
-
-<tr>
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-font-weight:bold;
-">
-Mã sản phẩm
-</td>
-
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-">
-${escapeHtml(sku || "Chưa có")}
-</td>
-</tr>
-
-
-<tr>
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-font-weight:bold;
-">
-Số lượng dự kiến
-</td>
-
-<td style="
-padding:12px 8px;
-border-bottom:1px solid #eeeeee;
-font-weight:bold;
-color:#d62828;
-font-size:16px;
-">
-${escapeHtml(quantity)}
-</td>
-</tr>
-
-</table>
-
-
-<h3 style="
-margin:28px 0 15px;
-font-size:18px;
-">
-📝 Ghi chú thêm
-</h3>
-
-<div style="
-background:#f8fafc;
-border:1px solid #e5e7eb;
-border-radius:8px;
-padding:15px;
-line-height:1.6;
-font-size:14px;
-white-space:pre-line;
-">
-${escapeHtml(note || "Không có ghi chú")}
-</div>
-
-
-<div style="
-margin-top:25px;
-padding:16px;
-background:#eef6ff;
-border-radius:8px;
-border-left:4px solid #0d6efd;
-font-size:14px;
-line-height:1.6;
-">
-
-<strong>
-Có khách hàng vừa gửi yêu cầu báo giá trên website.
-</strong>
-
-<br>
-
-Vui lòng liên hệ lại khách hàng để tư vấn và báo giá.
-
-</div>
-
-</div>
-
-
-<!-- FOOTER -->
-
-<div style="
-padding:18px 25px;
-background:#f8f9fa;
-border-top:1px solid #eeeeee;
-font-size:12px;
-color:#777;
-text-align:center;
-">
-
-Email được gửi tự động từ website
-<strong>Phụ Tùng Đào Phát</strong>.
-
-</div>
-
-</div>
-
-</body>
-</html>
-`;
-
-    // =========================================================
-    // GỬI QUA RESEND
-    // =========================================================
-    const resendResponse = await fetch(
-      "https://api.resend.com/emails",
-      {
-        method: "POST",
-
-        headers: {
-          "Authorization": `Bearer ${resendApiKey}`,
-          "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-
-          // Sender mặc định của Resend
-          from: "Đào Phát <onboarding@resend.dev>",
-
-          // Email nhận từ Vercel
-          to: [toEmail],
-
-          subject: emailSubject,
-
-          html: emailHtml
-        })
-      }
-    );
-
-    const resendText = await resendResponse.text();
-
-    let resendData;
-
-    try {
-      resendData = JSON.parse(resendText);
-    } catch {
-      resendData = {
-        raw: resendText
-      };
-    }
-
-    // =========================================================
-    // RESEND BÁO LỖI
-    // =========================================================
-    if (!resendResponse.ok) {
-
-      console.error(
-        "❌ RESEND ERROR:",
-        resendResponse.status,
-        resendData
-      );
-
-      return res.status(500).json({
-        success: false,
-        message:
-          resendData?.message ||
-          resendData?.error ||
-          "Resend không thể gửi email.",
-
-        resendStatus: resendResponse.status
-      });
-    }
-
-    // =========================================================
-    // THÀNH CÔNG
-    // =========================================================
-    console.log(
-      "✅ Email báo giá đã gửi:",
-      resendData?.id
-    );
-
-    return res.status(200).json({
-
-      success: true,
-
-      message:
-        "Yêu cầu báo giá đã được gửi thành công.",
-
-      emailId:
-        resendData?.id || null
-
+      sku: s(d.sku),
+      quantity: s(d.quantity, 100),
+      address: s(d.address),
+      note: s(d.note),
+      page: s(req.headers.referer || ""),
+      honey: s(d.honey),
+    };
+
+    const r = await fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+      redirect: "follow",
     });
 
-  } catch (error) {
+    const text = await r.text();
+    let data = {};
+    try { data = JSON.parse(text); } catch (e) { }
 
-    console.error(
-      "❌ QUOTE API ERROR:",
-      error
-    );
+    if (data.success !== true) {
+      console.error("APPS SCRIPT RESPONSE:", r.status, text.slice(0, 300));
+      const detail = data.message || `Google trả về HTTP ${r.status}, kiểm tra lại link Web App và quyền "Bất kỳ ai".`;
+      return res.status(502).json({ ok: false, message: detail });
+    }
 
-    return res.status(500).json({
-
-      success: false,
-
-      message:
-        error?.message ||
-        "Có lỗi xảy ra khi gửi yêu cầu báo giá."
-
-    });
+    return res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error("QUOTE API ERROR:", err);
+    return res.status(500).json({ ok: false, message: "Lỗi máy chủ, vui lòng thử lại sau." });
   }
-}
-
-
-// =========================================================
-// CHỐNG HTML INJECTION
-// =========================================================
-function escapeHtml(value) {
-
-  return String(value)
-
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-
-}
+};
