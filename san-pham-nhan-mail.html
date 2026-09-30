@@ -157,60 +157,65 @@
             transform: skewX(16deg);
         }
     </style>
-    <!-- ===== Gửi yêu cầu báo giá -> Google Apps Script (mail + Google Sheet) ===== -->
-    <script>
-            (function () {
-                /* DÁN LINK WEB APP (kết thúc bằng /exec) VÀO ĐÂY */
-                var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9ylqepOi_Sf-j5rMOhGc4N5M84SYssmJD7vi8RmG1YxcTWo7cB5aEADFJIdZEMBeQNg/exec";
+	<!-- ===== Gửi yêu cầu báo giá -> Google Apps Script (mail + Google Sheet) ===== -->
+	<script>
+		(function () {
+			var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9ylqepOi_Sf-j5rMOhGc4N5M84SYssmJD7vi8RmG1YxcTWo7cB5aEADFJIdZEMBeQNg/exec";
 
-                /* Nhận đúng tham số như fetch('/api/quote', {...}) cũ, nên các form giữ nguyên code. */
-                window.dpQuoteFetch = async function (options) {
-                    var d = {};
-                    try { d = JSON.parse(options.body); } catch (e) { }
+			/* Nhận đúng tham số như fetch('/api/quote', {...}) cũ, nên các form giữ nguyên code. */
+			window.dpQuoteFetch = async function (options) {
+				var d = {};
+				try { d = JSON.parse(options.body); } catch (e) { }
 
-                    function fail(msg) {
-                        return { ok: false, status: 0, json: async function () { return { message: msg }; } };
-                    }
-                    if (!SCRIPT_URL || SCRIPT_URL.indexOf("https://script.google.com/") !== 0) {
-                        return fail("Form chưa được cấu hình nơi nhận.");
-                    }
+				function fail(msg) {
+					return { ok: false, status: 0, json: async function () { return { message: msg }; } };
+				}
+				if (!SCRIPT_URL || SCRIPT_URL.indexOf("https://script.google.com/") !== 0) {
+					return fail("Form chưa được cấu hình nơi nhận.");
+				}
 
-                    var lines = (d.items && d.items.length)
-                        ? d.items.map(function (i) {
-                            return i.name + (i.sku ? " (Mã: " + i.sku + ")" : "") + " × " + i.quantity;
-                        }).join("\n")
-                        : (d.product || "");
+				var lines = (d.items && d.items.length)
+					? d.items.map(function (i) {
+						return i.name + (i.sku ? " (Mã: " + i.sku + ")" : "") + " × " + i.quantity;
+					}).join("\n")
+					: (d.product || "");
 
-                    var payload = {
-                        store: d.store || "",
-                        phone: d.phone || "",
-                        product: lines,
-                        sku: d.sku || "",
-                        quantity: d.quantity || "",
-                        address: d.address || "",
-                        note: d.note || "",
-                        page: location.href,
-                        honey: ""
-                    };
+				var payload = {
+					store: d.store || "",
+					phone: d.phone || "",
+					product: lines,
+					sku: d.sku || "",
+					quantity: d.quantity || "",
+					address: d.address || "",
+					note: d.note || "",
+					page: location.href,
+					honey: ""
+				};
 
-                    try {
-                        /* text/plain để trình duyệt không gửi preflight (Apps Script không hỗ trợ CORS preflight) */
-                        var res = await fetch(SCRIPT_URL, {
-                            method: "POST",
-                            headers: { "Content-Type": "text/plain;charset=utf-8" },
-                            body: JSON.stringify(payload)
-                        });
-                        var data = await res.json().catch(function () { return {}; });
-                        if (!res.ok || data.success !== true) {
-                            return fail(data.message || "Không thể gửi yêu cầu báo giá.");
-                        }
-                        return { ok: true, status: 200, json: async function () { return data; } };
-                    } catch (err) {
-                        return fail("Không kết nối được máy chủ.");
-                    }
-                };
-            })();
-    </script>
+				try {
+					/* text/plain để trình duyệt không gửi preflight (Apps Script không hỗ trợ CORS preflight) */
+					var res = await fetch(SCRIPT_URL, {
+						method: "POST",
+						headers: { "Content-Type": "text/plain;charset=utf-8" },
+						body: JSON.stringify(payload)
+					});
+					var text = await res.text();
+					var data = {};
+					try { data = JSON.parse(text); } catch (e) { }
+
+					if (data.success === true) {
+						return { ok: true, status: 200, json: async function () { return data; } };
+					}
+					console.error("QUOTE RESPONSE:", res.status, text.slice(0, 300));
+					if (data.message) return fail(data.message);
+					return fail("Google trả về dữ liệu không hợp lệ (HTTP " + res.status + "). Hãy kiểm tra lại link Web App và quyền truy cập \"Bất kỳ ai\".");
+				} catch (err) {
+					console.error("QUOTE ERROR:", err);
+					return fail("Không kết nối được máy chủ. [" + (err && err.name) + ": " + (err && err.message) + "]");
+				}
+			};
+		})();
+	</script>
     <!-- CSS thẻ sản phẩm / popup báo giá / giỏ hàng / header mobile (lấy từ index) -->
     <style>
         :root {
