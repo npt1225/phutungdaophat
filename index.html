@@ -3982,9 +3982,305 @@
 			};
 		})();
 	</script>
+
+	<!-- ===== PAGE LOADER (Đào Phát × Cworks) ===== -->
+	<style id="dp-loader-style">
+		html.dpl-lock,
+		html.dpl-lock body {
+			overflow: hidden !important;
+		}
+
+		#dp-loader {
+			position: fixed;
+			inset: 0;
+			z-index: 2147483000;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background:
+				radial-gradient(circle at 15% 20%, rgba(0, 104, 56, .10), transparent 45%),
+				radial-gradient(circle at 85% 80%, rgba(227, 6, 19, .08), transparent 45%),
+				radial-gradient(circle at 80% 15%, rgba(255, 200, 0, .14), transparent 40%),
+				#ffffff;
+			transition: opacity .4s ease, transform .5s cubic-bezier(.7, 0, .3, 1), visibility .4s;
+			font-family: 'Montserrat', 'Inter', sans-serif;
+		}
+
+		#dp-loader.dpl-hide {
+			opacity: 0;
+			visibility: hidden;
+			transform: scale(1.04);
+			pointer-events: none;
+		}
+
+		/* họa tiết nền: vạch chéo mờ kiểu "tem nhãn" */
+		#dp-loader::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: repeating-linear-gradient(-16deg, transparent 0 38px, rgba(0, 104, 56, .035) 38px 40px);
+			pointer-events: none;
+		}
+
+		.dpl-box {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 0 20px;
+			text-align: center;
+		}
+
+		.dpl-logos {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+
+		.dpl-logo {
+			position: relative;
+			width: 92px;
+			height: 92px;
+			border-radius: 50%;
+			background: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 10px 30px rgba(0, 104, 56, .18), 0 2px 6px rgba(0, 0, 0, .06);
+			opacity: 0;
+			animation: dplPop .55s cubic-bezier(.2, 1.4, .4, 1) forwards;
+		}
+
+		.dpl-logo img {
+			max-width: 62%;
+			max-height: 62%;
+			object-fit: contain;
+			position: relative;
+			z-index: 1;
+		}
+
+		/* logo Cworks: dạng thẻ bo góc, khác biệt với logo tròn của Đào Phát */
+		.dpl-cw {
+			width: auto;
+			height: 92px;
+			min-width: 132px;
+			padding: 0 18px;
+			border-radius: 22px;
+			box-shadow: 0 10px 30px rgba(0, 59, 122, .18), 0 2px 6px rgba(0, 0, 0, .06);
+			animation-delay: .18s;
+		}
+
+		.dpl-cw img {
+			max-width: 100%;
+			max-height: 58%;
+		}
+
+		.dpl-dp {
+			animation-delay: 0s;
+		}
+
+		/* vòng xoay quanh logo Đào Phát */
+		.dpl-ring {
+			position: absolute;
+			inset: -7px;
+			border-radius: 50%;
+			border: 3px solid transparent;
+			border-top-color: #006838;
+			border-right-color: #FFC800;
+			border-bottom-color: #E30613;
+			animation: dplSpin .9s linear infinite;
+		}
+
+		.dpl-ring::after {
+			content: "";
+			position: absolute;
+			inset: 4px;
+			border-radius: 50%;
+			border: 2px dashed rgba(0, 104, 56, .18);
+		}
+
+		.dpl-x {
+			font-weight: 800;
+			font-size: 22px;
+			color: #E30613;
+			opacity: 0;
+			animation: dplFade .4s .3s forwards;
+		}
+
+		.dpl-title {
+			margin-top: 26px;
+			font-weight: 900;
+			font-size: 26px;
+			letter-spacing: .06em;
+			color: #006838;
+			line-height: 1;
+			opacity: 0;
+			transform: translateY(8px);
+			animation: dplUp .5s .25s forwards;
+		}
+
+		.dpl-title span {
+			color: #E30613;
+		}
+
+		.dpl-sub {
+			margin-top: 9px;
+			font-size: 11px;
+			font-weight: 700;
+			letter-spacing: .14em;
+			text-transform: uppercase;
+			color: #0d2b5c;
+			opacity: 0;
+			animation: dplUp .5s .4s forwards;
+		}
+
+		.dpl-bar {
+			margin-top: 24px;
+			width: 220px;
+			max-width: 70vw;
+			height: 5px;
+			border-radius: 99px;
+			background: #e8eef0;
+			overflow: hidden;
+			opacity: 0;
+			animation: dplFade .3s .3s forwards;
+		}
+
+		.dpl-bar i {
+			display: block;
+			height: 100%;
+			width: 0;
+			border-radius: inherit;
+			background: linear-gradient(90deg, #006838, #FFC800 60%, #E30613);
+			animation: dplBar 1s .1s cubic-bezier(.4, 0, .2, 1) forwards;
+		}
+
+		@keyframes dplPop {
+			from {
+				opacity: 0;
+				transform: scale(.5) translateY(10px);
+			}
+
+			to {
+				opacity: 1;
+				transform: scale(1) translateY(0);
+			}
+		}
+
+		@keyframes dplSpin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes dplFade {
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes dplUp {
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes dplBar {
+			0% {
+				width: 0;
+			}
+
+			70% {
+				width: 85%;
+			}
+
+			100% {
+				width: 100%;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.dpl-logos {
+				gap: 10px;
+			}
+
+			.dpl-logo {
+				width: 74px;
+				height: 74px;
+			}
+
+			.dpl-cw {
+				height: 74px;
+				min-width: 108px;
+				padding: 0 12px;
+			}
+
+			.dpl-title {
+				font-size: 21px;
+				margin-top: 20px;
+			}
+
+			.dpl-sub {
+				font-size: 9.5px;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+
+			.dpl-ring,
+			.dpl-bar i {
+				animation-duration: 1s;
+			}
+		}
+	</style>
+	<noscript>
+		<style>
+			#dp-loader {
+				display: none !important
+			}
+		</style>
+	</noscript>
 </head>
 
 <body>
+	<!-- ===== PAGE LOADER ===== -->
+	<div id="dp-loader" role="status" aria-label="Đang tải trang">
+		<div class="dpl-box">
+			<div class="dpl-logos">
+				<div class="dpl-logo dpl-dp">
+					<span class="dpl-ring"></span>
+					<img src="./images/favicon.png" alt="Đào Phát" onerror="this.style.display='none'">
+				</div>
+				<div class="dpl-x">×</div>
+				<div class="dpl-logo dpl-cw">
+					<img src="./images/logo-cworks.png" alt="Cworks" onerror="this.style.display='none'">
+				</div>
+			</div>
+			<div class="dpl-title">ĐÀO <span>PHÁT</span></div>
+			<div class="dpl-sub">Đối tác phân phối Cworks · Miền Nam</div>
+			<div class="dpl-bar"><i></i></div>
+		</div>
+	</div>
+	<script>
+		(function () {
+			var root = document.documentElement, loader = document.getElementById('dp-loader');
+			if (!loader) return;
+			root.classList.add('dpl-lock');
+			var start = Date.now(), MIN = 1000, MAX = 3000, done = false;
+			function hide() {
+				if (done) return; done = true;
+				loader.classList.add('dpl-hide');
+				root.classList.remove('dpl-lock');
+				setTimeout(function () { if (loader.parentNode) loader.parentNode.removeChild(loader); }, 600);
+			}
+			function ready() { setTimeout(hide, Math.max(0, MIN - (Date.now() - start))); }
+			if (document.readyState === 'complete') ready();
+			else window.addEventListener('load', ready);
+			setTimeout(hide, MAX); // an toàn: tối đa 3s dù mạng chậm
+		})();
+	</script>
+
 	<div class="opacity_menu"></div>
 
 	<header class="header header-index">
