@@ -2925,6 +2925,1203 @@
 			}
 		}
 	</style>
+	<style id="dps-style">
+		/* ===== POPUP TÌM KIẾM SẢN PHẨM ===== */
+		.dps-overlay {
+			position: fixed;
+			inset: 0;
+			z-index: 2147483100;
+			display: none;
+			align-items: flex-start;
+			justify-content: center;
+			padding: 7vh 16px 16px;
+			background: rgba(15, 23, 42, .62);
+			-webkit-backdrop-filter: blur(3px);
+			backdrop-filter: blur(3px)
+		}
+
+		.dps-overlay.is-open {
+			display: flex;
+			animation: dpsFade .18s ease
+		}
+
+		@keyframes dpsFade {
+			from {
+				opacity: 0
+			}
+
+			to {
+				opacity: 1
+			}
+		}
+
+		.dps-dialog {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			max-width: 720px;
+			max-height: 84vh;
+			overflow: hidden;
+			background: #fff;
+			border-radius: 18px;
+			box-shadow: 0 30px 80px rgba(2, 6, 23, .45);
+			font-family: 'Be Vietnam Pro', 'Mulish', 'Inter', sans-serif;
+			animation: dpsPop .2s ease
+		}
+
+		@keyframes dpsPop {
+			from {
+				opacity: 0;
+				transform: translateY(-10px) scale(.98)
+			}
+
+			to {
+				opacity: 1;
+				transform: none
+			}
+		}
+
+		.dps-head {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			padding: 14px 16px;
+			border-bottom: 1px solid #e2e8f0
+		}
+
+		.dps-field {
+			position: relative;
+			flex: 1;
+			min-width: 0
+		}
+
+		.dps-field>i {
+			position: absolute;
+			left: 14px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 15px;
+			color: #64748b;
+			pointer-events: none
+		}
+
+		.dps-input {
+			width: 100%;
+			height: 46px;
+			padding: 0 42px 0 42px;
+			font-weight: 600;
+			font-size: 15px;
+			line-height: 1;
+			font-family: inherit;
+			color: #0f172a;
+			background: #f8fafc;
+			border: 1.5px solid #cbd5e1;
+			border-radius: 12px;
+			outline: none;
+			transition: border-color .15s, box-shadow .15s, background .15s
+		}
+
+		.dps-input::placeholder {
+			font-weight: 500;
+			color: #94a3b8
+		}
+
+		.dps-input:focus {
+			background: #fff;
+			border-color: #1d4ed8;
+			box-shadow: 0 0 0 4px rgba(29, 78, 216, .12)
+		}
+
+		.dps-input::-webkit-search-cancel-button {
+			display: none
+		}
+
+		.dps-clear {
+			position: absolute;
+			right: 8px;
+			top: 50%;
+			transform: translateY(-50%);
+			display: none;
+			width: 28px;
+			height: 28px;
+			align-items: center;
+			justify-content: center;
+			border: 0;
+			border-radius: 50%;
+			background: #e2e8f0;
+			color: #475569;
+			font-size: 12px;
+			cursor: pointer
+		}
+
+		.dps-clear.is-show {
+			display: flex
+		}
+
+		.dps-clear:hover {
+			background: #cbd5e1
+		}
+
+		.dps-close {
+			flex: none;
+			height: 46px;
+			padding: 0 14px;
+			font-weight: 700;
+			font-size: 13px;
+			line-height: 1;
+			font-family: inherit;
+			color: #475569;
+			background: #fff;
+			border: 1.5px solid #e2e8f0;
+			border-radius: 12px;
+			cursor: pointer
+		}
+
+		.dps-close:hover {
+			background: #f1f5f9
+		}
+
+		.dps-chips {
+			display: flex;
+			gap: 8px;
+			padding: 12px 16px;
+			overflow-x: auto;
+			border-bottom: 1px solid #f1f5f9;
+			scrollbar-width: none
+		}
+
+		.dps-chips::-webkit-scrollbar {
+			display: none
+		}
+
+		.dps-chip {
+			flex: none;
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 7px 13px;
+			font-weight: 700;
+			font-size: 12.5px;
+			line-height: 1;
+			font-family: inherit;
+			color: #334155;
+			background: #f1f5f9;
+			border: 1px solid transparent;
+			border-radius: 999px;
+			cursor: pointer;
+			white-space: nowrap;
+			transition: background .15s, color .15s
+		}
+
+		.dps-chip:hover {
+			background: #e2e8f0
+		}
+
+		.dps-chip.is-active {
+			color: #fff;
+			background: #1d4ed8
+		}
+
+		.dps-chip b {
+			min-width: 18px;
+			padding: 2px 5px;
+			font-size: 10.5px;
+			line-height: 1.2;
+			text-align: center;
+			color: inherit;
+			background: rgba(100, 116, 139, .18);
+			border-radius: 999px
+		}
+
+		.dps-chip.is-active b {
+			background: rgba(255, 255, 255, .25)
+		}
+
+		.dps-count {
+			padding: 10px 18px 4px;
+			font-size: 12.5px;
+			color: #64748b
+		}
+
+		.dps-count strong {
+			color: #0f172a
+		}
+
+		.dps-list {
+			flex: 1;
+			min-height: 120px;
+			margin: 0;
+			padding: 6px 10px 12px;
+			overflow-y: auto;
+			list-style: none;
+			overscroll-behavior: contain
+		}
+
+		.dps-item {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			padding: 9px 10px;
+			color: inherit;
+			text-decoration: none;
+			border-radius: 12px;
+			border: 1.5px solid transparent
+		}
+
+		.dps-item:hover,
+		.dps-item.is-active {
+			background: #eff6ff;
+			border-color: #bfdbfe
+		}
+
+		.dps-thumb {
+			flex: none;
+			width: 60px;
+			height: 60px;
+			object-fit: contain;
+			background: #fff;
+			border: 1px solid #e2e8f0;
+			border-radius: 10px
+		}
+
+		.dps-info {
+			flex: 1;
+			min-width: 0
+		}
+
+		.dps-name {
+			margin: 0 0 4px;
+			font-weight: 700;
+			font-size: 14.5px;
+			line-height: 1.35;
+			font-family: inherit;
+			color: #0f172a;
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical
+		}
+
+		.dps-meta {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 4px 10px;
+			font-size: 12px;
+			color: #64748b
+		}
+
+		.dps-sku {
+			padding: 2px 8px;
+			font-weight: 700;
+			color: #1e3a8a;
+			background: #dbeafe;
+			border-radius: 6px
+		}
+
+		.dps-side {
+			flex: none;
+			text-align: right
+		}
+
+		.dps-price {
+			display: block;
+			font-size: 12.5px;
+			font-weight: 800;
+			color: #dc2626
+		}
+
+		.dps-stock {
+			display: block;
+			margin-top: 3px;
+			font-size: 11.5px;
+			font-weight: 700;
+			color: #15803d
+		}
+
+		.dps-mark {
+			padding: 0 1px;
+			color: inherit;
+			background: #fde68a;
+			border-radius: 3px
+		}
+
+		.dps-empty {
+			display: none;
+			padding: 34px 20px 38px;
+			text-align: center;
+			color: #475569
+		}
+
+		.dps-empty.is-show {
+			display: block
+		}
+
+		.dps-empty i {
+			display: block;
+			margin-bottom: 10px;
+			font-size: 34px;
+			color: #94a3b8
+		}
+
+		.dps-empty p {
+			margin: 0 0 14px;
+			font-size: 14px;
+			line-height: 1.55
+		}
+
+		.dps-empty button {
+			padding: 11px 18px;
+			font-weight: 800;
+			font-size: 13px;
+			line-height: 1;
+			font-family: inherit;
+			color: #fff;
+			background: #dc2626;
+			border: 0;
+			border-radius: 10px;
+			cursor: pointer
+		}
+
+		.dps-foot {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 4px 16px;
+			padding: 10px 18px;
+			font-size: 11.5px;
+			color: #64748b;
+			background: #f8fafc;
+			border-top: 1px solid #e2e8f0
+		}
+
+		.dps-foot kbd {
+			padding: 1px 6px;
+			font-weight: 700;
+			font-size: 11px;
+			line-height: 1.4;
+			font-family: inherit;
+			color: #334155;
+			background: #fff;
+			border: 1px solid #cbd5e1;
+			border-radius: 5px
+		}
+
+		/* Điện thoại: popup toàn màn hình, ô tìm kiếm lớn dễ bấm */
+		@media (max-width: 575px) {
+			.dps-overlay {
+				padding: 0
+			}
+
+			.dps-dialog {
+				max-width: none;
+				max-height: none;
+				height: 100%;
+				border-radius: 0
+			}
+
+			.dps-head {
+				padding: 12px;
+				padding-top: calc(12px + env(safe-area-inset-top, 0px))
+			}
+
+			.dps-input {
+				font-size: 16px
+			}
+
+			.dps-chips {
+				padding: 10px 12px
+			}
+
+			.dps-thumb {
+				width: 54px;
+				height: 54px
+			}
+
+			.dps-item {
+				gap: 12px;
+				padding: 9px 6px
+			}
+
+			.dps-side {
+				display: none
+			}
+
+			.dps-foot {
+				display: none
+			}
+
+			.dps-list {
+				padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px))
+			}
+		}
+	</style>
+	<style id="dp-header-compact">
+		/* ===== HEADER ĐIỆN THOẠI GỌN: Logo | Tìm kiếm | Giỏ hàng | Menu =====
+		   "Báo giá" và "Zalo" chuyển vào đầu menu trượt (.dp-drawer-cta) */
+		.dp-drawer-cta {
+			display: none
+		}
+
+		@media (max-width: 767px) {
+			.header.header-index .max-w-\[1380px\]>.flex {
+				flex-wrap: nowrap !important;
+				gap: 8px !important
+			}
+
+			/* Logo: đủ chỗ cho cả dòng khẩu hiệu */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child {
+				flex: 1 1 auto !important;
+				min-width: 0 !important;
+				max-width: none !important;
+				overflow: hidden
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: 17px !important;
+				white-space: nowrap
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				display: block;
+				max-width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				font-size: 8.5px !important;
+				letter-spacing: 0 !important
+			}
+
+			/* Ẩn 2 nút phụ (đã chuyển vào menu) */
+			.header-index .header-action-buttons>button[onclick*="dpOpenQuote"],
+			.header-index .header-action-buttons>a[href*="zalo.me"] {
+				display: none !important
+			}
+
+			.header-index .header-action-buttons {
+				gap: 8px !important
+			}
+
+			/* 3 nút còn lại: cùng kích thước 40x40, bo góc đều */
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"],
+			.header-index .header-action-buttons>button[onclick*="dpOpenCart"],
+			.header-index .header-action-buttons>.mobile-menu-toggle {
+				display: flex !important;
+				align-items: center;
+				justify-content: center;
+				flex: 0 0 40px !important;
+				width: 40px !important;
+				min-width: 40px !important;
+				height: 40px !important;
+				padding: 0 !important;
+				gap: 0 !important;
+				border-radius: 12px !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] {
+				color: #0f172a;
+				background: #fff;
+				border: 1.5px solid #cbd5e1
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"]>span:not(:first-child),
+			.header-index .header-action-buttons>button[onclick*="dpOpenCart"]>span.font-heading {
+				display: none !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] i,
+			.header-index .header-action-buttons>button[onclick*="dpOpenCart"] i {
+				font-size: 17px !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpOpenCart"]>span:first-child {
+				width: auto !important;
+				height: auto !important;
+				background: transparent !important
+			}
+
+			/* Số lượng giỏ hàng: huy hiệu góc trên phải, ẩn khi = 0 */
+			.header-index #dpCartCount {
+				position: absolute;
+				top: -6px;
+				right: -6px;
+				min-width: 18px !important;
+				height: 18px !important;
+				padding: 0 5px !important;
+				font-size: 10px !important;
+				line-height: 1;
+				border: 2px solid #fff
+			}
+
+			.header-index #dpCartCount.is-zero {
+				display: none !important
+			}
+
+			/* Khối liên hệ nhanh ở đầu menu trượt */
+			.dp-drawer-cta {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 10px;
+				padding: 14px 16px 12px
+			}
+
+			.dp-drawer-cta a,
+			.dp-drawer-cta button {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+				height: 46px;
+				margin: 0;
+				padding: 0 10px;
+				font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+				font-size: 13px;
+				font-weight: 800;
+				letter-spacing: .01em;
+				color: #fff;
+				text-decoration: none;
+				border: 0;
+				border-radius: 12px;
+				cursor: pointer;
+				box-shadow: 0 6px 16px rgba(15, 23, 42, .18)
+			}
+
+			.dp-drawer-cta .dp-cta-quote {
+				background: linear-gradient(135deg, #ef4444, #b91c1c)
+			}
+
+			.dp-drawer-cta .dp-cta-zalo {
+				background: linear-gradient(135deg, #00a86b, #006f46)
+			}
+
+			.dp-drawer-cta b {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 22px;
+				height: 22px;
+				font-size: 12px;
+				background: rgba(255, 255, 255, .22);
+				border-radius: 50%
+			}
+		}
+
+		/* Điện thoại rất nhỏ: bỏ dòng khẩu hiệu cho logo thoáng */
+		@media (max-width: 359px) {
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				display: none
+			}
+		}
+	</style>
+	<style id="dp-contact-widget">
+		/* ===== NÚT LIÊN HỆ NỔI: đồng bộ tông xanh lá - vàng - đỏ - navy của Đào Phát ===== */
+		body .main-widget {
+			position: fixed !important;
+			right: 16px !important;
+			left: auto !important;
+			top: auto !important;
+			bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+			z-index: 99990 !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: flex-end !important;
+			gap: 12px !important;
+			width: auto !important;
+			height: auto !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			background: none !important;
+			border: 0 !important;
+			transform: none !important;
+			font-family: 'Be Vietnam Pro', 'Mulish', 'Inter', sans-serif
+		}
+
+		/* --- Bảng liên hệ (mở ra khi bấm nút) --- */
+		body .main-widget .def-content {
+			position: static !important;
+			display: none !important;
+			width: min(310px, calc(100vw - 32px)) !important;
+			height: auto !important;
+			max-height: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			overflow: hidden !important;
+			background: #fff !important;
+			border: 0 !important;
+			border-radius: 18px !important;
+			box-shadow: 0 18px 50px rgba(2, 6, 23, .32), 0 2px 8px rgba(2, 6, 23, .12) !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			transform: none !important;
+			pointer-events: auto !important
+		}
+
+		body .main-widget.dpw-open .def-content {
+			display: block !important;
+			animation: dpwPanel .22s ease
+		}
+
+		@keyframes dpwPanel {
+			from {
+				opacity: 0;
+				transform: translateY(12px) scale(.96)
+			}
+
+			to {
+				opacity: 1;
+				transform: none
+			}
+		}
+
+		body .main-widget .def-header {
+			position: relative !important;
+			display: block !important;
+			margin: 0 !important;
+			padding: 15px 48px 14px 18px !important;
+			font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif !important;
+			font-size: 13.5px !important;
+			font-weight: 800 !important;
+			line-height: 1.2 !important;
+			letter-spacing: .02em !important;
+			text-transform: uppercase !important;
+			color: #fff !important;
+			background: linear-gradient(135deg, #00a86b 0%, #006838 55%, #00522c 100%) !important;
+			border-bottom: 3px solid #ffb700 !important
+		}
+
+		body .main-widget .close-icon {
+			position: absolute !important;
+			top: 50% !important;
+			right: 12px !important;
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			width: 28px !important;
+			height: 28px !important;
+			margin: -14px 0 0 !important;
+			padding: 0 !important;
+			color: #fff !important;
+			background: rgba(255, 255, 255, .2) !important;
+			border-radius: 50% !important;
+			cursor: pointer !important;
+			transition: background .15s
+		}
+
+		body .main-widget .close-icon:hover {
+			background: rgba(255, 255, 255, .34) !important
+		}
+
+		body .main-widget .close-icon svg {
+			width: 16px !important;
+			height: 16px !important;
+			fill: currentColor !important
+		}
+
+		body .main-widget .def-content .item {
+			display: block !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			background: none !important;
+			border: 0 !important;
+			border-bottom: 1px solid #f1f5f9 !important
+		}
+
+		body .main-widget .def-content .item:last-child {
+			border-bottom: 0 !important
+		}
+
+		body .main-widget .def-content .item a {
+			display: flex !important;
+			align-items: center !important;
+			gap: 13px !important;
+			margin: 0 !important;
+			padding: 12px 16px !important;
+			color: #0f172a !important;
+			text-decoration: none !important;
+			background: #fff !important;
+			transition: background .15s
+		}
+
+		body .main-widget .def-content .item a:hover {
+			background: #f0fdf4 !important
+		}
+
+		body .main-widget .def-content .item .img {
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			flex: 0 0 42px !important;
+			width: 42px !important;
+			height: 42px !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			color: #fff !important;
+			border-radius: 50% !important;
+			box-shadow: 0 5px 12px rgba(15, 23, 42, .2) !important
+		}
+
+		body .main-widget .def-content .item .img svg {
+			width: 19px !important;
+			height: 19px !important;
+			fill: currentColor !important
+		}
+
+		body .main-widget .def-content .item.phone .img {
+			background: linear-gradient(135deg, #ef4444, #b91c1c) !important
+		}
+
+		body .main-widget .def-content .item.zalo .img {
+			background: linear-gradient(135deg, #2f8bff, #0057e6) !important
+		}
+
+		body .main-widget .def-content .item.mess .img {
+			background: linear-gradient(135deg, #1e3a8a, #0f172a) !important
+		}
+
+		body .main-widget .def-content .item.map .img {
+			background: linear-gradient(135deg, #00a86b, #006838) !important
+		}
+
+		body .main-widget .def-content .detail {
+			display: flex !important;
+			flex-direction: column !important;
+			gap: 2px !important;
+			min-width: 0 !important;
+			margin: 0 !important
+		}
+
+		body .main-widget .def-content .arcu-item-title {
+			display: block !important;
+			font-size: 10.5px !important;
+			font-weight: 700 !important;
+			line-height: 1.2 !important;
+			letter-spacing: .06em !important;
+			text-transform: uppercase !important;
+			color: #64748b !important
+		}
+
+		body .main-widget .def-content .arcu-item-subtitle {
+			display: block !important;
+			font-size: 14px !important;
+			font-weight: 800 !important;
+			line-height: 1.3 !important;
+			color: #0f172a !important
+		}
+
+		body .main-widget .def-content .item.phone .arcu-item-subtitle {
+			font-size: 16px !important;
+			color: #dc2626 !important
+		}
+
+		/* --- Nút tròn chính --- */
+		body .main-widget .out-circle {
+			position: relative !important;
+			display: block !important;
+			flex: none !important;
+			width: 68px !important;
+			height: 68px !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			background: none !important;
+			border: 0 !important;
+			box-shadow: none !important;
+			transform: none !important;
+			cursor: pointer !important;
+			-webkit-tap-highlight-color: transparent
+		}
+
+		body .main-widget .out-circle .pregan {
+			position: absolute !important;
+			top: 50% !important;
+			left: 50% !important;
+			display: block !important;
+			width: 68px !important;
+			height: 68px !important;
+			margin: -34px 0 0 -34px !important;
+			background: rgba(0, 168, 107, .4) !important;
+			border: 0 !important;
+			border-radius: 50% !important;
+			opacity: 0;
+			pointer-events: none !important;
+			animation: dpwPulse 2.6s ease-out infinite !important
+		}
+
+		body .main-widget .out-circle .pregan+.pregan {
+			animation-delay: 1.3s !important
+		}
+
+		body .main-widget.dpw-open .out-circle .pregan {
+			display: none !important
+		}
+
+		@keyframes dpwPulse {
+			0% {
+				transform: scale(1);
+				opacity: .6
+			}
+
+			100% {
+				transform: scale(2);
+				opacity: 0
+			}
+		}
+
+		body .main-widget .out-circle .main-icon {
+			position: relative !important;
+			z-index: 2 !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+			width: 68px !important;
+			height: 68px !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			color: #fff !important;
+			background: linear-gradient(150deg, #00b673 0%, #006838 62%, #00522c 100%) !important;
+			border: 3px solid #fff !important;
+			border-radius: 50% !important;
+			box-shadow: 0 12px 26px rgba(0, 104, 56, .5), 0 0 0 3px rgba(255, 183, 0, .9) !important;
+			transition: transform .18s ease
+		}
+
+		body .main-widget .out-circle:hover .main-icon {
+			transform: scale(1.06)
+		}
+
+		body .main-widget .out-circle:active .main-icon {
+			transform: scale(.95)
+		}
+
+		body .main-widget .out-circle .main-icon svg {
+			display: block !important;
+			width: 24px !important;
+			height: 24px !important;
+			margin: 0 0 2px !important;
+			transform-origin: 50% 80%;
+			animation: dpwRing 4.5s ease-in-out infinite
+		}
+
+		body .main-widget .out-circle .main-icon svg path {
+			fill: #fff !important
+		}
+
+		@keyframes dpwRing {
+
+			0%,
+			70%,
+			100% {
+				transform: rotate(0)
+			}
+
+			74% {
+				transform: rotate(-14deg)
+			}
+
+			78% {
+				transform: rotate(12deg)
+			}
+
+			82% {
+				transform: rotate(-10deg)
+			}
+
+			86% {
+				transform: rotate(8deg)
+			}
+
+			90% {
+				transform: rotate(-4deg)
+			}
+		}
+
+		body .main-widget .out-circle .main-icon p {
+			margin: 0 !important;
+			padding: 0 !important;
+			font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif !important;
+			font-size: 9.5px !important;
+			font-weight: 800 !important;
+			line-height: 1 !important;
+			letter-spacing: .04em !important;
+			text-transform: uppercase !important;
+			color: #fff !important
+		}
+
+		/* Huy hiệu vàng nhỏ ở góc: luân phiên biểu tượng điện thoại / Zalo / Messenger / địa chỉ */
+		body .main-widget .out-circle .ser-icon {
+			position: absolute !important;
+			top: -4px !important;
+			right: -4px !important;
+			left: auto !important;
+			bottom: auto !important;
+			z-index: 3 !important;
+			width: 28px !important;
+			height: 28px !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			overflow: hidden !important;
+			color: #0f172a !important;
+			background: #ffb700 !important;
+			border: 2px solid #fff !important;
+			border-radius: 50% !important;
+			box-shadow: 0 4px 10px rgba(15, 23, 42, .3) !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			transform: none !important;
+			transition: opacity .25s ease !important
+		}
+
+		body .main-widget .out-circle .ser-icon.unsee {
+			opacity: 0 !important
+		}
+
+		body .main-widget.dpw-open .out-circle .ser-icon {
+			display: none !important
+		}
+
+		body .main-widget .out-circle .ser-icon .process {
+			display: flex !important;
+			width: 104px !important;
+			height: 24px !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			transform: translateX(0);
+			transition: transform .45s ease !important
+		}
+
+		body .main-widget .out-circle .ser-icon .process .item {
+			display: flex !important;
+			align-items: center !important;
+			justify-content: center !important;
+			flex: 0 0 26px !important;
+			width: 26px !important;
+			height: 24px !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			background: none !important;
+			border: 0 !important;
+			color: #0f172a !important
+		}
+
+		body .main-widget .out-circle .ser-icon .process .item svg {
+			width: 13px !important;
+			height: 13px !important;
+			fill: currentColor !important
+		}
+
+		@media (max-width: 575px) {
+			body .main-widget {
+				right: 12px !important;
+				gap: 10px !important
+			}
+
+			body .main-widget .out-circle,
+			body .main-widget .out-circle .main-icon,
+			body .main-widget .out-circle .pregan {
+				width: 62px !important;
+				height: 62px !important
+			}
+
+			body .main-widget .out-circle .pregan {
+				margin: -31px 0 0 -31px !important
+			}
+
+			body .main-widget .out-circle .main-icon svg {
+				width: 22px !important;
+				height: 22px !important
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+
+			body .main-widget .out-circle .pregan,
+			body .main-widget .out-circle .main-icon svg {
+				animation: none !important
+			}
+		}
+	</style>
+	<style id="dp-contact-widget-anim">
+		/* ===== Huy hiệu liên hệ: 4 icon chạy qua lần lượt (Điện thoại > Zalo > Messenger > Địa chỉ), lặp vô tận ===== */
+		body .main-widget .out-circle .ser-icon {
+			width: 34px !important;
+			height: 34px !important;
+			top: -8px !important;
+			right: -8px !important;
+			background: #fff !important;
+			animation: dpwBadgeBob 6s ease-in-out infinite
+		}
+
+		body .main-widget .out-circle .ser-icon .process {
+			position: relative !important;
+			display: block !important;
+			width: 100% !important;
+			height: 100% !important;
+			transform: none !important;
+			transition: none !important
+		}
+
+		body .main-widget .out-circle .ser-icon .process .item {
+			position: absolute !important;
+			inset: 0 !important;
+			width: 100% !important;
+			height: 100% !important;
+			flex: none !important;
+			color: #fff !important;
+			opacity: 0;
+			animation: dpwIconRun 6s cubic-bezier(.3, .7, .3, 1) infinite both
+		}
+
+		body .main-widget .out-circle .ser-icon .process .item svg {
+			width: 17px !important;
+			height: 17px !important
+		}
+
+		body .main-widget .out-circle .ser-icon .process .item.phone {
+			background: #dc2626 !important;
+			animation-delay: 0s
+		}
+
+		body .main-widget .out-circle .ser-icon .process .item.zalo {
+			background: #0068ff !important;
+			animation-delay: 1.5s
+		}
+
+		body .main-widget .out-circle .ser-icon .process .item.mess {
+			background: linear-gradient(135deg, #00b2ff, #a334fa) !important;
+			animation-delay: 3s
+		}
+
+		body .main-widget .out-circle .ser-icon .process .item.map {
+			background: #00a86b !important;
+			animation-delay: 4.5s
+		}
+
+		/* Mỗi icon chiếm 1/4 chu kỳ: trượt vào từ phải, bật nhẹ, nằm yên, rồi trượt ra bên trái */
+		@keyframes dpwIconRun {
+			0% {
+				transform: translateX(110%) scale(.7);
+				opacity: 0
+			}
+
+			3.5% {
+				transform: translateX(0) scale(1.18);
+				opacity: 1
+			}
+
+			6% {
+				transform: translateX(0) scale(1);
+				opacity: 1
+			}
+
+			21% {
+				transform: translateX(0) scale(1);
+				opacity: 1
+			}
+
+			25% {
+				transform: translateX(-110%) scale(.8);
+				opacity: 0
+			}
+
+			100% {
+				transform: translateX(-110%) scale(.8);
+				opacity: 0
+			}
+		}
+
+		@keyframes dpwBadgeBob {
+
+			0%,
+			100% {
+				transform: translateY(0)
+			}
+
+			50% {
+				transform: translateY(-2px)
+			}
+		}
+
+		@media (max-width: 575px) {
+			body .main-widget .out-circle .ser-icon {
+				width: 30px !important;
+				height: 30px !important
+			}
+
+			body .main-widget .out-circle .ser-icon .process .item svg {
+				width: 15px !important;
+				height: 15px !important
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+
+			body .main-widget .out-circle .ser-icon,
+			body .main-widget .out-circle .ser-icon .process .item {
+				animation: none !important
+			}
+
+			body .main-widget .out-circle .ser-icon .process .item.phone {
+				opacity: 1
+			}
+		}
+	</style>
+	<!-- ===== Gửi yêu cầu báo giá -> Google Apps Script (mail + Google Sheet) ===== -->
+	<script>
+		(function () {
+			var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9ylqepOi_Sf-j5rMOhGc4N5M84SYssmJD7vi8RmG1YxcTWo7cB5aEADFJIdZEMBeQNg/exec";
+
+			/* Nhận đúng tham số như fetch('/api/quote', {...}) cũ, nên các form giữ nguyên code. */
+			window.dpQuoteFetch = async function (options) {
+				var d = {};
+				try { d = JSON.parse(options.body); } catch (e) { }
+
+				function fail(msg) {
+					return { ok: false, status: 0, json: async function () { return { message: msg }; } };
+				}
+				if (!SCRIPT_URL || SCRIPT_URL.indexOf("https://script.google.com/") !== 0) {
+					return fail("Form chưa được cấu hình nơi nhận.");
+				}
+
+				var lines = (d.items && d.items.length)
+					? d.items.map(function (i) {
+						return i.name + (i.sku ? " (Mã: " + i.sku + ")" : "") + " × " + i.quantity;
+					}).join("\n")
+					: (d.product || "");
+
+				var payload = {
+					store: d.store || "",
+					phone: d.phone || "",
+					product: lines,
+					sku: d.sku || "",
+					quantity: d.quantity || "",
+					address: d.address || "",
+					note: d.note || "",
+					page: location.href,
+					honey: ""
+				};
+
+				try {
+					/* text/plain để trình duyệt không gửi preflight (Apps Script không hỗ trợ CORS preflight) */
+					var res = await fetch(SCRIPT_URL, {
+						method: "POST",
+						headers: { "Content-Type": "text/plain;charset=utf-8" },
+						body: JSON.stringify(payload)
+					});
+					var text = await res.text();
+					var data = {};
+					try { data = JSON.parse(text); } catch (e) { }
+
+					if (data.success === true) {
+						return { ok: true, status: 200, json: async function () { return data; } };
+					}
+					console.error("QUOTE RESPONSE:", res.status, text.slice(0, 300));
+					if (data.message) return fail(data.message);
+					return fail("Google trả về dữ liệu không hợp lệ (HTTP " + res.status + "). Hãy kiểm tra lại link Web App và quyền truy cập \"Bất kỳ ai\".");
+				} catch (err) {
+					console.error("QUOTE ERROR:", err);
+					return fail("Không kết nối được máy chủ. [" + (err && err.name) + ": " + (err && err.message) + "]");
+				}
+			};
+		})();
+	</script>
 </head>
 
 <body>
@@ -2989,9 +4186,11 @@
 					<!-- 4. SEARCH INPUT BOX -->
 					<div class="hidden lg:flex flex-1 max-w-xs mx-2">
 						<div class="relative w-full">
-							<input type="text" placeholder="Tìm tên hoặc mã sản phẩm..."
-								class="w-full pl-3 pr-8 py-1.5 text-xs text-slate-700 bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brandNavy focus:bg-white transition">
-							<button
+							<input type="text" placeholder="Tìm tên hoặc mã sản phẩm..." readonly autocomplete="off"
+								onclick="dpSearchOpen()" onkeydown="dpSearchOpen(event)" aria-haspopup="dialog"
+								aria-label="Mở tìm kiếm sản phẩm"
+								class="w-full pl-3 pr-8 py-1.5 text-xs text-slate-700 bg-slate-50 border border-slate-300 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-brandNavy focus:bg-white transition">
+							<button type="button" onclick="dpSearchOpen()" aria-label="Tìm kiếm sản phẩm"
 								class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-brandNavy transition">
 								<i class="fa-solid fa-magnifying-glass text-xs"></i>
 							</button>
@@ -3001,6 +4200,16 @@
 					<!-- 5. RED HOTLINE BUTTON & MOBILE MENU TOGGLE -->
 					<!-- 5. LIÊN HỆ BÁO GIÁ + ZALO + GIỎ HÀNG + MOBILE MENU -->
 					<div class="header-action-buttons flex items-center gap-1 sm:gap-2 shrink-0">
+
+						<!-- NÚT TÌM KIẾM (điện thoại / tablet) -->
+						<button type="button" onclick="dpSearchOpen()" aria-label="Tìm kiếm sản phẩm"
+							title="Tìm kiếm sản phẩm"
+							class="lg:hidden bg-white text-brandNavy border border-slate-300 hover:bg-slate-50 p-2 sm:px-3 sm:py-2 rounded-lg shadow-sm transition flex items-center justify-center gap-1.5 text-xs sm:text-sm font-bold">
+							<span class="w-5 h-5 flex items-center justify-center shrink-0"><i
+									class="fa-solid fa-magnifying-glass text-[13px]"></i></span>
+							<span class="hidden sm:inline font-heading">TÌM KIẾM</span>
+						</button>
+
 
 						<!-- =========================
          NÚT BÁO GIÁ SỈ
@@ -3143,6 +4352,14 @@
 						<div class="header-menu-des">
 							<div class="nav-drawer-head"><span>MENU</span><button type="button" class="nav-close"
 									aria-label="Đóng menu">&#10005;</button></div>
+							<!-- LIÊN HỆ NHANH (chỉ hiện trong menu trượt trên điện thoại) -->
+							<div class="dp-drawer-cta">
+								<button type="button" class="dp-cta-quote"
+									onclick="var c=document.querySelector('.header-menu .nav-close');if(c)c.click();dpOpenQuote();"><b><i
+											class="fa-solid fa-phone"></i></b>BÁO GIÁ SỈ</button>
+								<a class="dp-cta-zalo" href="https://zalo.me/0978229468" target="_blank"
+									rel="noopener noreferrer"><b>Z</b>CHAT ZALO</a>
+							</div>
 							<nav class="header-nav">
 								<ul class="item_big">
 									<li class="d-block d-lg-none title-danhmuc"><span>Menu chính</span></li>
@@ -5371,7 +6588,7 @@
 
 							try {
 								var items = [{ name: product, sku: sku, quantity: Number(quantity) || 1 }];
-								var res = await fetch('/api/quote', {
+								var res = await dpQuoteFetch({
 									method: 'POST',
 									headers: { 'Content-Type': 'application/json' },
 									body: JSON.stringify({
@@ -5459,7 +6676,7 @@
 				status.className = 'ct-form-status';
 				try {
 					var product = 'Nhận bảng chiết khấu đại lý (gara / cửa hàng)';
-					var res = await fetch('/api/quote', {
+					var res = await dpQuoteFetch({
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },
 						body: JSON.stringify({
@@ -5558,7 +6775,8 @@
 
 			<div class="mt-8 pt-6 border-t border-slate-100 text-center text-[13px] font-semibold"
 				style="color:#006838">
-				&copy; 2026 CÔNG TY TNHH THƯƠNG MẠI PHỤ TÙNG ĐÀO PHÁT. Tất cả quyền được bảo lưu. Nhà phân phối chính thức CWORKS
+				&copy; 2026 CÔNG TY TNHH THƯƠNG MẠI PHỤ TÙNG ĐÀO PHÁT. Tất cả quyền được bảo lưu. Nhà phân phối chính
+				thức CWORKS
 				Toyota Tsusho tại Miền Nam.
 			</div>
 
@@ -6758,7 +7976,7 @@
 			</div>
 
 
-			<div class="ser-icon unsee element">
+			<div class="ser-icon element">
 
 				<div class="process">
 
@@ -6839,36 +8057,7 @@
 		</div>
 
 	</div>
-	<script>
-		$(function () {
-			var i = 1;
-			var n = $('.ser-icon .process .item').length;
-			var len = $('.ser-icon .process').width() / n;
-			var pos = new WebKitCSSMatrix($('.ser-icon .process').css('transform'));
-			$('.ser-icon').removeClass('unsee');
-			function nextFrame() {
-				if (i < n) {
-					i++;
-					var pos2 = new WebKitCSSMatrix($('.ser-icon .process').css('transform'));
-					$('.ser-icon .process').css('transform', 'translateX(' + (pos2.m41 - len) + 'px)');
-					setTimeout(nextFrame, 800);
-				} else {
-					$('.ser-icon').addClass('unsee');
-					i = 1;
-					$('.ser-icon .process').css('transform', 'translateX(' + (pos.m41) + 'px)');
-					setTimeout(beginFrame, 2000);
-				}
-			};
-			function beginFrame() {
-				$('.ser-icon').removeClass('unsee');
-				setTimeout(nextFrame, 900);
-			};
-			setTimeout(beginFrame, 2000);
-			$('.close-icon').click(function (event) {
-				$('.element').toggleClass('unsee');
-			});
-		});
-	</script>
+
 
 	<div class="backdrop__body-backdrop___1rvky"></div>
 	<div style="visibility:hidden; position: absolute; z-index: -1; bottom: 0; left: 0;">
@@ -7597,7 +8786,7 @@
 							};
 						});
 
-						const response = await fetch("/api/quote", {
+						const response = await dpQuoteFetch({
 							method: "POST",
 							headers: { "Content-Type": "application/json" },
 							body: JSON.stringify({
@@ -7811,6 +9000,273 @@
 			window.addEventListener('resize', function () { if (!desktop.matches) close(); });
 		})();
 	</script>
+
+	<!-- ===== POPUP TÌM KIẾM SẢN PHẨM (dữ liệu lấy từ cworks.html) ===== -->
+	<div class="dps-overlay" id="dpsOverlay" role="dialog" aria-modal="true" aria-label="Tìm kiếm sản phẩm"
+		aria-hidden="true">
+		<div class="dps-dialog" id="dpsDialog">
+			<div class="dps-head">
+				<div class="dps-field">
+					<i class="fa-solid fa-magnifying-glass"></i>
+					<input type="search" id="dpsInput" class="dps-input" autocomplete="off" autocapitalize="off"
+						spellcheck="false" enterkeyhint="search"
+						placeholder="Tìm tên hoặc mã: 6004, Lead 125, bugi, nhớt..." aria-label="Tìm sản phẩm">
+					<button type="button" class="dps-clear" id="dpsClear" aria-label="Xóa nội dung tìm kiếm"><i
+							class="fa-solid fa-xmark"></i></button>
+				</div>
+				<button type="button" class="dps-close" id="dpsClose">Đóng</button>
+			</div>
+			<div class="dps-chips" id="dpsChips" role="tablist" aria-label="Lọc theo nhóm sản phẩm"></div>
+			<div class="dps-count" id="dpsCount" aria-live="polite"></div>
+			<ul class="dps-list" id="dpsList"></ul>
+			<div class="dps-empty" id="dpsEmpty">
+				<i class="fa-regular fa-face-frown"></i>
+				<p>Chưa tìm thấy sản phẩm phù hợp.<br>Thử gõ ngắn hơn (ví dụ <strong>6200</strong>,
+					<strong>vario</strong>, <strong>bugi</strong>) hoặc gửi yêu cầu để Đào Phát báo giá.
+				</p>
+				<button type="button" id="dpsQuote"><i class="fa-solid fa-file-invoice"></i>&nbsp; Yêu cầu báo
+					giá</button>
+			</div>
+			<div class="dps-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> chọn</span><span><kbd>Enter</kbd> mở sản
+					phẩm</span><span><kbd>Esc</kbd> đóng</span></div>
+		</div>
+
+		<script src="/js/products.js"></script>
+		<script id="dps-js">
+			/* =====================================================================
+			   TÌM KIẾM SẢN PHẨM CWORKS
+			   - Bấm vào ô tìm kiếm trên header (hoặc nút kính lúp trên điện thoại)
+				 -> mở popup, gõ để lọc ngay toàn bộ sản phẩm.
+			   - Nguồn dữ liệu: file products.js (window.DPS_PRODUCTS, window.DPS_CATS).
+				 Thêm / sửa sản phẩm trong file đó, không cần sửa trang này.
+			   - Hàm dùng chung: dpSearchOpen(), dpSearchClose(), dpSearchFilter(q, cat)
+			   ===================================================================== */
+			(function () {
+				/* Dữ liệu lấy từ products.js (nạp trước đoạn script này) */
+				var DPS_CATS = window.DPS_CATS || [['all', 'Tất cả']];
+
+				var $ = function (id) { return document.getElementById(id); };
+				var overlay, input, clearBtn, chipsEl, countEl, listEl, emptyEl;
+				var products = null, loading = null, cat = 'all', active = -1, lastFocus = null, shown = [];
+
+				/* Bỏ dấu + chữ thường: "Dây Curoa" -> "day curoa", "đ" -> "d" */
+				function norm(s) {
+					return String(s || '').toLowerCase().replace(/đ/g, 'd').normalize('NFD')
+						.replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
+				}
+				function esc(s) {
+					return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+						return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+					});
+				}
+				function prepare(p) {
+					p.hay = norm([p.s, p.n, p.t, p.a, catLabel(p.c)].join(' '));
+					return p;
+				}
+				function catLabel(k) {
+					for (var i = 0; i < DPS_CATS.length; i++) if (DPS_CATS[i][0] === k) return DPS_CATS[i][1];
+					return '';
+				}
+
+				function dpsLoadProducts() {
+					if (!products || !products.length) products = (window.DPS_PRODUCTS || []).map(prepare);
+					return Promise.resolve(products);
+				}
+
+				/* Lọc: mọi từ gõ vào đều phải xuất hiện (không phân biệt dấu / hoa thường) */
+				function filter(q, c) {
+					var words = norm(q).split(' ').filter(Boolean);
+					var list = (products || []).filter(function (p) {
+						if (c && c !== 'all' && p.c !== c) return false;
+						return words.every(function (w) { return p.hay.indexOf(w) > -1; });
+					});
+					return list;
+				}
+				window.dpSearchFilter = function (q, c) { return filter(q, c); };
+
+				/* Tô vàng phần khớp, giữ nguyên dấu tiếng Việt của chữ gốc */
+				function mark(text, words) {
+					var chars = Array.from(String(text || '')), nstr = '', map = [];
+					chars.forEach(function (ch, idx) {
+						var n = (ch === ' ') ? ' ' : norm(ch);
+						for (var k = 0; k < n.length; k++) { nstr += n[k]; map.push(idx); }
+					});
+					var hit = new Array(chars.length).fill(false);
+					words.forEach(function (w) {
+						if (!w) return;
+						var pos = nstr.indexOf(w);
+						while (pos > -1) {
+							for (var k = pos; k < pos + w.length; k++) hit[map[k]] = true;
+							pos = nstr.indexOf(w, pos + w.length);
+						}
+					});
+					var out = '', open = false;
+					chars.forEach(function (ch, idx) {
+						if (hit[idx] && !open) { out += '<mark class="dps-mark">'; open = true; }
+						if (!hit[idx] && open) { out += '</mark>'; open = false; }
+						out += esc(ch);
+					});
+					return open ? out + '</mark>' : out;
+				}
+
+				function renderChips() {
+					var counts = { all: products.length };
+					products.forEach(function (p) { counts[p.c] = (counts[p.c] || 0) + 1; });
+					chipsEl.innerHTML = DPS_CATS.filter(function (c) { return c[0] === 'all' || counts[c[0]]; })
+						.map(function (c) {
+							return '<button type="button" class="dps-chip' + (c[0] === cat ? ' is-active' : '') + '" data-cat="' + c[0] +
+								'" role="tab" aria-selected="' + (c[0] === cat) + '">' + esc(c[1]) + '<b>' + counts[c[0]] + '</b></button>';
+						}).join('');
+				}
+				function render() {
+					var q = input.value, words = norm(q).split(' ').filter(Boolean);
+					shown = filter(q, cat);
+					clearBtn.classList.toggle('is-show', !!q);
+					countEl.innerHTML = q
+						? 'Tìm thấy <strong>' + shown.length + '</strong> sản phẩm cho "<strong>' + esc(q.trim()) + '</strong>"'
+						: 'Tất cả <strong>' + shown.length + '</strong> sản phẩm';
+					emptyEl.classList.toggle('is-show', !shown.length);
+					listEl.style.display = shown.length ? '' : 'none';
+					listEl.innerHTML = shown.map(function (p, i) {
+						return '<li><a class="dps-item" href="' + esc(p.u) + '" data-i="' + i + '">' +
+							'<img class="dps-thumb" src="' + esc(p.i) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+							'<span class="dps-info"><span class="dps-name">' + mark(p.n, words) + '</span>' +
+							'<span class="dps-meta"><span class="dps-sku">' + mark(p.s, words) + '</span><span>' + esc(p.t || catLabel(p.c)) + '</span></span></span>' +
+							'<span class="dps-side"><span class="dps-price">Liên hệ</span><span class="dps-stock">Còn hàng</span></span></a></li>';
+					}).join('');
+					setActive(shown.length ? 0 : -1, false);
+				}
+				function setActive(i, scroll) {
+					var items = listEl.querySelectorAll('.dps-item');
+					active = i;
+					Array.prototype.forEach.call(items, function (el, k) { el.classList.toggle('is-active', k === i); });
+					if (scroll && items[i]) items[i].scrollIntoView({ block: 'nearest' });
+				}
+
+				function open(prefill) {
+					if (!overlay) return;
+					lastFocus = document.activeElement;
+					overlay.classList.add('is-open');
+					overlay.setAttribute('aria-hidden', 'false');
+					document.documentElement.style.overflow = 'hidden';
+					if (typeof prefill === 'string') input.value = prefill;
+					dpsLoadProducts().then(function () { renderChips(); render(); });
+					setTimeout(function () { input.focus(); input.select(); }, 30);
+				}
+				function close() {
+					if (!overlay || !overlay.classList.contains('is-open')) return;
+					overlay.classList.remove('is-open');
+					overlay.setAttribute('aria-hidden', 'true');
+					document.documentElement.style.overflow = '';
+					if (lastFocus && lastFocus.blur) lastFocus.blur();
+				}
+
+				/* Gọi từ ô tìm kiếm / nút kính lúp trên header.
+				   Truyền sự kiện bàn phím để gõ thẳng ký tự đầu tiên vào popup. */
+				window.dpSearchOpen = function (ev) {
+					if (ev && ev.type === 'keydown') {
+						if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+						if (ev.key === 'Enter') { ev.preventDefault(); open(); return; }
+						if (ev.key && ev.key.length === 1) { ev.preventDefault(); open(ev.key); return; }
+						return;
+					}
+					open();
+				};
+				window.dpSearchClose = close;
+
+				function init() {
+					overlay = $('dpsOverlay');
+					if (!overlay) return;
+					input = $('dpsInput'); clearBtn = $('dpsClear'); chipsEl = $('dpsChips');
+					countEl = $('dpsCount'); listEl = $('dpsList'); emptyEl = $('dpsEmpty');
+
+					input.addEventListener('input', render);
+					clearBtn.addEventListener('click', function () { input.value = ''; input.focus(); render(); });
+					$('dpsClose').addEventListener('click', close);
+					overlay.addEventListener('mousedown', function (e) { if (e.target === overlay) close(); });
+					chipsEl.addEventListener('click', function (e) {
+						var b = e.target.closest('.dps-chip'); if (!b) return;
+						cat = b.getAttribute('data-cat'); renderChips(); render(); input.focus();
+					});
+					listEl.addEventListener('mousemove', function (e) {
+						var a = e.target.closest('.dps-item');
+						if (a && +a.getAttribute('data-i') !== active) setActive(+a.getAttribute('data-i'), false);
+					});
+					$('dpsQuote').addEventListener('click', function () {
+						close();
+						if (typeof window.dpOpenQuote === 'function') window.dpOpenQuote();
+					});
+					input.addEventListener('keydown', function (e) {
+						if (e.key === 'ArrowDown') { e.preventDefault(); if (shown.length) setActive((active + 1) % shown.length, true); }
+						else if (e.key === 'ArrowUp') { e.preventDefault(); if (shown.length) setActive((active - 1 + shown.length) % shown.length, true); }
+						else if (e.key === 'Enter') {
+							e.preventDefault();
+							var a = listEl.querySelectorAll('.dps-item')[Math.max(active, 0)];
+							if (a) window.location.href = a.getAttribute('href');
+						}
+					});
+					document.addEventListener('keydown', function (e) {
+						if (e.key === 'Escape') { close(); return; }
+						var typing = /^(INPUT|TEXTAREA|SELECT)$/.test((document.activeElement || {}).tagName || '') || (document.activeElement || {}).isContentEditable;
+						if ((e.key === 'k' || e.key === 'K') && (e.ctrlKey || e.metaKey)) { e.preventDefault(); open(); }
+						else if (e.key === '/' && !typing && !e.ctrlKey && !e.metaKey) { e.preventDefault(); open(); }
+					});
+					/* Tải sẵn dữ liệu khi trình duyệt rảnh để lần mở đầu hiện ngay */
+					(window.requestIdleCallback || function (f) { setTimeout(f, 1200); })(function () { dpsLoadProducts(); });
+				}
+				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+			})();
+		</script>
+
+		<script id="dp-cartcount-zero">
+			(function () {
+				function sync() {
+					var el = document.getElementById('dpCartCount');
+					if (el) el.classList.toggle('is-zero', (el.textContent || '').trim() === '0');
+				}
+				function init() {
+					var el = document.getElementById('dpCartCount');
+					if (!el) return;
+					sync();
+					new MutationObserver(sync).observe(el, { childList: true, characterData: true, subtree: true });
+				}
+				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+			})();
+		</script>
+
+		<script id="dp-contact-widget-js">
+			/* Nút liên hệ nổi: bấm để mở / đóng bảng liên hệ. Esc hoặc bấm ra ngoài để đóng. */
+			(function () {
+				function init() {
+					var w = document.querySelector('.main-widget');
+					if (!w) return;
+					var oc = w.querySelector('.out-circle');
+					if (!oc) return;
+					function setOpen(v) {
+						w.classList.toggle('dpw-open', v);
+						oc.setAttribute('aria-expanded', v ? 'true' : 'false');
+					}
+					oc.setAttribute('role', 'button');
+					oc.setAttribute('tabindex', '0');
+					oc.setAttribute('aria-label', 'Liên hệ nhanh');
+					oc.setAttribute('aria-expanded', 'false');
+					oc.addEventListener('click', function () { setOpen(!w.classList.contains('dpw-open')); });
+					oc.addEventListener('keydown', function (e) {
+						if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); oc.click(); }
+					});
+					/* Nút X: chặn bộ xử lý cũ (đổi class .unsee) để không xung đột */
+					document.addEventListener('click', function (e) {
+						var x = e.target.closest && e.target.closest('.main-widget .close-icon');
+						if (x) { e.stopPropagation(); e.preventDefault(); setOpen(false); }
+					}, true);
+					document.addEventListener('click', function (e) {
+						if (w.classList.contains('dpw-open') && !w.contains(e.target)) setOpen(false);
+					});
+					document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+				}
+				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+			})();
+		</script>
 </body>
 
 </html>
