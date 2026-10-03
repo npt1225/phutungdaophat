@@ -5134,266 +5134,291 @@
 
 	<main class="flex-grow">
 
-		<!-- HERO BANNER -->
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800;900&display=swap');
-
+		</style>
+		<!-- HERO BANNER CAROUSEL -->
+		<style>
 			.dp-hero {
 				position: relative;
+				width: 100%;
 				overflow: hidden;
-				color: #fff;
-				font-family: 'Be Vietnam Pro', 'Mulish', sans-serif;
-				background: radial-gradient(900px 500px at 15% 0%, rgba(79, 70, 229, .25), transparent 60%), radial-gradient(700px 400px at 90% 100%, rgba(16, 185, 129, .14), transparent 60%), linear-gradient(90deg, rgba(15, 23, 42, .94) 0%, rgba(15, 23, 42, .82) 55%, rgba(15, 23, 42, .7) 100%), url("./images/video-hinh-anh/công-ty-1.jpg") center/cover no-repeat, #0f172a
+				background: #0f172a;
+				user-select: none;
+				-webkit-user-select: none;
+				touch-action: pan-y
 			}
 
-			.dp-hero::before {
-				content: "";
+			.dp-hero-track {
+				position: relative;
+				width: 100%;
+				aspect-ratio: 21 / 8;
+				max-height: 640px;
+				min-height: 240px
+			}
+
+			.dp-hero-slide {
 				position: absolute;
 				inset: 0;
-				background-image: radial-gradient(rgba(255, 255, 255, .09) 1px, transparent 1px);
-				background-size: 22px 22px;
-				pointer-events: none
+				opacity: 0;
+				visibility: hidden;
+				transition: opacity 1s ease, visibility 1s;
+				z-index: 1
 			}
 
-			.dp-hero-in {
-				position: relative;
-				max-width: 1400px;
-				margin: 0 auto;
-				padding: 56px 24px 64px;
-				display: grid;
-				grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-				gap: 40px;
-				align-items: center
+			.dp-hero-slide.is-active {
+				opacity: 1;
+				visibility: visible;
+				z-index: 2
 			}
 
-			.dp-badge {
-				display: inline-flex;
-				align-items: center;
-				gap: 10px;
-				padding: 8px 18px;
-				border-radius: 999px;
-				background: rgba(99, 102, 241, .16);
-				border: 1px solid rgba(129, 140, 248, .55);
-				color: #c7d2fe;
-				font-size: 12.5px;
-				font-weight: 800;
-				letter-spacing: .3px;
-				text-transform: uppercase
-			}
-
-			.dp-badge i {
-				width: 9px;
-				height: 9px;
-				border-radius: 50%;
-				background: #6366f1;
-				box-shadow: 0 0 10px #6366f1
-			}
-
-			.dp-hero h1 {
-				margin: 22px 0 0;
-				font-size: clamp(32px, 4.6vw, 60px);
-				line-height: 1.05;
-				font-weight: 900;
-				letter-spacing: -1.5px;
-				text-transform: uppercase
-			}
-
-			.dp-hero h1 .g1 {
-				display: block;
-				background: linear-gradient(90deg, #ef4444, #f59e0b 35%, #84cc16 70%, #22c55e);
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent
-			}
-
-			.dp-hero h1 .g2 {
-				background: linear-gradient(90deg, #10b981, #34d399);
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent
-			}
-
-			.dp-hero p {
-				margin: 22px 0 0;
-				max-width: 680px;
-				font-size: clamp(14px, 1.5vw, 17px);
-				line-height: 1.75;
-				color: #e2e8f0
-			}
-
-			.dp-feats {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 14px 34px;
-				margin-top: 28px;
-				font-size: 14px;
-				font-weight: 700
-			}
-
-			.dp-feats span {
-				display: inline-flex;
-				align-items: center;
-				gap: 9px
-			}
-
-			.dp-btns {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 14px;
-				margin-top: 32px
-			}
-
-			.dp-btn {
-				display: inline-flex;
-				align-items: center;
-				gap: 10px;
-				padding: 15px 26px;
-				border-radius: 12px;
-				font-size: 15px;
-				font-weight: 800;
-				color: #fff;
-				text-decoration: none;
-				cursor: pointer;
-				border: 1px solid transparent;
-				transition: transform .2s, box-shadow .2s
-			}
-
-			.dp-btn {
-				font-family: inherit;
-				white-space: nowrap
-			}
-
-			@media(min-width:992px) {
-				.dp-btns {
-					flex-wrap: nowrap;
-					gap: 12px
-				}
-
-				.dp-btn {
-					padding: 14px clamp(12px, 1.3vw, 22px);
-					font-size: clamp(12.5px, 1.1vw, 15px);
-					gap: 8px
-				}
-			}
-
-			.dp-btn:hover {
-				transform: translateY(-3px);
-				color: #fff
-			}
-
-			.dp-red {
-				background: linear-gradient(180deg, #ef4444, #dc2626);
-				box-shadow: 0 8px 24px rgba(239, 68, 68, .45)
-			}
-
-			.dp-green {
-				background: linear-gradient(180deg, #22c55e, #16a34a);
-				box-shadow: 0 8px 24px rgba(34, 197, 94, .4)
-			}
-
-			.dp-dark {
-				background: rgba(30, 41, 82, .7);
-				border-color: rgba(148, 163, 184, .35)
-			}
-
-			.dp-card {
-				border-radius: 22px;
-				padding: 14px;
-				background: rgba(30, 41, 82, .55);
-				border: 1px solid rgba(148, 163, 184, .28);
-				box-shadow: 0 20px 50px rgba(2, 6, 23, .5)
-			}
-
-			.dp-card img {
+			.dp-hero-slide a,
+			.dp-hero-slide picture {
 				display: block;
 				width: 100%;
-				height: clamp(340px, 32vw, 470px);
+				height: 100%
+			}
+
+			.dp-hero-slide img {
+				width: 100%;
+				height: 100%;
 				object-fit: cover;
-				border-radius: 14px
-			}
-
-			.dp-tag {
-				display: inline-block;
-				margin: 16px 0 10px 6px;
-				padding: 7px 14px;
-				border-radius: 8px;
-				background: #6d4bff;
-				font-size: 12.5px;
-				font-weight: 800;
-				text-transform: uppercase
-			}
-
-			.dp-card h3 {
-				margin: 0 6px;
-				font-size: 19px;
-				font-weight: 800
-			}
-
-			.dp-card small {
 				display: block;
-				margin: 6px 6px 8px;
-				font-size: 13px;
-				color: #cbd5e1
+				transform: scale(1);
+				transition: transform 7s ease-out
 			}
 
-			@media(max-width:991px) {
-				.dp-btn {
-					white-space: normal
+			.dp-hero-slide.is-active img {
+				transform: scale(1.06)
+			}
+
+			/* lớp phủ nhẹ phía dưới để dots/nút nổi bật */
+			.dp-hero::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				height: 90px;
+				background: linear-gradient(to top, rgba(15, 23, 42, .55), transparent);
+				pointer-events: none;
+				z-index: 3
+			}
+
+			.dp-hero-nav {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 5;
+				width: 48px;
+				height: 48px;
+				border-radius: 50%;
+				border: 1px solid rgba(255, 255, 255, .35);
+				background: rgba(15, 23, 42, .45);
+				-webkit-backdrop-filter: blur(6px);
+				backdrop-filter: blur(6px);
+				color: #fff;
+				font-size: 18px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				opacity: 0;
+				transition: opacity .25s, background .25s, transform .25s
+			}
+
+			.dp-hero:hover .dp-hero-nav {
+				opacity: 1
+			}
+
+			.dp-hero-nav:hover {
+				background: rgba(227, 41, 46, .9);
+				transform: translateY(-50%) scale(1.08)
+			}
+
+			.dp-hero-prev {
+				left: 20px
+			}
+
+			.dp-hero-next {
+				right: 20px
+			}
+
+			.dp-hero-dots {
+				position: absolute;
+				left: 50%;
+				bottom: 18px;
+				transform: translateX(-50%);
+				z-index: 5;
+				display: flex;
+				gap: 10px
+			}
+
+			.dp-hero-dot {
+				position: relative;
+				width: 10px;
+				height: 10px;
+				padding: 0;
+				border: 0;
+				border-radius: 999px;
+				background: rgba(255, 255, 255, .5);
+				cursor: pointer;
+				overflow: hidden;
+				transition: width .35s, background .35s
+			}
+
+			.dp-hero-dot.is-active {
+				width: 42px;
+				background: rgba(255, 255, 255, .35)
+			}
+
+			.dp-hero-dot i {
+				position: absolute;
+				inset: 0;
+				background: #fff;
+				transform: scaleX(0);
+				transform-origin: left
+			}
+
+			.dp-hero-dot.is-active i {
+				animation: dpHeroFill var(--dp-hero-ms, 5000ms) linear forwards
+			}
+
+			.dp-hero.is-paused .dp-hero-dot.is-active i {
+				animation-play-state: paused
+			}
+
+			@keyframes dpHeroFill {
+				to {
+					transform: scaleX(1)
+				}
+			}
+
+			@media (max-width: 991px) {
+				.dp-hero-track {
+					aspect-ratio: 16 / 8
+				}
+			}
+
+			@media (max-width: 767px) {
+				.dp-hero-track {
+					aspect-ratio: 4 / 3;
+					min-height: 0
 				}
 
-				.dp-hero-in {
-					grid-template-columns: 1fr;
-					padding: 36px 18px 44px;
-					gap: 30px
+				.dp-hero-nav {
+					display: none
 				}
 
-				.dp-card img {
-					height: 220px
+				.dp-hero-dots {
+					bottom: 12px
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+
+				.dp-hero-slide,
+				.dp-hero-slide img {
+					transition: none
 				}
 
-				.dp-btn {
-					padding: 13px 20px;
-					font-size: 14px
-				}
-
-				.dp-hero h1 {
-					letter-spacing: -.5px
+				.dp-hero-slide.is-active img {
+					transform: none
 				}
 			}
 		</style>
-		<section class="dp-hero">
-			<div class="dp-hero-in">
-				<div>
-					<span class="dp-badge"><i></i>Tiêu chuẩn chất lượng Toyota Tsusho Nhật Bản</span>
-					<h1>Tổng kho phụ tùng <span class="g1">CWORKS</span><span class="g2">Đào Phát</span> tại TP. Hồ Chí
-						Minh</h1>
-					<p>Đào Phát tự hào là nhà phân phối chính thức phụ tùng ô tô &amp; xe máy CWORKS (Toyota Tsusho Nhật
-						Bản). Cung cấp giải pháp phụ tùng thay thế chất lượng cao, nguồn cung dồi dào, chính sách chiết
-						khấu đại lý sỉ tốt nhất cho các Gara và cửa hàng tại TP.HCM và các tỉnh phía Nam.</p>
-					<div class="dp-feats">
-						<span><i class="fa-solid fa-certificate" style="color:#34d399"></i>100% Chuẩn Nhật Bản</span>
-						<span><i class="fa-solid fa-boxes-stacked" style="color:#818cf8"></i>Sẵn Hàng Số Lượng
-							Lớn</span>
-						<span><i class="fa-solid fa-truck-fast" style="color:#fbbf24"></i>Giao Nhanh TP.HCM &amp;
-							Tỉnh</span>
-					</div>
-					<div class="dp-btns">
-						<a href="#partner-section" class="dp-btn dp-red"><i class="fa-solid fa-cube"></i>Xem Danh Mục
-							Sản Phẩm</a>
-						<button type="button" onclick="dpOpenQuote()" class="dp-btn dp-green"><i
-								class="fa-solid fa-file-lines"></i>Nhận Báo Giá Sỉ / Đại Lý</button>
-						<a href="hinh-anh-video/hinh-anh-video.html" class="dp-btn dp-dark"><i class="fa-solid fa-play"
-								style="color:#22c55e"></i>Video Nhà Máy CWORKS</a>
-					</div>
+		<section class="dp-hero" id="dpHero" data-interval="5000" aria-roledescription="carousel" aria-label="Banner Đào Phát CWORKS">
+			<div class="dp-hero-track">
+				<!-- Mỗi .dp-hero-slide là 1 ảnh. Thêm/bớt slide tùy ý, chỉ cần đổi src (có thể bọc <a href> nếu muốn bấm vào). -->
+				<div class="dp-hero-slide is-active">
+					<img src="./images/video-hinh-anh/công-ty-1.jpg" alt="Showroom CWORKS Toyota Tsusho" fetchpriority="high">
 				</div>
-				<div class="dp-card">
-					<img src="./images/video-hinh-anh/công-ty-1.jpg" alt="Showroom CWORKS Toyota Tsusho">
-					<span class="dp-tag">Showroom CWORKS Toyota Tsusho</span>
-					<h3>Khu Vực Trưng Bày Phụ Tùng</h3>
-					<small>Vòng bi, Má phanh, Bugi, Dây curoa, CWORKS</small>
+				<div class="dp-hero-slide">
+					<img src="./images/video-hinh-anh/công-ty-1.jpg" alt="Khu vực trưng bày phụ tùng CWORKS" loading="lazy">
+				</div>
+				<div class="dp-hero-slide">
+					<img src="./images/video-hinh-anh/công-ty-1.jpg" alt="Tổng kho phụ tùng Đào Phát" loading="lazy">
 				</div>
 			</div>
+			<button type="button" class="dp-hero-nav dp-hero-prev" aria-label="Slide trước"><i class="fa-solid fa-chevron-left"></i></button>
+			<button type="button" class="dp-hero-nav dp-hero-next" aria-label="Slide sau"><i class="fa-solid fa-chevron-right"></i></button>
+			<div class="dp-hero-dots" role="tablist"></div>
 		</section>
+		<script>
+			(function () {
+				var hero = document.getElementById('dpHero');
+				if (!hero) return;
+				var slides = [].slice.call(hero.querySelectorAll('.dp-hero-slide'));
+				var dotsBox = hero.querySelector('.dp-hero-dots');
+				var ms = parseInt(hero.getAttribute('data-interval'), 10) || 5000;
+				hero.style.setProperty('--dp-hero-ms', ms + 'ms');
+				var cur = 0, timer = null, dots = [];
+
+				// Ảnh lỗi thì bỏ slide đó, không để banner trống
+				slides.forEach(function (s) {
+					var im = s.querySelector('img');
+					if (im) im.addEventListener('error', function () {
+						var i = slides.indexOf(s);
+						if (slides.length > 1 && i > -1) {
+							slides.splice(i, 1); s.remove(); build(); go(Math.min(cur, slides.length - 1), true);
+						}
+					});
+				});
+
+				function build() {
+					dotsBox.innerHTML = ''; dots = [];
+					slides.forEach(function (_, i) {
+						var b = document.createElement('button');
+						b.type = 'button'; b.className = 'dp-hero-dot';
+						b.setAttribute('aria-label', 'Slide ' + (i + 1));
+						b.innerHTML = '<i></i>';
+						b.onclick = function () { go(i); };
+						dotsBox.appendChild(b); dots.push(b);
+					});
+					var multi = slides.length > 1;
+					hero.querySelector('.dp-hero-prev').style.display = multi ? '' : 'none';
+					hero.querySelector('.dp-hero-next').style.display = multi ? '' : 'none';
+					dotsBox.style.display = multi ? '' : 'none';
+				}
+
+				function go(n, silent) {
+					cur = (n + slides.length) % slides.length;
+					slides.forEach(function (s, i) { s.classList.toggle('is-active', i === cur); });
+					dots.forEach(function (d, i) {
+						d.classList.remove('is-active');
+						if (i === cur) { void d.offsetWidth; d.classList.add('is-active'); }
+					});
+					var nx = slides[(cur + 1) % slides.length].querySelector('img');
+					if (nx) nx.loading = 'eager';
+					restart();
+				}
+
+				function restart() {
+					clearTimeout(timer);
+					if (slides.length < 2 || hero.classList.contains('is-paused')) return;
+					timer = setTimeout(function () { go(cur + 1); }, ms);
+				}
+
+				function pause() { hero.classList.add('is-paused'); clearTimeout(timer); }
+				function resume() { hero.classList.remove('is-paused'); go(cur); }
+
+				hero.querySelector('.dp-hero-prev').onclick = function () { go(cur - 1); };
+				hero.querySelector('.dp-hero-next').onclick = function () { go(cur + 1); };
+				hero.addEventListener('mouseenter', pause);
+				hero.addEventListener('mouseleave', resume);
+				document.addEventListener('visibilitychange', function () { document.hidden ? pause() : resume(); });
+
+				// Vuốt trên điện thoại
+				var sx = 0, sy = 0;
+				hero.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+				hero.addEventListener('touchend', function (e) {
+					var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+					if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1));
+				}, { passive: true });
+
+				build(); go(0);
+			})();
+		</script>
 
 		<!-- GIỚI THIỆU: CWORKS x ĐÀO PHÁT -->
 		<style>
