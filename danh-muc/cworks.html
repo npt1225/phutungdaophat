@@ -1578,223 +1578,437 @@
     </style>
 
     <style id="daophat-mobile-header-fix">
-        /* =========================================================
+		/* =========================================================
    ĐÀO PHÁT - MOBILE HEADER
    Logo | Báo giá | Zalo | Giỏ hàng | 3 gạch
    Không ẩn nút menu trên điện thoại.
    ========================================================= */
 
-        .mobile-menu-toggle {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            min-width: 38px;
-            flex: 0 0 38px;
-            padding: 0;
-            margin: 0;
-            color: #123b61;
-            background: #ffffff;
-            border: 1px solid #dbe3ea;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
-            cursor: pointer;
-            text-decoration: none;
-            position: relative;
-            z-index: 9999;
-            transition: .2s ease;
-        }
+		.mobile-menu-toggle {
+			display: none;
+			align-items: center;
+			justify-content: center;
+			width: 38px;
+			height: 38px;
+			min-width: 38px;
+			flex: 0 0 38px;
+			padding: 0;
+			margin: 0;
+			color: #123b61;
+			background: #ffffff;
+			border: 1px solid #dbe3ea;
+			border-radius: 8px;
+			box-shadow: 0 1px 3px rgba(15, 23, 42, .08);
+			cursor: pointer;
+			text-decoration: none;
+			position: relative;
+			z-index: 9999;
+			transition: .2s ease;
+		}
 
-        .mobile-menu-toggle:hover {
-            color: #0f3152;
-            background: #f8fafc;
-        }
+		.mobile-menu-toggle:hover {
+			color: #0f3152;
+			background: #f8fafc;
+		}
 
-        .mobile-menu-toggle svg {
-            display: block !important;
-            width: 26px;
-            height: 26px;
-        }
+		.mobile-menu-toggle svg {
+			display: block !important;
+			width: 26px;
+			height: 26px;
+		}
 
-        /* Điện thoại */
-        @media (max-width: 991.98px) {
+		/* Điện thoại */
+		@media (max-width: 991.98px) {
 
-            .header.header-index {
-                width: 100%;
-                max-width: 100%;
-                overflow: visible !important;
-            }
+			.header.header-index {
+				width: 100%;
+				max-width: 100%;
+				overflow: visible !important;
+			}
 
-            .header.header-index>.container {
-                width: 100%;
-                max-width: 100%;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
+			.header.header-index>.container {
+				width: 100%;
+				max-width: 100%;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+			}
 
-            .header.header-index .max-w-\[1380px\] {
-                width: 100%;
-                max-width: 100%;
-                padding-left: 10px !important;
-                padding-right: 10px !important;
-                box-sizing: border-box;
-            }
+			.header.header-index .max-w-\[1380px\] {
+				width: 100%;
+				max-width: 100%;
+				padding-left: 10px !important;
+				padding-right: 10px !important;
+				box-sizing: border-box;
+			}
 
-            .header.header-index .max-w-\[1380px\]>.flex {
-                width: 100%;
-                min-width: 0;
-                gap: 6px !important;
-            }
+			.header.header-index .max-w-\[1380px\]>.flex {
+				width: 100%;
+				min-width: 0;
+				gap: 6px !important;
+			}
 
-            /* Logo chiếm phần còn lại nhưng không ép nhóm nút ra ngoài */
-            .header.header-index .max-w-\[1380px\]>.flex>a:first-child {
-                min-width: 0;
-                flex: 1 1 auto;
-                max-width: calc(100% - 210px);
-                overflow: hidden;
-            }
+			/* Logo chiếm phần còn lại nhưng không ép nhóm nút ra ngoài */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child {
+				min-width: 0;
+				flex: 1 1 auto;
+				max-width: calc(100% - 210px);
+				overflow: hidden;
+			}
 
-            .header.header-index .max-w-\[1380px\]>.flex>a:first-child img {
-                height: 34px;
-                width: auto;
-            }
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child img {
+				height: 34px;
+				width: auto;
+			}
 
-            .header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
-                font-size: 16px !important;
-            }
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: 16px !important;
+			}
 
-            .header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
-                font-size: 8px !important;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				font-size: 8px !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 
-            /* Nhóm nút bên phải */
-            .header-action-buttons {
-                display: flex !important;
-                align-items: center;
-                justify-content: flex-end;
-                gap: 4px !important;
-                flex: 0 0 auto;
-                min-width: 0;
-            }
+			/* Nhóm nút bên phải */
+			.header-action-buttons {
+				display: flex !important;
+				align-items: center;
+				justify-content: flex-end;
+				gap: 4px !important;
+				flex: 0 0 auto;
+				min-width: 0;
+			}
 
-            /* Báo giá: vẫn có chữ BÁO GIÁ trên mobile */
-            .header-action-buttons>button[onclick*="dpOpenQuote"] {
-                min-width: 74px;
-                height: 38px;
-                padding: 0 8px !important;
-                gap: 4px !important;
-                flex: 0 0 auto;
-                white-space: nowrap;
-            }
+			/* Báo giá: vẫn có chữ BÁO GIÁ trên mobile */
+			.header-action-buttons>button[onclick*="dpOpenQuote"] {
+				min-width: 74px;
+				height: 38px;
+				padding: 0 8px !important;
+				gap: 4px !important;
+				flex: 0 0 auto;
+				white-space: nowrap;
+			}
 
-            .header-action-buttons>button[onclick*="dpOpenQuote"] .w-5 {
-                width: 18px !important;
-                height: 18px !important;
-            }
+			.header-action-buttons>button[onclick*="dpOpenQuote"] .w-5 {
+				width: 18px !important;
+				height: 18px !important;
+			}
 
-            .header-action-buttons>button[onclick*="dpOpenQuote"] .sm\:inline {
-                display: none !important;
-            }
+			.header-action-buttons>button[onclick*="dpOpenQuote"] .sm\:inline {
+				display: none !important;
+			}
 
-            .header-action-buttons>button[onclick*="dpOpenQuote"] .sm\:hidden {
-                display: inline !important;
-                font-size: 10px;
-                font-weight: 800;
-            }
+			.header-action-buttons>button[onclick*="dpOpenQuote"] .sm\:hidden {
+				display: inline !important;
+				font-size: 10px;
+				font-weight: 800;
+			}
 
-            /* Zalo chỉ giữ biểu tượng Z */
-            .header-action-buttons>a[href*="zalo.me"] {
-                width: 38px;
-                min-width: 38px;
-                height: 38px;
-                padding: 0 !important;
-                flex: 0 0 38px;
-            }
+			/* Zalo chỉ giữ biểu tượng Z */
+			.header-action-buttons>a[href*="zalo.me"] {
+				width: 38px;
+				min-width: 38px;
+				height: 38px;
+				padding: 0 !important;
+				flex: 0 0 38px;
+			}
 
-            .header-action-buttons>a[href*="zalo.me"] .sm\:inline,
-            .header-action-buttons>a[href*="zalo.me"] .lg\:inline {
-                display: none !important;
-            }
+			.header-action-buttons>a[href*="zalo.me"] .sm\:inline,
+			.header-action-buttons>a[href*="zalo.me"] .lg\:inline {
+				display: none !important;
+			}
 
-            .header-action-buttons>a[href*="zalo.me"] .w-5 {
-                width: 20px !important;
-                height: 20px !important;
-            }
+			.header-action-buttons>a[href*="zalo.me"] .w-5 {
+				width: 20px !important;
+				height: 20px !important;
+			}
 
-            /* Giỏ hàng chỉ giữ icon + số */
-            .header-action-buttons>button[onclick*="dpOpenCart"] {
-                width: 38px;
-                min-width: 38px;
-                height: 38px;
-                padding: 0 !important;
-                gap: 0 !important;
-                flex: 0 0 38px;
-            }
+			/* Giỏ hàng chỉ giữ icon + số */
+			.header-action-buttons>button[onclick*="dpOpenCart"] {
+				width: 38px;
+				min-width: 38px;
+				height: 38px;
+				padding: 0 !important;
+				gap: 0 !important;
+				flex: 0 0 38px;
+			}
 
-            .header-action-buttons>button[onclick*="dpOpenCart"]>.hidden {
-                display: none !important;
-            }
+			.header-action-buttons>button[onclick*="dpOpenCart"]>.hidden {
+				display: none !important;
+			}
 
-            /* Số lượng giỏ hàng */
-            #dpCartCount {
-                position: absolute;
-                top: -5px;
-                right: -5px;
-                min-width: 17px !important;
-                height: 17px !important;
-                padding: 0 4px !important;
-                font-size: 9px !important;
-                line-height: 17px;
-            }
+			/* Số lượng giỏ hàng */
+			#dpCartCount {
+				position: absolute;
+				top: -5px;
+				right: -5px;
+				min-width: 17px !important;
+				height: 17px !important;
+				padding: 0 4px !important;
+				font-size: 9px !important;
+				line-height: 17px;
+			}
 
-            /* 3 gạch: HIỂN THỊ, không dùng d-lg-none/lg:hidden */
-            .mobile-menu-toggle {
-                display: flex !important;
-            }
-        }
+			/* 3 gạch: HIỂN THỊ, không dùng d-lg-none/lg:hidden */
+			.mobile-menu-toggle {
+				display: flex !important;
+			}
+		}
 
-        /* Điện thoại rất nhỏ: giảm nhẹ logo để đủ chỗ */
-        @media (max-width: 380px) {
+		/* Điện thoại rất nhỏ: giảm nhẹ logo để đủ chỗ */
+		@media (max-width: 380px) {
 
-            .header.header-index .max-w-\[1380px\] {
-                padding-left: 7px !important;
-                padding-right: 7px !important;
-            }
+			.header.header-index .max-w-\[1380px\] {
+				padding-left: 7px !important;
+				padding-right: 7px !important;
+			}
 
-            .header.header-index .max-w-\[1380px\]>.flex {
-                gap: 4px !important;
-            }
+			.header.header-index .max-w-\[1380px\]>.flex {
+				gap: 4px !important;
+			}
 
-            .header.header-index .max-w-\[1380px\]>.flex>a:first-child {
-                max-width: calc(100% - 198px);
-            }
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child {
+				max-width: calc(100% - 198px);
+			}
 
-            .header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
-                font-size: 14px !important;
-            }
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: 14px !important;
+			}
 
-            .header-action-buttons {
-                gap: 3px !important;
-            }
+			.header-action-buttons {
+				gap: 3px !important;
+			}
 
-            .header-action-buttons>button[onclick*="dpOpenQuote"] {
-                min-width: 68px;
-                padding: 0 6px !important;
-            }
+			.header-action-buttons>button[onclick*="dpOpenQuote"] {
+				min-width: 68px;
+				padding: 0 6px !important;
+			}
 
-            .header-action-buttons>a[href*="zalo.me"],
-            .header-action-buttons>button[onclick*="dpOpenCart"],
-            .mobile-menu-toggle {
-                width: 36px;
-                min-width: 36px;
-                flex-basis: 36px;
-                height: 36px;
-            }
-        }
-    </style>
+			.header-action-buttons>a[href*="zalo.me"],
+			.header-action-buttons>button[onclick*="dpOpenCart"],
+			.mobile-menu-toggle {
+				width: 36px;
+				min-width: 36px;
+				flex-basis: 36px;
+				height: 36px;
+			}
+		}
+	</style>
+<style id="dp-header-row-fix">
+		@media (min-width: 992px) {
+			.header.header-index {
+				--dp-h: 50px
+			}
+
+			/* Mở rộng khung để đủ chỗ cho chữ to */
+			.header.header-index>.container {
+				max-width: 100% !important;
+				padding-left: clamp(12px, 1.5vw, 28px) !important;
+				padding-right: clamp(12px, 1.5vw, 28px) !important
+			}
+
+			.header.header-index .max-w-\[1380px\] {
+				max-width: 1840px !important;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				padding-top: 8px !important;
+				padding-bottom: 8px !important
+			}
+
+			/* Cả hàng căn giữa theo một trục ngang */
+			.header.header-index .max-w-\[1380px\]>.flex {
+				align-items: center !important;
+				gap: clamp(10px, 1vw, 20px) !important;
+				flex-wrap: nowrap !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>* {
+				margin-top: 0 !important;
+				margin-bottom: 0 !important;
+				align-self: center
+			}
+
+			/* 1. Logo + tên */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child img {
+				height: 44px;
+				width: auto
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: clamp(22px, 1.35vw, 26px) !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				font-size: clamp(11px, .66vw, 12.5px) !important;
+				margin-top: 3px
+			}
+
+			/* 2. Badge "Đối tác phân phối" */
+			.header.header-index .skew-badge {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: clamp(18px, 1.3vw, 26px) !important;
+				padding-right: clamp(18px, 1.3vw, 26px) !important
+			}
+
+			.header.header-index .skew-badge-content {
+				font-size: clamp(12px, .76vw, 14.5px) !important;
+				line-height: 1.25 !important
+			}
+
+			/* 3. Khối CWORKS x TOYOTA TSUSHO */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: 10px !important;
+				padding-right: 10px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img {
+				height: 40px;
+				width: auto
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue {
+				font-size: clamp(9.5px, .58vw, 11px) !important;
+				padding: 3px 7px !important
+			}
+
+			/* 4. Ô tìm kiếm */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				flex: 1 1 150px;
+				min-width: 150px;
+				max-width: 320px;
+				margin: 0 !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) input {
+				height: var(--dp-h);
+				font-size: clamp(13px, .78vw, 15px) !important;
+				padding-left: 14px !important;
+				padding-right: 38px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) i {
+				font-size: 15px !important
+			}
+
+			/* 5. Nhóm nút: Báo giá | Zalo | Giỏ hàng */
+			.header-index .header-action-buttons {
+				gap: clamp(8px, .7vw, 12px) !important
+			}
+
+			.header-index .header-action-buttons>button,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: clamp(12px, .95vw, 18px) !important;
+				padding-right: clamp(12px, .95vw, 18px) !important;
+				gap: 9px !important;
+				font-size: clamp(14.5px, .8vw, 16px) !important;
+				line-height: 1;
+				white-space: nowrap;
+				border-radius: 10px !important
+			}
+
+			.header-index .header-action-buttons>button span,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) span {
+				font-size: inherit
+			}
+
+			.header-index .header-action-buttons>button .w-5,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) .w-5 {
+				width: 26px !important;
+				height: 26px !important
+			}
+
+			.header-index .header-action-buttons>button .w-5 i {
+				font-size: 12px !important
+			}
+
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) .w-5 {
+				font-size: 13px !important
+			}
+
+			.header-index #dpCartCount {
+				min-width: 24px !important;
+				height: 24px !important;
+				font-size: 12px !important
+			}
+
+			/* ===== Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... chữ to + đậm ===== */
+			.header-menu ul.item_big>li.nav-item>a.a-img {
+				font-size: clamp(16px, .98vw, 19px) !important;
+				font-weight: 800 !important;
+				letter-spacing: .5px !important;
+				padding: 19px clamp(16px, 1.25vw, 24px) !important
+			}
+
+			.header-menu ul.item_big>li.has-mega>a.a-img {
+				padding-right: 30px !important
+			}
+
+			.header-menu ul.item_big>li.nav-item>.fa-caret-down {
+				font-size: 15px !important
+			}
+		}
+
+		/* Từ 1760px trở lên: đủ chỗ cho ô tìm kiếm. Dưới đó dùng nút kính lúp gọn để dành chỗ cho chữ to */
+		@media (min-width: 992px) and (max-width: 1759.98px) {
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				display: none !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] {
+				display: flex !important;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				width: var(--dp-h);
+				justify-content: center
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"]>span.font-heading {
+				display: none !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] .w-5 {
+				width: 22px !important;
+				height: 22px !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] i {
+				font-size: 17px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex {
+				gap: 12px !important
+			}
+		}
+
+		/* Dưới 1600px: Zalo chỉ hiện chữ ZALO + biểu tượng, số điện thoại đã có ở trang liên hệ/popup */
+		@media (min-width: 992px) and (max-width: 1599.98px) {
+			.header-index .header-action-buttons>a[href*="zalo.me"] .lg\:inline {
+				display: none !important
+			}
+		}
+
+		/* Dưới 1440px: ẩn khối logo CWORKS x TOYOTA TSUSHO nhỏ để không chật */
+		@media (min-width: 992px) and (max-width: 1439.98px) {
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				display: none !important
+			}
+		}
+	</style>
     <style>
         /* Tiêu đề khu danh sách (dùng h2 vì phần intro phía trên đã có h1) */
         .dp-heading h2 {
@@ -3329,6 +3543,96 @@
             }
         }
     </style>
+<style id="dp-brand-bigger">
+		/* Khẩu hiệu: chữ đậm, không nghiêng, căn giữa dưới tên để cân xứng (mọi kích thước màn hình) */
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child>div:last-child {
+			align-items: flex-start;
+			text-align: left
+		}
+
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+			font-style: normal !important;
+			font-weight: 800 !important;
+			color: #006838 !important
+		}
+
+		@media (min-width: 992px) {
+
+			/* Logo + tên Đào Phát */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child {
+				gap: clamp(8px, .7vw, 12px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child img {
+				height: clamp(46px, 3.3vw, 58px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: clamp(23px, 1.65vw, 30px) !important;
+				letter-spacing: .02em;
+				text-align: left
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				font-size: clamp(11px, .72vw, 13.5px) !important;
+				letter-spacing: 0;
+				margin-top: 4px;
+				text-align: left
+			}
+
+			/* Khối CWORKS × TOYOTA TSUSHO SERVICE PARTS */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				height: clamp(50px, 3.2vw, 60px);
+				padding-left: clamp(10px, .8vw, 14px) !important;
+				padding-right: clamp(10px, .8vw, 14px) !important;
+				gap: clamp(6px, .5vw, 10px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img {
+				height: clamp(40px, 2.7vw, 50px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue {
+				font-size: clamp(10px, .65vw, 12px) !important;
+				padding: 4px 8px !important;
+				line-height: 1.2
+			}
+
+			/* Chống tràn: ô tìm kiếm tự co, các khối còn lại giữ nguyên kích thước */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child,
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(2),
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3),
+			.header-index .header-action-buttons {
+				flex-shrink: 0
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				flex: 1 1 110px;
+				min-width: 110px;
+				max-width: 240px
+			}
+
+			.header-index .header-action-buttons>button:not([onclick*="dpSearchOpen"]),
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) {
+				font-size: clamp(13px, .72vw, 15px) !important;
+				padding-left: clamp(9px, .7vw, 14px) !important;
+				padding-right: clamp(9px, .7vw, 14px) !important;
+				gap: 7px !important
+			}
+		}
+
+		/* Màn 992–1439px: thu nhỏ nhẹ badge xanh lá để hàng header không bị tràn */
+		@media (min-width: 1280px) and (max-width: 1439.98px) {
+			.header.header-index .skew-badge {
+				padding-left: 14px !important;
+				padding-right: 14px !important
+			}
+
+			.header.header-index .skew-badge-content {
+				font-size: 11.5px !important
+			}
+		}
+	</style>
     <style id="dp-contact-widget">
         /* ===== NÚT LIÊN HỆ NỔI: đồng bộ tông xanh lá - vàng - đỏ - navy của Đào Phát ===== */
         body .main-widget {
@@ -3881,6 +4185,45 @@
             }
         }
     </style>
+<style id="dp-user-tweaks">
+	@media (min-width: 992px) {
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child img { height: 60px !important; width: auto }
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading { font-size: clamp(28px, 1.8vw, 34px) !important }
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+			font-size: clamp(12.5px, .82vw, 15px) !important; font-weight: 800 !important; letter-spacing: 0 !important; margin-top: 4px !important }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) { height: 62px !important; padding-left: 14px !important; padding-right: 14px !important; gap: 8px }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img { height: 50px !important; width: auto }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue { font-size: clamp(10.5px, .68vw, 12.5px) !important; padding: 5px 9px !important }
+	}
+
+	/* Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... to hơn bản gốc nhưng vẫn vừa 1 hàng */
+	@media (min-width: 992px) {
+		.header-menu ul.item_big { gap: 4px !important; flex-wrap: nowrap !important }
+		.header-menu ul.item_big>li.nav-item>a.a-img {
+			font-size: clamp(17px, 1.35vw, 24px) !important;
+			letter-spacing: .4px !important;
+			padding: 20px clamp(12px, 1.1vw, 22px) !important;
+			white-space: nowrap
+		}
+		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 28px !important }
+		.header-menu ul.item_big>li.nav-item>.fa-caret-down { font-size: 16px !important }
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.header-menu ul.item_big>li.nav-item>a.a-img {
+			font-size: 15.5px !important;
+			padding: 20px 10px !important
+		}
+		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 24px !important }
+	}
+
+	/* Footer: làm hẹp lại */
+	footer.dp-footer-slim { padding-top: 14px !important; padding-bottom: 10px !important }
+	.dp-footer-slim .border-b { padding-bottom: 6px !important; margin-bottom: 10px !important }
+	.dp-footer-slim .grid { gap: 12px 24px !important }
+	.dp-footer-slim p.mt-1 { margin-top: 2px !important; line-height: 1.4 !important }
+	.dp-footer-slim .mt-8 { margin-top: 12px !important; padding-top: 10px !important }
+
+</style>
     <style id="dp-mobile-header">
         /* ---------- HEADER trên điện thoại: logo + nút không bị chen nhau ---------- */
         @media (max-width: 575px) {
@@ -5856,29 +6199,62 @@
                 }
             }
     </style>
+    <!-- ===== HERO BANNER ===== -->
+    <section class="cw-hero" aria-label="Sản phẩm Cworks">
+        <div class="cw-hero-inner">
+            <div class="cw-hero-title">
+                <h1>SẢN PHẨM CWORKS</h1>
+                <p>Danh mục phụ tùng xe máy đa dạng, đáp ứng nhu cầu bảo dưỡng, sửa chữa và thay thế cho nhiều dòng xe.</p>
+            </div>
+            <div class="cw-hero-actions">
+                <a href="#" class="cw-btn cw-btn-red" id="cwCatalogBtn"><i class="fa-solid fa-download"></i>TẢI CATALOG</a>
+                <button type="button" class="cw-btn cw-btn-ghost" onclick="dpOpenQuote()"><i class="fa-solid fa-file-invoice"></i>LIÊN HỆ BÁO GIÁ SỈ</button>
+            </div>
+            <svg class="cw-hero-logo" viewBox="0 0 220 200" aria-hidden="true">
+                <defs>
+                    <linearGradient id="cwG" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#3b9bff" />
+                        <stop offset="1" stop-color="#0a49c9" />
+                    </linearGradient>
+                </defs>
+                <path d="M200 10 H70 Q30 10 30 50 V150 Q30 190 70 190 H200 V140 H100 V60 H200 Z" fill="url(#cwG)" />
+                <path d="M200 70 H128 V130 H200 V100 H160" fill="none" stroke="#7cc0ff" stroke-width="10" opacity=".7" />
+            </svg>
+        </div>
+    </section>
+
     <section class="pc-section">
         <div class="pc-container">
-            <nav class="pc-crumb" aria-label="Breadcrumb">
-                <a href="../../index.html">Trang chủ</a>
-                <span>/</span>
-                <strong>Cworks</strong>
-            </nav>
-            <div class="pc-head">
-                <div>
-                    <span class="pc-eyebrow">CWORKS × ĐÀO PHÁT</span>
-                    <h1>Phụ Tùng Cworks Chính Hãng</h1>
-                    <p>Toàn bộ 26 sản phẩm Cworks. Tìm theo mã, tên xe hoặc chọn loại phụ tùng bên dưới, bấm vào sản
-                        phẩm để xem chi tiết và nhận báo giá sỉ.</p>
+            <!-- ===== THANH TÌM KIẾM / LỌC ===== -->
+            <div class="cw-filter">
+                <div class="pcx-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" id="pcxSearch" placeholder="Nhập tên hoặc mã sản phẩm"
+                        autocomplete="off" aria-label="Tìm sản phẩm">
+                    <button type="button" id="pcxClear" aria-label="Xóa tìm kiếm" hidden><i
+                            class="fa-solid fa-xmark"></i></button>
                 </div>
-                <a class="pc-back" href="../../index.html">← Trang chủ</a>
+                <div class="cw-select"><select id="cwBrand" aria-label="Hãng xe">
+                        <option value="">Hãng xe</option>
+                        <option value="honda">Honda</option>
+                    </select></div>
+                <div class="cw-select"><select id="cwModel" aria-label="Dòng xe">
+                        <option value="">Dòng xe</option>
+                        <option value="lead">Lead</option>
+                        <option value="vision">Vision</option>
+                        <option value="vario">Vario</option>
+                        <option value="future">Future / Fu Neo</option>
+                        <option value="wave">Wave</option>
+                        <option value="winner">Winner</option>
+                    </select></div>
+                <div class="cw-select"><select id="cwYear" aria-label="Đời xe">
+                        <option value="">Đời xe</option>
+                        <option value="2012">2012 – 2013</option>
+                    </select></div>
+                <button type="button" class="cw-btn cw-btn-blue" id="cwFind">TÌM SẢN PHẨM</button>
             </div>
-            <div class="pcx-search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" id="pcxSearch" placeholder="Tìm mã (K44, 6004, Lead 125, Má phanh, Bugi, Nhớt...)"
-                    autocomplete="off" aria-label="Tìm sản phẩm">
-                <button type="button" id="pcxClear" aria-label="Xóa tìm kiếm" hidden><i
-                        class="fa-solid fa-xmark"></i></button>
-            </div>
+
+            <!-- ===== TAB DANH MỤC ===== -->
             <div class="pcx-tabs" id="pcxTabs" role="tablist">
                 <button type="button" class="pcx-tab is-active" data-filter="all"><i
                         class="fa-solid fa-boxes-stacked"></i>Tất Cả Sản Phẩm<span class="pcx-count">26</span></button>
@@ -5893,6 +6269,12 @@
                         class="pcx-count">4</span></button><button type="button" class="pcx-tab"
                     data-filter="nuocmat"><i class="fa-solid fa-droplet"></i>Nước Làm Mát<span
                         class="pcx-count">1</span></button>
+            </div>
+
+            <!-- ===== TIÊU ĐỀ DANH MỤC ===== -->
+            <div class="cw-listhead">
+                <h2>DANH MỤC SẢN PHẨM</h2>
+                <span class="cw-updated"><i class="fa-solid fa-rotate"></i>Danh mục được cập nhật liên tục</span>
             </div>
             <p class="pcx-result" id="pcxResult" aria-live="polite"></p>
             <div class="pc-grid" id="pcGrid">
@@ -7265,8 +7647,23 @@
         </div>
     </section>
 
+    <!-- ===== THANH CTA CUỐI DANH SÁCH ===== -->
+    <section class="cw-cta" aria-label="Hỗ trợ tra cứu sản phẩm">
+        <div class="cw-cta-inner">
+            <div class="cw-cta-text">
+                <h2>KHÔNG TÌM THẤY SẢN PHẨM PHÙ HỢP?</h2>
+                <p>Liên hệ Đào Phát để được hỗ trợ tra cứu mã sản phẩm và ứng dụng theo dòng xe.</p>
+            </div>
+            <a class="cw-btn cw-btn-zalo" href="https://zalo.me/0978229468" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-comment-dots"></i>ZALO 0978 229 468<i class="fa-solid fa-arrow-right"></i></a>
+            <svg class="cw-hero-logo cw-cta-logo" viewBox="0 0 220 200" aria-hidden="true">
+                <path d="M200 10 H70 Q30 10 30 50 V150 Q30 190 70 190 H200 V140 H100 V60 H200 Z" fill="url(#cwG)" />
+            </svg>
+        </div>
+    </section>
 
-    <footer class="bg-white border-t border-slate-200 pt-8 pb-10">
+
+    <footer class="dp-footer-slim bg-white border-t border-slate-200 pt-8 pb-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="border-b border-slate-100 pb-4 mb-6">
@@ -9958,6 +10355,245 @@
             }
         }
     </style>
+
+    <style id="cw-top-bottom-css">
+        /* ===== HERO ===== */
+        .cw-hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(100deg, #0a1d4a 0%, #0c2559 55%, #0a1d4a 100%);
+        }
+        .cw-hero::after {
+            content: "";
+            position: absolute;
+            right: -4%;
+            top: -40%;
+            width: 34%;
+            height: 220%;
+            background: linear-gradient(115deg, transparent 40%, rgba(235, 30, 40, .55) 49%, transparent 51%);
+            transform: rotate(-8deg);
+            pointer-events: none;
+        }
+        .cw-hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 26px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 104px;
+        }
+        .cw-hero-title {
+            border-left: 4px solid #e41e26;
+            padding-left: 34px;
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+        .cw-hero-title h1 {
+            margin: 0 0 2px;
+            color: #fff;
+            font-family: 'Montserrat', 'Inter', sans-serif;
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: .3px;
+        }
+        .cw-hero-title p {
+            margin: 0;
+            color: #d6e0f5;
+            font-size: 15px;
+        }
+        .cw-hero-actions {
+            display: flex;
+            gap: 14px;
+            flex: 0 0 auto;
+            margin-right: 150px;
+        }
+        .cw-hero-logo {
+            position: absolute;
+            right: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 96px;
+            height: auto;
+            opacity: .95;
+            z-index: 1;
+        }
+        /* ===== BUTTONS ===== */
+        .cw-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            height: 46px;
+            padding: 0 24px;
+            border: 1.5px solid transparent;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+            text-decoration: none;
+            cursor: pointer;
+            transition: .2s;
+        }
+        .cw-btn-red { background: #e41e26; color: #fff; box-shadow: 0 6px 16px rgba(228, 30, 38, .35); }
+        .cw-btn-red:hover { background: #c4141b; color: #fff; }
+        .cw-btn-ghost { background: rgba(255, 255, 255, .04); border-color: rgba(255, 255, 255, .7); color: #fff; }
+        .cw-btn-ghost:hover { background: #fff; color: #0a1d4a; }
+        .cw-btn-blue { background: #1a6bf0; color: #fff; }
+        .cw-btn-blue:hover { background: #0f55c9; }
+        .cw-btn-zalo { background: #0a8f3c; color: #fff; height: 52px; padding: 0 30px; font-size: 18px; font-weight: 800; border-color: rgba(255, 255, 255, .25); }
+        .cw-btn-zalo:hover { background: #087832; color: #fff; }
+
+        /* ===== PRODUCT SECTION TOP ===== */
+        .pc-section { padding-top: 0; }
+        .cw-filter {
+            display: grid;
+            grid-template-columns: minmax(0, 2.1fr) repeat(3, minmax(0, 1fr)) auto;
+            gap: 12px;
+            align-items: center;
+            margin: 0 -15px 16px;
+            padding: 12px 15px;
+            background: #fff;
+            box-shadow: 0 0 0 100vmax #fff;
+            clip-path: inset(0 -100vmax);
+        }
+        .cw-filter .pcx-search { max-width: none; margin: 0; }
+        .cw-filter .pcx-search input {
+            height: 44px;
+            border-radius: 6px;
+            border: 1px solid #d5dce6;
+            background: #f4f6f9;
+            font-size: 14px;
+        }
+        .cw-select { position: relative; }
+        .cw-select::after {
+            content: "";
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #16213b;
+            border-bottom: 2px solid #16213b;
+            transform: translateY(-70%) rotate(45deg);
+            pointer-events: none;
+        }
+        .cw-select select {
+            width: 100%;
+            height: 44px;
+            padding: 0 38px 0 14px;
+            border: 1px solid #d5dce6;
+            border-radius: 6px;
+            background: #f4f6f9;
+            color: #64748b;
+            font-size: 14px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+        .cw-select select:focus { border-color: #1a6bf0; }
+        .cw-filter .cw-btn-blue { height: 44px; min-width: 240px; }
+
+        /* tabs giống ảnh: chữ hoa, bo nhẹ, tab đang chọn màu xanh */
+        .pcx-tabs { gap: 10px; margin: 0 0 22px; padding: 4px 2px 8px; }
+        .pcx-tab {
+            padding: 0 18px;
+            height: 42px;
+            border-radius: 6px;
+            border: 1px solid #e3e8ef;
+            background: #fff;
+            color: #16213b;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, .06);
+        }
+        .pcx-tab i, .pcx-tab .pcx-count { display: none; }
+        .pcx-tab:hover { border-color: #1a6bf0; color: #1a6bf0; }
+        .pcx-tab.is-active { background: #1a6bf0; border-color: #1a6bf0; color: #fff; box-shadow: 0 6px 14px rgba(26, 107, 240, .3); }
+
+        .cw-listhead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 6px 0 6px;
+        }
+        .cw-listhead h2 {
+            margin: 0;
+            padding-left: 14px;
+            border-left: 4px solid #e41e26;
+            color: #0a1d4a;
+            font-family: 'Montserrat', 'Inter', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        .cw-updated { color: #64748b; font-size: 14px; white-space: nowrap; }
+        .cw-updated i { margin-right: 8px; color: #1a6bf0; }
+        .pcx-result { margin: 0 0 16px 18px; }
+
+        /* ===== CTA CUỐI ===== */
+        .cw-cta {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(100deg, #0a1d4a 0%, #0c2559 60%, #0a1d4a 100%);
+        }
+        .cw-cta-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 22px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            min-height: 96px;
+        }
+        .cw-cta-text { border-left: 4px solid #e41e26; padding-left: 34px; }
+        .cw-cta-text h2 {
+            margin: 0 0 2px;
+            color: #fff;
+            font-family: 'Montserrat', 'Inter', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+        }
+        .cw-cta-text p { margin: 0; color: #d6e0f5; font-size: 15px; }
+        .cw-cta .cw-btn-zalo { margin-right: 130px; }
+        .cw-cta-logo { width: 84px; right: 2%; opacity: .9; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            .cw-filter { grid-template-columns: 1fr 1fr 1fr; }
+            .cw-filter .pcx-search { grid-column: 1 / -1; }
+            .cw-filter .cw-btn-blue { grid-column: 1 / -1; min-width: 0; }
+            .cw-hero-actions { margin-right: 110px; }
+        }
+        @media (max-width: 820px) {
+            .cw-hero-inner, .cw-cta-inner { flex-direction: column; align-items: flex-start; }
+            .cw-hero-actions, .cw-cta .cw-btn-zalo { margin-right: 0; }
+            .cw-hero-title h1 { font-size: 28px; }
+            .cw-hero-title, .cw-cta-text { padding-left: 18px; }
+            .cw-hero-logo { width: 64px; top: 22px; transform: none; }
+            .cw-cta-logo { display: none; }
+            .cw-listhead { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 560px) {
+            .cw-hero-actions { flex-direction: column; width: 100%; }
+            .cw-hero-actions .cw-btn, .cw-cta .cw-btn-zalo { width: 100%; }
+            .cw-filter { grid-template-columns: 1fr; }
+            .cw-listhead h2, .cw-cta-text h2 { font-size: 20px; }
+            .pcx-tab { padding: 0 16px; font-size: 13px; }
+        }
+    </style>
     <script id="pcx-js">
         (function () {
             var grid = document.getElementById('pcGrid');
@@ -9972,9 +10608,21 @@
             }
             function apply() {
                 var words = norm(input.value).split(' ').filter(Boolean), shown = 0;
+                var vk = ['cwBrand', 'cwModel', 'cwYear'].map(function (id) { var el = document.getElementById(id); return el ? el.value : ''; }).filter(Boolean);
+                var modelEl = document.getElementById('cwModel');
+                var modelKeys = (modelEl && modelEl.value === 'future') ? ['future', 'fu neo'] : null;
                 cards.forEach(function (c) {
                     var ok = (cat === 'all' || c.dataset.cat === cat);
                     if (ok) { var hay = c.dataset.search || ''; ok = words.every(function (w) { return hay.indexOf(w) > -1; }); }
+                    if (ok && vk.length) {
+                        var h2 = norm((c.dataset.search || '') + ' ' + (c.dataset.app || '') + ' ' + (c.dataset.name || ''));
+                        var hondaModels = ['lead', 'vision', 'vario', 'future', 'fu neo', 'wave', 'winner', 'rsx', 'zx'];
+                        ok = vk.every(function (k, i) {
+                            if (k === 'honda') return hondaModels.some(function (m) { return h2.indexOf(m) > -1; });
+                            if (k === 'future' && modelKeys) return modelKeys.some(function (m) { return h2.indexOf(m) > -1; });
+                            return h2.indexOf(k) > -1;
+                        });
+                    }
                     c.hidden = !ok; if (ok) shown++;
                 });
                 clear.hidden = !input.value;
@@ -9988,9 +10636,13 @@
                 apply();
             });
             input.addEventListener('input', apply);
+            ['cwBrand', 'cwModel', 'cwYear'].forEach(function (id) { var el = document.getElementById(id); if (el) el.addEventListener('change', apply); });
+            var findBtn = document.getElementById('cwFind');
+            if (findBtn) findBtn.addEventListener('click', function () { apply(); grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
             clear.addEventListener('click', function () { input.value = ''; input.focus(); apply(); });
             reset.addEventListener('click', function () {
                 input.value = ''; cat = 'all';
+                ['cwBrand', 'cwModel', 'cwYear'].forEach(function (id) { var el = document.getElementById(id); if (el) el.value = ''; });
                 Array.prototype.forEach.call(tabs.children, function (t) { t.classList.toggle('is-active', t.dataset.filter === 'all'); });
                 apply();
             });

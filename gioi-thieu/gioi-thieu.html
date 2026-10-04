@@ -1776,6 +1776,220 @@
 			}
 		}
 	</style>
+<style id="dp-header-row-fix">
+		@media (min-width: 992px) {
+			.header.header-index {
+				--dp-h: 50px
+			}
+
+			/* Mở rộng khung để đủ chỗ cho chữ to */
+			.header.header-index>.container {
+				max-width: 100% !important;
+				padding-left: clamp(12px, 1.5vw, 28px) !important;
+				padding-right: clamp(12px, 1.5vw, 28px) !important
+			}
+
+			.header.header-index .max-w-\[1380px\] {
+				max-width: 1840px !important;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				padding-top: 8px !important;
+				padding-bottom: 8px !important
+			}
+
+			/* Cả hàng căn giữa theo một trục ngang */
+			.header.header-index .max-w-\[1380px\]>.flex {
+				align-items: center !important;
+				gap: clamp(10px, 1vw, 20px) !important;
+				flex-wrap: nowrap !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>* {
+				margin-top: 0 !important;
+				margin-bottom: 0 !important;
+				align-self: center
+			}
+
+			/* 1. Logo + tên */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child img {
+				height: 44px;
+				width: auto
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: clamp(22px, 1.35vw, 26px) !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				font-size: clamp(11px, .66vw, 12.5px) !important;
+				margin-top: 3px
+			}
+
+			/* 2. Badge "Đối tác phân phối" */
+			.header.header-index .skew-badge {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: clamp(18px, 1.3vw, 26px) !important;
+				padding-right: clamp(18px, 1.3vw, 26px) !important
+			}
+
+			.header.header-index .skew-badge-content {
+				font-size: clamp(12px, .76vw, 14.5px) !important;
+				line-height: 1.25 !important
+			}
+
+			/* 3. Khối CWORKS x TOYOTA TSUSHO */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: 10px !important;
+				padding-right: 10px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img {
+				height: 40px;
+				width: auto
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue {
+				font-size: clamp(9.5px, .58vw, 11px) !important;
+				padding: 3px 7px !important
+			}
+
+			/* 4. Ô tìm kiếm */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				flex: 1 1 150px;
+				min-width: 150px;
+				max-width: 320px;
+				margin: 0 !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) input {
+				height: var(--dp-h);
+				font-size: clamp(13px, .78vw, 15px) !important;
+				padding-left: 14px !important;
+				padding-right: 38px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) i {
+				font-size: 15px !important
+			}
+
+			/* 5. Nhóm nút: Báo giá | Zalo | Giỏ hàng */
+			.header-index .header-action-buttons {
+				gap: clamp(8px, .7vw, 12px) !important
+			}
+
+			.header-index .header-action-buttons>button,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: clamp(12px, .95vw, 18px) !important;
+				padding-right: clamp(12px, .95vw, 18px) !important;
+				gap: 9px !important;
+				font-size: clamp(14.5px, .8vw, 16px) !important;
+				line-height: 1;
+				white-space: nowrap;
+				border-radius: 10px !important
+			}
+
+			.header-index .header-action-buttons>button span,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) span {
+				font-size: inherit
+			}
+
+			.header-index .header-action-buttons>button .w-5,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) .w-5 {
+				width: 26px !important;
+				height: 26px !important
+			}
+
+			.header-index .header-action-buttons>button .w-5 i {
+				font-size: 12px !important
+			}
+
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) .w-5 {
+				font-size: 13px !important
+			}
+
+			.header-index #dpCartCount {
+				min-width: 24px !important;
+				height: 24px !important;
+				font-size: 12px !important
+			}
+
+			/* ===== Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... chữ to + đậm ===== */
+			.header-menu ul.item_big>li.nav-item>a.a-img {
+				font-size: clamp(16px, .98vw, 19px) !important;
+				font-weight: 800 !important;
+				letter-spacing: .5px !important;
+				padding: 19px clamp(16px, 1.25vw, 24px) !important
+			}
+
+			.header-menu ul.item_big>li.has-mega>a.a-img {
+				padding-right: 30px !important
+			}
+
+			.header-menu ul.item_big>li.nav-item>.fa-caret-down {
+				font-size: 15px !important
+			}
+		}
+
+		/* Từ 1760px trở lên: đủ chỗ cho ô tìm kiếm. Dưới đó dùng nút kính lúp gọn để dành chỗ cho chữ to */
+		@media (min-width: 992px) and (max-width: 1759.98px) {
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				display: none !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] {
+				display: flex !important;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				width: var(--dp-h);
+				justify-content: center
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"]>span.font-heading {
+				display: none !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] .w-5 {
+				width: 22px !important;
+				height: 22px !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] i {
+				font-size: 17px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex {
+				gap: 12px !important
+			}
+		}
+
+		/* Dưới 1600px: Zalo chỉ hiện chữ ZALO + biểu tượng, số điện thoại đã có ở trang liên hệ/popup */
+		@media (min-width: 992px) and (max-width: 1599.98px) {
+			.header-index .header-action-buttons>a[href*="zalo.me"] .lg\:inline {
+				display: none !important
+			}
+		}
+
+		/* Dưới 1440px: ẩn khối logo CWORKS x TOYOTA TSUSHO nhỏ để không chật */
+		@media (min-width: 992px) and (max-width: 1439.98px) {
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				display: none !important
+			}
+		}
+	</style>
 	<style>
 		/* Tiêu đề khu danh sách (dùng h2 vì phần intro phía trên đã có h1) */
 		.dp-heading h2 {
@@ -3503,6 +3717,96 @@
 			}
 		}
 	</style>
+<style id="dp-brand-bigger">
+		/* Khẩu hiệu: chữ đậm, không nghiêng, căn giữa dưới tên để cân xứng (mọi kích thước màn hình) */
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child>div:last-child {
+			align-items: flex-start;
+			text-align: left
+		}
+
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+			font-style: normal !important;
+			font-weight: 800 !important;
+			color: #006838 !important
+		}
+
+		@media (min-width: 992px) {
+
+			/* Logo + tên Đào Phát */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child {
+				gap: clamp(8px, .7vw, 12px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child img {
+				height: clamp(46px, 3.3vw, 58px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: clamp(23px, 1.65vw, 30px) !important;
+				letter-spacing: .02em;
+				text-align: left
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				font-size: clamp(11px, .72vw, 13.5px) !important;
+				letter-spacing: 0;
+				margin-top: 4px;
+				text-align: left
+			}
+
+			/* Khối CWORKS × TOYOTA TSUSHO SERVICE PARTS */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				height: clamp(50px, 3.2vw, 60px);
+				padding-left: clamp(10px, .8vw, 14px) !important;
+				padding-right: clamp(10px, .8vw, 14px) !important;
+				gap: clamp(6px, .5vw, 10px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img {
+				height: clamp(40px, 2.7vw, 50px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue {
+				font-size: clamp(10px, .65vw, 12px) !important;
+				padding: 4px 8px !important;
+				line-height: 1.2
+			}
+
+			/* Chống tràn: ô tìm kiếm tự co, các khối còn lại giữ nguyên kích thước */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child,
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(2),
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3),
+			.header-index .header-action-buttons {
+				flex-shrink: 0
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				flex: 1 1 110px;
+				min-width: 110px;
+				max-width: 240px
+			}
+
+			.header-index .header-action-buttons>button:not([onclick*="dpSearchOpen"]),
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) {
+				font-size: clamp(13px, .72vw, 15px) !important;
+				padding-left: clamp(9px, .7vw, 14px) !important;
+				padding-right: clamp(9px, .7vw, 14px) !important;
+				gap: 7px !important
+			}
+		}
+
+		/* Màn 992–1439px: thu nhỏ nhẹ badge xanh lá để hàng header không bị tràn */
+		@media (min-width: 1280px) and (max-width: 1439.98px) {
+			.header.header-index .skew-badge {
+				padding-left: 14px !important;
+				padding-right: 14px !important
+			}
+
+			.header.header-index .skew-badge-content {
+				font-size: 11.5px !important
+			}
+		}
+	</style>
 	<style id="dp-contact-widget">
 		/* ===== NÚT LIÊN HỆ NỔI: đồng bộ tông xanh lá - vàng - đỏ - navy của Đào Phát ===== */
 		body .main-widget {
@@ -4052,6 +4356,68 @@
 
 			body .main-widget .out-circle .ser-icon .process .item.phone {
 				opacity: 1
+			}
+		}
+	</style>
+<style id="dp-user-tweaks">
+	@media (min-width: 992px) {
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child img { height: 60px !important; width: auto }
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading { font-size: clamp(28px, 1.8vw, 34px) !important }
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+			font-size: clamp(12.5px, .82vw, 15px) !important; font-weight: 800 !important; letter-spacing: 0 !important; margin-top: 4px !important }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) { height: 62px !important; padding-left: 14px !important; padding-right: 14px !important; gap: 8px }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img { height: 50px !important; width: auto }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue { font-size: clamp(10.5px, .68vw, 12.5px) !important; padding: 5px 9px !important }
+	}
+
+	/* Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... to hơn bản gốc nhưng vẫn vừa 1 hàng */
+	@media (min-width: 992px) {
+		.header-menu ul.item_big { gap: 4px !important; flex-wrap: nowrap !important }
+		.header-menu ul.item_big>li.nav-item>a.a-img {
+			font-size: clamp(17px, 1.35vw, 24px) !important;
+			letter-spacing: .4px !important;
+			padding: 20px clamp(12px, 1.1vw, 22px) !important;
+			white-space: nowrap
+		}
+		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 28px !important }
+		.header-menu ul.item_big>li.nav-item>.fa-caret-down { font-size: 16px !important }
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.header-menu ul.item_big>li.nav-item>a.a-img {
+			font-size: 15.5px !important;
+			padding: 20px 10px !important
+		}
+		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 24px !important }
+	}
+
+	/* Footer: làm hẹp lại */
+	footer.dp-footer-slim { padding-top: 14px !important; padding-bottom: 10px !important }
+	.dp-footer-slim .border-b { padding-bottom: 6px !important; margin-bottom: 10px !important }
+	.dp-footer-slim .grid { gap: 12px 24px !important }
+	.dp-footer-slim p.mt-1 { margin-top: 2px !important; line-height: 1.4 !important }
+	.dp-footer-slim .mt-8 { margin-top: 12px !important; padding-top: 10px !important }
+
+</style>
+<style id="dp-mobile-header">
+		/* ---------- HEADER trên điện thoại: logo + nút không bị chen nhau ---------- */
+		@media (max-width: 575px) {
+			.header-index .flex.items-center.justify-between {
+				flex-wrap: nowrap
+			}
+
+			.header-index a.shrink-0.group {
+				min-width: 0
+			}
+
+			.header-index a.shrink-0.group span.italic {
+				font-size: 8px;
+				letter-spacing: -.1px
+			}
+		}
+
+		@media (max-width: 380px) {
+			.header-index a.shrink-0.group span.italic {
+				display: none
 			}
 		}
 	</style>
@@ -5491,31 +5857,292 @@
 
 
 
+	<style id="gt-about-design">
+		/* ===== TRANG GIỚI THIỆU – ĐỒNG BỘ VỚI TRANG TIN TỨC / TRANG CHỦ ===== */
+		.about-page {
+			--gt-navy: #0a1f44;
+			--gt-blue: #1470ff;
+			--gt-red: #e11d2e;
+			--gt-line: #e6ebf2;
+			font-family: 'Be Vietnam Pro', 'Mulish', sans-serif;
+			background: #f8fafc;
+			color: #334155
+		}
+		.about-page *, .about-page *::before, .about-page *::after { box-sizing: border-box }
+		html { scroll-behavior: smooth }
+		.about-page section[id] { scroll-margin-top: 90px }
+		.about-page a { text-decoration: none }
+		.gt-wrap, .about-page .container { max-width: 1216px; margin: 0 auto; padding: 0 20px }
+
+		/* ---- HERO ---- */
+		.gt-hero {
+			position: relative; overflow: hidden; color: #fff;
+			background: linear-gradient(90deg, #00173f 0%, #021f56 55%, #012057 100%)
+		}
+		.gt-hero-art {
+			position: absolute; top: 0; right: 0; height: 100%; width: 46%;
+			object-fit: cover; object-position: left center;
+			-webkit-mask-image: linear-gradient(to right, transparent 0, #000 38%);
+			mask-image: linear-gradient(to right, transparent 0, #000 38%);
+			pointer-events: none
+		}
+		.gt-hero .gt-wrap { position: relative; z-index: 1; padding-top: 14px; padding-bottom: 14px }
+		.gt-hero-txt { border-left: 4px solid var(--gt-red); padding-left: 30px }
+		.gt-hero h1 {
+			margin: 0; font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+			font-size: clamp(26px, 3vw, 40px); line-height: 1.15; font-weight: 800;
+			letter-spacing: -.01em; text-transform: uppercase; color: #fff !important
+		}
+		.gt-hero p { margin: 8px 0 0; max-width: 760px; font-size: clamp(14px, 1.15vw, 17px); color: rgba(255, 255, 255, .92) }
+
+		/* ---- THANH ĐIỀU HƯỚNG ---- */
+		.gt-bar { background: #fff; border-bottom: 1px solid var(--gt-line) }
+		.gt-bar .gt-wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 8px; padding-bottom: 8px }
+		.gt-tabs { display: flex; align-items: center; gap: 0; flex-wrap: wrap }
+		.gt-tab {
+			position: relative; padding: 11px 20px; border-radius: 7px;
+			font: 700 13px/1 'Be Vietnam Pro', 'Mulish', sans-serif; letter-spacing: .02em;
+			text-transform: uppercase; color: var(--gt-navy); transition: background .2s, color .2s
+		}
+		.gt-tab:hover { background: #eef4ff; color: var(--gt-blue) }
+		.gt-tab.is-active { background: var(--gt-blue); color: #fff; font-weight: 800 }
+		.gt-tab + .gt-tab::before {
+			content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 16px;
+			background: #d3dbe8; transform: translateY(-50%)
+		}
+		.gt-tab.is-active::before, .gt-tab.is-active + .gt-tab::before { display: none }
+		.gt-hot {
+			display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+			padding: 9px 16px; border: 1px solid var(--gt-line); border-radius: 6px;
+			font: 800 13px 'Be Vietnam Pro', 'Mulish', sans-serif; color: var(--gt-navy)
+		}
+		.gt-hot i { color: var(--gt-red) }
+		.gt-hot:hover { border-color: var(--gt-blue); color: var(--gt-blue) }
+
+		/* ---- KHỐI NỘI DUNG ---- */
+		.about-intro { padding: 44px 0 }
+		.about-section { padding: 44px 0; background: transparent }
+		.about-section.bg-light { background: #fff; border-top: 1px solid var(--gt-line); border-bottom: 1px solid var(--gt-line) }
+		.about-label, .about-section-title .small-title {
+			color: var(--gt-blue) !important; font-size: 13px; font-weight: 800; letter-spacing: .08em
+		}
+		.about-section-title { text-align: left; margin-bottom: 26px }
+		.about-intro h2, .about-section-title h2, .about-commitment h2 {
+			font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif; font-weight: 800;
+			text-transform: uppercase; line-height: 1.2; color: var(--gt-navy) !important
+		}
+		.about-section-title h2, .about-intro h2 {
+			margin: 0 0 14px; padding-left: 14px; border-left: 4px solid var(--gt-red);
+			font-size: clamp(19px, 1.9vw, 26px)
+		}
+		.about-section-title p { max-width: 760px; margin: 0; color: #64748b; font-size: 15px }
+		.about-intro p { color: #475569 }
+
+		/* thẻ: viền #e6ebf2, bo 8px, đổ bóng nhẹ như thẻ bài viết */
+		.about-stat, .about-card, .about-value {
+			background: #fff; border: 1px solid var(--gt-line); border-radius: 8px;
+			box-shadow: 0 3px 12px rgba(15, 23, 42, .06)
+		}
+		.about-stat { border-left: 4px solid var(--gt-red); padding: 20px 26px }
+		.about-stat strong { font-family: 'Montserrat', sans-serif; color: var(--gt-navy) !important }
+		.about-stat span { color: #475569 }
+		.about-card::before { background: var(--gt-red) !important; width: 4px }
+		.about-card-icon { border-radius: 10px !important; background: var(--gt-navy) !important; color: #fff }
+		.about-card h3 { color: var(--gt-navy) !important }
+		.about-card p, .about-value p { color: #64748b }
+		.about-value { transition: transform .25s, box-shadow .25s, border-color .25s }
+		.about-value:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(15, 23, 42, .12); border-color: var(--gt-blue) }
+		.about-value-icon { background: #eef4ff !important; color: var(--gt-blue) !important }
+		.about-value h3 { color: var(--gt-navy) !important }
+
+		/* khối navy: sứ mệnh + cam kết */
+		.about-mission, .about-commitment {
+			background: linear-gradient(90deg, #00173f 0%, #021f56 55%, #012057 100%) !important;
+			border-radius: 8px
+		}
+		.about-mission { border-left: 4px solid var(--gt-red) }
+		.about-mission h3 { color: #ffb700 }
+		.about-commitment h2 { color: #fff !important; font-size: clamp(20px, 2.1vw, 28px) }
+		.about-hotline {
+			background: var(--gt-red) !important; color: #fff !important; border-radius: 8px;
+			text-transform: uppercase; letter-spacing: .03em; padding: 14px 30px;
+			box-shadow: 0 8px 20px rgba(225, 29, 46, .35); transition: transform .2s, background .2s
+		}
+		.about-hotline:hover { background: #c3101f !important; transform: translateY(-2px) }
+
+		/* ---- DẢI CTA CUỐI TRANG ---- */
+		.gt-cta {
+			position: relative; overflow: hidden; color: #fff;
+			background: linear-gradient(90deg, #01143a 0%, #012054 60%, #01245f 100%)
+		}
+		.gt-cta-art {
+			position: absolute; top: 0; right: 0; height: 100%; width: 30%;
+			object-fit: cover; object-position: left center; opacity: .9;
+			-webkit-mask-image: linear-gradient(to right, transparent 0, #000 45%);
+			mask-image: linear-gradient(to right, transparent 0, #000 45%);
+			pointer-events: none
+		}
+		.gt-cta .gt-wrap {
+			position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto;
+			align-items: center; gap: 24px; padding-top: 16px; padding-bottom: 16px
+		}
+		.gt-cta-txt { border-left: 4px solid var(--gt-red); padding-left: 30px }
+		.gt-cta h2 {
+			margin: 0; font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+			font-size: clamp(18px, 1.75vw, 24px); line-height: 1.2; font-weight: 800;
+			text-transform: uppercase; color: #fff !important
+		}
+		.gt-cta-txt > p { margin: 4px 0 0; font-size: clamp(13px, 1vw, 15.5px); line-height: 1.5; color: rgba(255, 255, 255, .92) }
+		.gt-cta-act { margin-right: clamp(0px, 18vw, 300px) }
+		.gt-cta-btn {
+			display: inline-flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap;
+			padding: 13px 28px; border: 2px solid var(--gt-red); border-radius: 8px; background: var(--gt-red);
+			font: 800 14.5px 'Be Vietnam Pro', 'Mulish', sans-serif; letter-spacing: .03em; text-transform: uppercase;
+			color: #fff !important; box-shadow: 0 8px 20px rgba(225, 29, 46, .35); transition: transform .2s, background .2s
+		}
+		.gt-cta-btn:hover { background: #c3101f; border-color: #c3101f; transform: translateY(-2px) }
+
+		/* ---- RESPONSIVE ---- */
+		@media (max-width: 991.98px) {
+			.gt-bar .gt-wrap { flex-direction: column; align-items: stretch; gap: 10px }
+			.gt-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch }
+			.gt-tabs::-webkit-scrollbar { display: none }
+			.gt-tab { white-space: nowrap; flex: none; padding: 11px 16px }
+			.gt-hot { justify-content: center }
+			.gt-hero-art { width: 60%; opacity: .55 }
+			.gt-cta .gt-wrap { grid-template-columns: 1fr }
+			.gt-cta-act { margin-right: 0; max-width: 420px }
+		}
+		@media (max-width: 640px) {
+			.gt-wrap, .about-page .container { padding: 0 14px }
+			.gt-hero-txt, .gt-cta-txt { padding-left: 16px }
+			.gt-cta-btn { width: 100% }
+			.gt-cta-art { width: 55%; opacity: .35 }
+			.about-intro, .about-section { padding: 34px 0 }
+		}
+
+		/* ---- HERO LỚN, NỔI BẬT CWORKS ---- */
+		.gt-hero { min-height: clamp(320px, 34vw, 440px); display: flex; align-items: center }
+		.gt-hero .gt-wrap { width: 100%; padding-top: 48px; padding-bottom: 48px }
+		.gt-hero::after {
+			content: ""; position: absolute; right: 14%; top: -30%; width: 160px; height: 160%;
+			background: linear-gradient(115deg, transparent 40%, rgba(225, 29, 46, .55) 49%, transparent 51%);
+			transform: rotate(-8deg); pointer-events: none
+		}
+		.gt-hero-bgword {
+			position: absolute; right: -1%; bottom: -6%; z-index: 0; pointer-events: none; user-select: none;
+			font: 900 clamp(110px, 17vw, 260px)/1 'Montserrat', sans-serif; letter-spacing: -.02em;
+			color: transparent; -webkit-text-stroke: 2px rgba(255, 255, 255, .09)
+		}
+		.gt-hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: center }
+		.gt-hero-txt { padding-left: 34px }
+		.gt-eyebrow {
+			display: inline-block; margin-bottom: 14px; padding: 6px 14px; border-radius: 4px;
+			background: rgba(20, 112, 255, .22); border: 1px solid rgba(120, 175, 255, .5);
+			font: 800 13px/1 'Be Vietnam Pro', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #cfe1ff
+		}
+		.gt-hero h1 { font-size: clamp(32px, 4.4vw, 60px); line-height: 1.08 }
+		.gt-hero p { margin-top: 16px; max-width: 640px; font-size: clamp(15px, 1.3vw, 18px); line-height: 1.65 }
+		.gt-hero p strong { color: #fff }
+		.gt-hero-btns { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px }
+		.gt-btn {
+			display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 8px;
+			border: 2px solid transparent; font: 800 14.5px 'Be Vietnam Pro', sans-serif;
+			letter-spacing: .03em; text-transform: uppercase; transition: transform .2s, background .2s, color .2s
+		}
+		.gt-btn-red { background: var(--gt-red); border-color: var(--gt-red); color: #fff !important; box-shadow: 0 8px 20px rgba(225, 29, 46, .4) }
+		.gt-btn-red:hover { background: #c3101f; border-color: #c3101f; transform: translateY(-2px) }
+		.gt-btn-ghost { border-color: rgba(255, 255, 255, .85); background: rgba(1, 20, 58, .35); color: #fff !important }
+		.gt-btn-ghost:hover { background: #fff; color: var(--gt-navy) !important; transform: translateY(-2px) }
+		.gt-hero-brand { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 20px }
+		.gt-brand-card {
+			display: flex; flex-direction: column; align-items: center; gap: 10px;
+			padding: 26px 44px; border-radius: 14px; background: #fff;
+			box-shadow: 0 20px 50px rgba(0, 10, 40, .5), 0 0 0 6px rgba(255, 255, 255, .12)
+		}
+		.gt-brand-card img { display: block; height: clamp(56px, 6.5vw, 96px); width: auto; max-width: 100% }
+		.gt-brand-sub { font: 800 12px 'Be Vietnam Pro', sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--gt-navy) }
+		.gt-badges { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px }
+		.gt-badges li {
+			display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 30px;
+			background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .25);
+			font: 700 13px 'Be Vietnam Pro', sans-serif; color: #fff
+		}
+		.gt-badges i { color: #ffb700 }
+		@media (max-width: 991.98px) {
+			.gt-hero-grid { grid-template-columns: 1fr; gap: 28px }
+			.gt-hero-brand { align-items: flex-start }
+			.gt-badges { justify-content: flex-start }
+		}
+		@media (max-width: 640px) {
+			.gt-hero .gt-wrap { padding-top: 34px; padding-bottom: 34px }
+			.gt-hero-txt { padding-left: 16px }
+			.gt-btn { width: 100%; justify-content: center }
+			.gt-brand-card { padding: 18px 28px }
+		}
+
+		/* ---- TIÊU ĐỀ + HUY HIỆU CHỈ 1 HÀNG ---- */
+		.gt-hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) }
+		.gt-hero h1 { white-space: nowrap; font-size: clamp(26px, 3.5vw, 50px) }
+		.gt-badges { flex-wrap: nowrap; gap: 8px }
+		.gt-badges li { white-space: nowrap; padding: 8px 12px; font-size: 12.5px; gap: 6px }
+		@media (max-width: 991.98px) {
+			.gt-hero-grid { grid-template-columns: 1fr }
+			.gt-hero h1 { font-size: clamp(26px, 6.2vw, 44px) }
+		}
+		@media (max-width: 640px) {
+			.gt-hero h1 { font-size: clamp(22px, 7.2vw, 32px) }
+			.gt-badges { flex-wrap: wrap }
+		}
+	</style>
+
 	<div class="about-page">
 
-		<!-- ================= HERO ================= -->
-		<section class="about-hero">
-			<div class="container">
-				<div class="about-hero-content">
-
-					<span class="sub-title">Phụ Tùng Đào Phát</span>
-
-					<h1>
-						Giới thiệu <span>Đào Phát</span>
-					</h1>
-
-					<p>
-						Đồng hành cùng thị trường phụ tùng xe máy và ô tô Việt Nam
-						từ năm 2011, hướng đến chất lượng, uy tín và dịch vụ chuyên nghiệp.
-					</p>
-
+		<!-- ================= HERO (đồng bộ trang Tin tức) ================= -->
+		<section class="gt-hero">
+			<img class="gt-hero-art" src="../images/tin-tuc/hero-right.jpg" alt="" aria-hidden="true">
+			<span class="gt-hero-bgword" aria-hidden="true">CWORKS</span>
+			<div class="gt-wrap gt-hero-grid">
+				<div class="gt-hero-txt">
+					<span class="gt-eyebrow">CWORKS × Đào Phát</span>
+					<h1>Giới thiệu Đào Phát</h1>
+					<p>Nhà phân phối chính thức phụ tùng <strong>CWORKS – Toyota Tsusho</strong> tại Miền Nam. Đồng hành cùng thị trường phụ tùng xe máy và ô tô Việt Nam từ năm 2011, hướng đến chất lượng, uy tín và dịch vụ chuyên nghiệp.</p>
+					<div class="gt-hero-btns">
+						<a class="gt-btn gt-btn-red" href="../danh-muc/cworks.html">Xem sản phẩm CWORKS <i class="fa-solid fa-arrow-right"></i></a>
+						<a class="gt-btn gt-btn-ghost" href="#gt-intro">Về Đào Phát</a>
+					</div>
+				</div>
+				<div class="gt-hero-brand">
+					<div class="gt-brand-card">
+						<img src="../images/logo-cworks.png" alt="CWORKS Toyota Tsusho">
+						<span class="gt-brand-sub">Toyota Tsusho Group</span>
+					</div>
+					<ul class="gt-badges">
+						<li><i class="fa-solid fa-shield-halved"></i>Phụ tùng chính hãng</li>
+						<li><i class="fa-solid fa-truck-fast"></i>Phân phối Miền Nam</li>
+						<li><i class="fa-solid fa-calendar-check"></i>Từ năm 2011</li>
+					</ul>
 				</div>
 			</div>
 		</section>
 
+		<!-- THANH ĐIỀU HƯỚNG NHANH -->
+		<div class="gt-bar">
+			<div class="gt-wrap">
+				<nav class="gt-tabs" id="gtTabs" aria-label="Các mục giới thiệu">
+					<a class="gt-tab is-active" href="#gt-intro">Về chúng tôi</a>
+					<a class="gt-tab" href="#gt-nguon-hang">Sản phẩm &amp; nguồn hàng</a>
+					<a class="gt-tab" href="#gt-tam-nhin">Tầm nhìn &amp; sứ mệnh</a>
+					<a class="gt-tab" href="#gt-gia-tri">Giá trị cốt lõi</a>
+					<a class="gt-tab" href="#gt-cam-ket">Cam kết</a>
+				</nav>
+				<a class="gt-hot" href="tel:0978229468"><i class="fa-solid fa-phone"></i>Hotline 0978 229 468</a>
+			</div>
+		</div>
+
 
 		<!-- ================= GIỚI THIỆU ================= -->
-		<section class="about-intro">
+		<section class="about-intro" id="gt-intro">
 			<div class="container">
 
 				<div class="about-intro-box">
@@ -5579,7 +6206,7 @@
 
 
 		<!-- ================= SẢN PHẨM & NGUỒN HÀNG ================= -->
-		<section class="about-section bg-light">
+		<section class="about-section bg-light" id="gt-nguon-hang">
 			<div class="container">
 
 				<div class="about-section-title">
@@ -5644,7 +6271,7 @@
 
 
 		<!-- ================= TẦM NHÌN & SỨ MỆNH ================= -->
-		<section class="about-section">
+		<section class="about-section" id="gt-tam-nhin">
 			<div class="container">
 
 				<div class="about-section-title">
@@ -5738,7 +6365,7 @@
 
 
 		<!-- ================= GIÁ TRỊ CỐT LÕI ================= -->
-		<section class="about-section bg-light">
+		<section class="about-section bg-light" id="gt-gia-tri">
 			<div class="container">
 
 				<div class="about-section-title">
@@ -5824,7 +6451,7 @@
 
 
 		<!-- ================= CAM KẾT ================= -->
-		<section class="about-section">
+		<section class="about-section" id="gt-cam-ket">
 			<div class="container">
 
 				<div class="about-commitment">
@@ -5851,8 +6478,38 @@
 			</div>
 		</section>
 
+		<!-- ================= DẢI ĐĂNG KÝ ĐẠI LÝ (đồng bộ trang Tin tức) ================= -->
+		<section class="gt-cta">
+			<img class="gt-cta-art" src="../images/tin-tuc/cta-right.jpg" alt="" aria-hidden="true">
+			<div class="gt-wrap">
+				<div class="gt-cta-txt">
+					<h2>Trở thành đại lý CWORKS cùng Đào Phát</h2>
+					<p>Đồng hành phát triển, cung cấp sản phẩm chính hãng và hỗ trợ toàn diện cho đại lý.</p>
+				</div>
+				<div class="gt-cta-act">
+					<a class="gt-cta-btn" href="../lien-he.html">Đăng ký đại lý <i class="fa-solid fa-arrow-right"></i></a>
+				</div>
+			</div>
+		</section>
+
 	</div>
-	<footer class="bg-white border-t border-slate-200 pt-8 pb-10">
+	<script>
+		(function () {
+			var tabs = document.querySelectorAll('#gtTabs .gt-tab');
+			if (!tabs.length || !('IntersectionObserver' in window)) return;
+			var map = {};
+			tabs.forEach(function (t) { map[t.getAttribute('href').slice(1)] = t; });
+			var io = new IntersectionObserver(function (entries) {
+				entries.forEach(function (e) {
+					if (!e.isIntersecting) return;
+					tabs.forEach(function (t) { t.classList.remove('is-active'); });
+					var t = map[e.target.id]; if (t) t.classList.add('is-active');
+				});
+			}, { rootMargin: '-35% 0px -55% 0px' });
+			Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+		})();
+	</script>
+	<footer class="dp-footer-slim bg-white border-t border-slate-200 pt-8 pb-10">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 			<div class="border-b border-slate-100 pb-4 mb-6">
