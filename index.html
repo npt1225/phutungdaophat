@@ -1872,6 +1872,222 @@
 	</style>
 
 
+	<!-- ===== HEADER DESKTOP: hàng trên thẳng hàng + chữ to hơn; menu chữ to đậm ===== -->
+	<style id="dp-header-row-fix">
+		@media (min-width: 992px) {
+			.header.header-index {
+				--dp-h: 50px
+			}
+
+			/* Mở rộng khung để đủ chỗ cho chữ to */
+			.header.header-index>.container {
+				max-width: 100% !important;
+				padding-left: clamp(12px, 1.5vw, 28px) !important;
+				padding-right: clamp(12px, 1.5vw, 28px) !important
+			}
+
+			.header.header-index .max-w-\[1380px\] {
+				max-width: 1840px !important;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				padding-top: 8px !important;
+				padding-bottom: 8px !important
+			}
+
+			/* Cả hàng căn giữa theo một trục ngang */
+			.header.header-index .max-w-\[1380px\]>.flex {
+				align-items: center !important;
+				gap: clamp(10px, 1vw, 20px) !important;
+				flex-wrap: nowrap !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>* {
+				margin-top: 0 !important;
+				margin-bottom: 0 !important;
+				align-self: center
+			}
+
+			/* 1. Logo + tên */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child img {
+				height: 44px;
+				width: auto
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: clamp(22px, 1.35vw, 26px) !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				font-size: clamp(11px, .66vw, 12.5px) !important;
+				margin-top: 3px
+			}
+
+			/* 2. Badge "Đối tác phân phối" */
+			.header.header-index .skew-badge {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: clamp(18px, 1.3vw, 26px) !important;
+				padding-right: clamp(18px, 1.3vw, 26px) !important
+			}
+
+			.header.header-index .skew-badge-content {
+				font-size: clamp(12px, .76vw, 14.5px) !important;
+				line-height: 1.25 !important
+			}
+
+			/* 3. Khối CWORKS x TOYOTA TSUSHO */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: 10px !important;
+				padding-right: 10px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img {
+				height: 40px;
+				width: auto
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue {
+				font-size: clamp(9.5px, .58vw, 11px) !important;
+				padding: 3px 7px !important
+			}
+
+			/* 4. Ô tìm kiếm */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				flex: 1 1 150px;
+				min-width: 150px;
+				max-width: 320px;
+				margin: 0 !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) input {
+				height: var(--dp-h);
+				font-size: clamp(13px, .78vw, 15px) !important;
+				padding-left: 14px !important;
+				padding-right: 38px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) i {
+				font-size: 15px !important
+			}
+
+			/* 5. Nhóm nút: Báo giá | Zalo | Giỏ hàng */
+			.header-index .header-action-buttons {
+				gap: clamp(8px, .7vw, 12px) !important
+			}
+
+			.header-index .header-action-buttons>button,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) {
+				height: var(--dp-h);
+				box-sizing: border-box;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+				padding-left: clamp(12px, .95vw, 18px) !important;
+				padding-right: clamp(12px, .95vw, 18px) !important;
+				gap: 9px !important;
+				font-size: clamp(14.5px, .8vw, 16px) !important;
+				line-height: 1;
+				white-space: nowrap;
+				border-radius: 10px !important
+			}
+
+			.header-index .header-action-buttons>button span,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) span {
+				font-size: inherit
+			}
+
+			.header-index .header-action-buttons>button .w-5,
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) .w-5 {
+				width: 26px !important;
+				height: 26px !important
+			}
+
+			.header-index .header-action-buttons>button .w-5 i {
+				font-size: 12px !important
+			}
+
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) .w-5 {
+				font-size: 13px !important
+			}
+
+			.header-index #dpCartCount {
+				min-width: 24px !important;
+				height: 24px !important;
+				font-size: 12px !important
+			}
+
+			/* ===== Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... chữ to + đậm ===== */
+			.header-menu ul.item_big>li.nav-item>a.a-img {
+				font-size: clamp(16px, .98vw, 19px) !important;
+				font-weight: 800 !important;
+				letter-spacing: .5px !important;
+				padding: 19px clamp(16px, 1.25vw, 24px) !important
+			}
+
+			.header-menu ul.item_big>li.has-mega>a.a-img {
+				padding-right: 30px !important
+			}
+
+			.header-menu ul.item_big>li.nav-item>.fa-caret-down {
+				font-size: 15px !important
+			}
+		}
+
+		/* Từ 1760px trở lên: đủ chỗ cho ô tìm kiếm. Dưới đó dùng nút kính lúp gọn để dành chỗ cho chữ to */
+		@media (min-width: 992px) and (max-width: 1759.98px) {
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				display: none !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] {
+				display: flex !important;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				width: var(--dp-h);
+				justify-content: center
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"]>span.font-heading {
+				display: none !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] .w-5 {
+				width: 22px !important;
+				height: 22px !important
+			}
+
+			.header-index .header-action-buttons>button[onclick*="dpSearchOpen"] i {
+				font-size: 17px !important
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex {
+				gap: 12px !important
+			}
+		}
+
+		/* Dưới 1600px: Zalo chỉ hiện chữ ZALO + biểu tượng, số điện thoại đã có ở trang liên hệ/popup */
+		@media (min-width: 992px) and (max-width: 1599.98px) {
+			.header-index .header-action-buttons>a[href*="zalo.me"] .lg\:inline {
+				display: none !important
+			}
+		}
+
+		/* Dưới 1440px: ẩn khối logo CWORKS x TOYOTA TSUSHO nhỏ để không chật */
+		@media (min-width: 992px) and (max-width: 1439.98px) {
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				display: none !important
+			}
+		}
+	</style>
+
 	<!-- ===== NAVBAR MỚI: nền #0f172a ===== -->
 	<style>
 		:root {
@@ -5362,7 +5578,7 @@
 			.dp-hero .dp-hero-bar .dp-hero-bar-title {
 				margin: 0 0 5px;
 				font-family: inherit;
-				font-size: clamp(11px, .98vw, 16px);
+				font-size: clamp(11px, calc(1.25vw - 6.5px), 19px);
 				font-weight: 800;
 				line-height: 1.3;
 				letter-spacing: .01em;
@@ -5377,14 +5593,14 @@
 
 			.dp-hero .dp-hero-bar .dp-hero-bar-sub {
 				margin: 0;
-				font-size: clamp(9px, .72vw, 12px);
+				font-size: clamp(9px, calc(.9vw - 4.5px), 12.5px);
 				font-weight: 500;
 				line-height: 1.4;
 				text-transform: uppercase;
 				color: rgba(255, 255, 255, .9)
 			}
 
-			@media (min-width: 1600px) {
+			@media (min-width: 1500px) {
 
 				.dp-hero .dp-hero-bar .dp-hero-bar-title,
 				.dp-hero .dp-hero-bar .dp-hero-bar-sub {
@@ -5432,7 +5648,7 @@
 
 			/* Banner theo đúng tỉ lệ ảnh banner-trang-chu-1.png */
 			.dp-hero .dp-hero-track {
-				aspect-ratio: 1532 / 627;
+				aspect-ratio: 1374 / 627;
 				max-height: none
 			}
 
@@ -5459,7 +5675,7 @@
 				}
 
 				.dp-hero-track {
-					aspect-ratio: 1532 / 627
+					aspect-ratio: 1374 / 627
 				}
 			}
 
@@ -5482,7 +5698,7 @@
 				}
 
 				.dp-hero-track {
-					aspect-ratio: 1532 / 627;
+					aspect-ratio: 1374 / 627;
 					min-height: 0
 				}
 			}
