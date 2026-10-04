@@ -5327,17 +5327,181 @@
 				}
 			}
 		</style>
+		<style>
+			/* ===== Thanh thông tin phía trên banner ===== */
+			.dp-hero-bar {
+				position: relative;
+				z-index: 6;
+				display: flex;
+				align-items: center;
+				gap: 28px;
+				padding: 12px clamp(16px, 3.6vw, 56px);
+				background: #011947;
+				font-family: 'Be Vietnam Pro', 'Inter', Arial, sans-serif;
+				color: #fff
+			}
+
+			.dp-hero-bar-logo {
+				flex: 0 0 auto;
+				display: block
+			}
+
+			.dp-hero-bar-logo img {
+				display: block;
+				height: 54px;
+				width: auto
+			}
+
+			.dp-hero-bar-text {
+				flex: 1 1 auto;
+				min-width: 0;
+				padding-left: 28px;
+				border-left: 1px solid rgba(255, 255, 255, .28)
+			}
+
+			.dp-hero .dp-hero-bar .dp-hero-bar-title {
+				margin: 0 0 5px;
+				font-family: inherit;
+				font-size: clamp(11px, .98vw, 16px);
+				font-weight: 800;
+				line-height: 1.3;
+				letter-spacing: .01em;
+				text-transform: uppercase;
+				color: #fff
+			}
+
+			.dp-hero .dp-hero-bar .dp-hero-bar-title b {
+				color: #5db6ff;
+				font-weight: 800
+			}
+
+			.dp-hero .dp-hero-bar .dp-hero-bar-sub {
+				margin: 0;
+				font-size: clamp(9px, .72vw, 12px);
+				font-weight: 500;
+				line-height: 1.4;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, .9)
+			}
+
+			@media (min-width: 1600px) {
+
+				.dp-hero .dp-hero-bar .dp-hero-bar-title,
+				.dp-hero .dp-hero-bar .dp-hero-bar-sub {
+					white-space: nowrap
+				}
+			}
+
+			.dp-hero-bar-cta {
+				flex: 0 0 auto;
+				display: inline-flex;
+				align-items: center;
+				gap: 14px;
+				padding: 15px 24px;
+				border-radius: 8px;
+				background: #d90c19;
+				color: #fff;
+				font-size: 14px;
+				font-weight: 700;
+				text-transform: uppercase;
+				text-decoration: none;
+				white-space: nowrap;
+				box-shadow: 0 0 0 1px rgba(255, 255, 255, .12) inset;
+				transition: background .2s
+			}
+
+			.dp-hero-bar-cta:hover,
+			.dp-hero-bar-cta:focus-visible {
+				background: #f01f2c;
+				color: #fff
+			}
+
+			.dp-hero-bar-cta:focus-visible {
+				outline: 2px solid #fff;
+				outline-offset: 2px
+			}
+
+			.dp-hero-bar-cta i {
+				font-size: 12px;
+				transition: transform .2s
+			}
+
+			.dp-hero-bar-cta:hover i {
+				transform: translateX(3px)
+			}
+
+			/* Banner theo đúng tỉ lệ ảnh banner-trang-chu-1.png */
+			.dp-hero .dp-hero-track {
+				aspect-ratio: 1532 / 627;
+				max-height: none
+			}
+
+			.dp-hero .dp-hero-slide.is-active img {
+				transform: none
+			}
+
+			@media (max-width: 991px) {
+				.dp-hero-bar {
+					flex-wrap: wrap;
+					gap: 14px 20px
+				}
+
+				.dp-hero-bar-text {
+					order: 3;
+					flex: 1 1 100%;
+					padding: 12px 0 0;
+					border-left: 0;
+					border-top: 1px solid rgba(255, 255, 255, .22)
+				}
+
+				.dp-hero-bar-cta {
+					margin-left: auto
+				}
+
+				.dp-hero-track {
+					aspect-ratio: 1532 / 627
+				}
+			}
+
+			@media (max-width: 767px) {
+				.dp-hero-bar-logo img {
+					height: 46px
+				}
+
+				.dp-hero-bar-title {
+					font-size: 12.5px
+				}
+
+				.dp-hero-bar-sub {
+					font-size: 10.5px
+				}
+
+				.dp-hero-bar-cta {
+					padding: 12px 16px;
+					font-size: 12.5px
+				}
+
+				.dp-hero-track {
+					aspect-ratio: 1532 / 627;
+					min-height: 0
+				}
+			}
+		</style>
 		<section class="dp-hero" id="dpHero" data-interval="5000" aria-roledescription="carousel" aria-label="Banner Đào Phát CWORKS">
+			<div class="dp-hero-bar">
+				<a class="dp-hero-bar-logo" href="index.html" aria-label="CWORKS Toyota Tsusho">
+					<img src="./images/logo-cworks-trang.png" alt="CWORKS Toyota Tsusho">
+				</a>
+				<div class="dp-hero-bar-text">
+					<div class="dp-hero-bar-title">CWORKS – Thương hiệu phụ tùng aftermarket toàn cầu do <b>Toyota Tsusho</b>, thành viên Toyota Group, phát triển từ năm 2010.</div>
+					<div class="dp-hero-bar-sub">Kế thừa kinh nghiệm và năng lực lâu năm của Toyota Tsusho trong ngành ô tô, sản phẩm được kiểm soát nghiêm ngặt từ sản xuất đến trước khi xuất xưởng.</div>
+				</div>
+				<a class="dp-hero-bar-cta" href="danh-muc/cworks.html">Khám phá sản phẩm <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+			</div>
 			<div class="dp-hero-track">
 				<!-- Mỗi .dp-hero-slide là 1 ảnh. Thêm/bớt slide tùy ý, chỉ cần đổi src (có thể bọc <a href> nếu muốn bấm vào). -->
 				<div class="dp-hero-slide is-active">
-					<img src="./images/video-hinh-anh/công-ty-1.jpg" alt="Showroom CWORKS Toyota Tsusho" fetchpriority="high">
-				</div>
-				<div class="dp-hero-slide">
-					<img src="./images/video-hinh-anh/công-ty-1.jpg" alt="Khu vực trưng bày phụ tùng CWORKS" loading="lazy">
-				</div>
-				<div class="dp-hero-slide">
-					<img src="./images/video-hinh-anh/công-ty-1.jpg" alt="Tổng kho phụ tùng Đào Phát" loading="lazy">
+					<img src="./images/banner-trang-chu-1.png" alt="Cửa hàng CWORKS Toyota Tsusho – CWORKS toàn cầu, Đào Phát tại miền Nam" fetchpriority="high">
 				</div>
 			</div>
 			<button type="button" class="dp-hero-nav dp-hero-prev" aria-label="Slide trước"><i class="fa-solid fa-chevron-left"></i></button>
