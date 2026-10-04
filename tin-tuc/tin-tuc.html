@@ -5548,80 +5548,842 @@
 	</style>
 
 
-	<div class="news-page">
+<style id="tt-news-design">
+	/* ===== TRANG TIN TỨC & KIẾN THỨC CWORKS (thiết kế theo mẫu) ===== */
+	.tt-page {
+		--tt-navy: #0a1f44;
+		--tt-dark: #00173f;
+		--tt-blue: #1470ff;
+		--tt-red: #e11d2e;
+		--tt-line: #e6ebf2;
+		font-family: 'Be Vietnam Pro', 'Mulish', sans-serif;
+		background: #f8fafc;
+		color: #334155
+	}
 
-		<!-- =====================================================
-	     HERO
-	====================================================== -->
+	.tt-page *,
+	.tt-page *::before,
+	.tt-page *::after {
+		box-sizing: border-box
+	}
 
-		<section class="news-hero">
+	.tt-wrap {
+		max-width: 1216px;
+		margin: 0 auto;
+		padding: 0 20px
+	}
 
-			<div class="container">
+	.tt-page a {
+		text-decoration: none
+	}
 
-				<div class="news-hero-inner">
+	/* ---- HERO ---- */
+	.tt-hero {
+		position: relative;
+		overflow: hidden;
+		background: linear-gradient(90deg, #00173f 0%, #021f56 55%, #012057 100%);
+		color: #fff
+	}
 
-					<span class="news-label">
-						Phụ Tùng Đào Phát
-					</span>
+	.tt-hero-art {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 46%;
+		object-fit: cover;
+		object-position: left center;
+		-webkit-mask-image: linear-gradient(to right, transparent 0, #000 38%);
+		mask-image: linear-gradient(to right, transparent 0, #000 38%);
+		pointer-events: none
+	}
 
-					<h1>
-						Tin tức <span>xe máy &amp; ô tô</span>
-					</h1>
+	.tt-hero .tt-wrap {
+		position: relative;
+		z-index: 1;
+		padding-top: 30px;
+		padding-bottom: 30px
+	}
 
-					<p>
-						Cập nhật kiến thức về phụ tùng, kinh nghiệm lựa chọn,
-						bảo dưỡng và những thông tin hữu ích dành cho
-						người sử dụng xe máy và ô tô.
-					</p>
+	.tt-hero-txt {
+		border-left: 4px solid var(--tt-red);
+		padding-left: 30px
+	}
 
-				</div>
+	.tt-hero h1 {
+		margin: 0;
+		font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+		font-size: clamp(26px, 3vw, 40px);
+		line-height: 1.15;
+		font-weight: 800;
+		letter-spacing: -.01em;
+		text-transform: uppercase;
+		color: #fff !important
+	}
 
+	.tt-hero p {
+		margin: 8px 0 0;
+		font-size: clamp(14px, 1.15vw, 17px);
+		color: rgba(255, 255, 255, .92)
+	}
+
+	/* ---- THANH LỌC + TÌM KIẾM ---- */
+	.tt-bar {
+		background: #fff;
+		border-bottom: 1px solid var(--tt-line)
+	}
+
+	.tt-bar .tt-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		padding-top: 10px;
+		padding-bottom: 10px
+	}
+
+	.tt-tabs {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		flex-wrap: wrap
+	}
+
+	.tt-tab {
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+		font: 800 13px/1 'Be Vietnam Pro', 'Mulish', sans-serif;
+		letter-spacing: .02em;
+		text-transform: uppercase;
+		color: var(--tt-navy);
+		padding: 13px 22px;
+		border-radius: 8px;
+		transition: background .2s, color .2s
+	}
+
+	.tt-tab:hover {
+		background: #eef4ff;
+		color: var(--tt-blue)
+	}
+
+	.tt-tab.is-active {
+		background: var(--tt-blue);
+		color: #fff
+	}
+
+	.tt-search {
+		position: relative;
+		flex: 0 0 250px
+	}
+
+	.tt-search input {
+		width: 100%;
+		height: 42px;
+		border: 1px solid var(--tt-line);
+		border-radius: 8px;
+		background: #fff;
+		padding: 0 14px 0 42px;
+		font: 500 13.5px 'Be Vietnam Pro', 'Mulish', sans-serif;
+		color: var(--tt-navy);
+		outline: 0
+	}
+
+	.tt-search input:focus {
+		border-color: var(--tt-blue);
+		box-shadow: 0 0 0 3px rgba(20, 112, 255, .12)
+	}
+
+	.tt-search i {
+		position: absolute;
+		left: 15px;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 15px;
+		color: var(--tt-navy)
+	}
+
+	/* ---- NỘI DUNG ---- */
+	.tt-main {
+		padding: 12px 0 34px
+	}
+
+	.tt-tag {
+		display: inline-block;
+		background: var(--tt-blue);
+		color: #fff;
+		font: 800 11px/1 'Be Vietnam Pro', 'Mulish', sans-serif;
+		letter-spacing: .04em;
+		text-transform: uppercase;
+		padding: 7px 12px;
+		border-radius: 5px
+	}
+
+	.tt-feature {
+		display: grid;
+		grid-template-columns: 49.5% 1fr;
+		background: #fff;
+		border: 1px solid var(--tt-line);
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 4px 16px rgba(15, 23, 42, .06)
+	}
+
+	.tt-feature>a {
+		display: block;
+		min-height: 196px
+	}
+
+	.tt-feature img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover
+	}
+
+	.tt-feature-body {
+		padding: 22px 30px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start
+	}
+
+	.tt-feature h2 {
+		margin: 14px 0 10px;
+		font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+		font-size: clamp(18px, 1.75vw, 24px);
+		line-height: 1.3;
+		font-weight: 800;
+		text-transform: uppercase;
+		color: var(--tt-navy) !important
+	}
+
+	.tt-feature h2 a {
+		color: inherit
+	}
+
+	.tt-feature p {
+		margin: 0 0 16px;
+		font-size: 15.5px;
+		line-height: 1.6;
+		color: #475569
+	}
+
+	.tt-more-red {
+		font: 800 14.5px 'Be Vietnam Pro', 'Mulish', sans-serif;
+		letter-spacing: .02em;
+		text-transform: uppercase;
+		color: var(--tt-red)
+	}
+
+	.tt-more-red:hover {
+		text-decoration: underline
+	}
+
+	.tt-sec-title {
+		margin: 20px 0 14px;
+		padding-left: 14px;
+		border-left: 4px solid var(--tt-red);
+		font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+		font-size: clamp(19px, 1.7vw, 24px);
+		line-height: 1.1;
+		font-weight: 800;
+		text-transform: uppercase;
+		color: var(--tt-navy) !important
+	}
+
+	.tt-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px
+	}
+
+	.tt-card {
+		display: flex;
+		flex-direction: column;
+		background: #fff;
+		border: 1px solid var(--tt-line);
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 3px 12px rgba(15, 23, 42, .06);
+		transition: transform .25s, box-shadow .25s
+	}
+
+	.tt-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 14px 30px rgba(15, 23, 42, .12)
+	}
+
+	.tt-thumb {
+		display: block;
+		aspect-ratio: 393 / 140
+	}
+
+	.tt-thumb img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover
+	}
+
+	.tt-card-body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		padding: 0 16px 14px
+	}
+
+	.tt-card .tt-tag {
+		align-self: flex-start;
+		margin-top: -1px;
+		border-radius: 0 0 5px 5px;
+		padding: 7px 11px
+	}
+
+	.tt-card h3 {
+		margin: 10px 0 6px;
+		font-family: 'Be Vietnam Pro', 'Mulish', sans-serif;
+		font-size: 17.5px;
+		line-height: 1.35;
+		font-weight: 800;
+		color: var(--tt-navy) !important
+	}
+
+	.tt-card h3 a {
+		color: inherit
+	}
+
+	.tt-card h3 a:hover {
+		color: var(--tt-blue)
+	}
+
+	.tt-card p {
+		margin: 0 0 12px;
+		font-size: 14px;
+		line-height: 1.55;
+		color: #64748b
+	}
+
+	.tt-card-foot {
+		margin-top: auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between
+	}
+
+	.tt-date {
+		font-size: 12.5px;
+		color: #64748b
+	}
+
+	.tt-date i {
+		margin-right: 7px
+	}
+
+	.tt-more-blue {
+		font: 800 12.5px 'Be Vietnam Pro', 'Mulish', sans-serif;
+		letter-spacing: .02em;
+		text-transform: uppercase;
+		color: var(--tt-blue)
+	}
+
+	.tt-more-blue:hover {
+		text-decoration: underline
+	}
+
+	.tt-empty {
+		display: none;
+		text-align: center;
+		padding: 40px 10px;
+		font-size: 16px;
+		font-weight: 600;
+		color: #64748b
+	}
+
+	/* ---- DẢI ĐĂNG KÝ ĐẠI LÝ ---- */
+	.tt-cta {
+		position: relative;
+		overflow: hidden;
+		background: linear-gradient(90deg, #01143a 0%, #012054 60%, #01245f 100%);
+		color: #fff
+	}
+
+	.tt-cta-art {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 34%;
+		object-fit: cover;
+		object-position: left center;
+		-webkit-mask-image: linear-gradient(to right, transparent 0, #000 45%);
+		mask-image: linear-gradient(to right, transparent 0, #000 45%);
+		opacity: .75;
+		pointer-events: none
+	}
+
+	.tt-cta .tt-wrap {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: 40px;
+		padding-top: 30px;
+		padding-bottom: 30px
+	}
+
+	.tt-cta-txt {
+		border-left: 4px solid var(--tt-red);
+		padding-left: 30px
+	}
+
+	.tt-cta h2 {
+		margin: 0;
+		font-family: 'Montserrat', 'Be Vietnam Pro', sans-serif;
+		font-size: clamp(20px, 2.1vw, 29px);
+		line-height: 1.2;
+		font-weight: 800;
+		text-transform: uppercase;
+		color: #fff !important
+	}
+
+	.tt-cta-txt>p {
+		margin: 8px 0 0;
+		max-width: 760px;
+		font-size: clamp(13.5px, 1.1vw, 16px);
+		line-height: 1.6;
+		color: rgba(255, 255, 255, .92)
+	}
+
+	.tt-cta-list {
+		list-style: none;
+		margin: 16px 0 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 8px 28px;
+		max-width: 760px
+	}
+
+	.tt-cta-list li {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 14.5px;
+		font-weight: 600
+	}
+
+	.tt-cta-list i {
+		color: #ffb700;
+		font-size: 16px
+	}
+
+	.tt-cta-act {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 12px;
+		min-width: 270px;
+		margin-right: clamp(0px, 6vw, 110px)
+	}
+
+	.tt-cta-btn,
+	.tt-cta-btn2 {
+		display: block;
+		text-align: center;
+		cursor: pointer;
+		font: 800 14.5px 'Be Vietnam Pro', 'Mulish', sans-serif;
+		letter-spacing: .03em;
+		text-transform: uppercase;
+		padding: 15px 28px;
+		border-radius: 8px;
+		transition: transform .2s, background .2s, color .2s
+	}
+
+	.tt-cta-btn {
+		border: 2px solid var(--tt-red);
+		background: var(--tt-red);
+		color: #fff !important;
+		box-shadow: 0 8px 20px rgba(225, 29, 46, .35)
+	}
+
+	.tt-cta-btn:hover {
+		background: #c3101f;
+		border-color: #c3101f;
+		transform: translateY(-2px)
+	}
+
+	.tt-cta-btn2 {
+		border: 2px solid rgba(255, 255, 255, .9);
+		background: rgba(1, 20, 58, .35);
+		color: #fff !important
+	}
+
+	.tt-cta-btn2:hover {
+		background: #fff;
+		color: var(--tt-navy) !important;
+		transform: translateY(-2px)
+	}
+
+	.tt-cta-hot {
+		text-align: center;
+		font-size: 14px;
+		font-weight: 600;
+		color: rgba(255, 255, 255, .95)
+	}
+
+	.tt-cta-hot b {
+		display: block;
+		margin-top: 2px;
+		font-size: 17px;
+		font-weight: 800;
+		color: #ffb700
+	}
+
+	.tt-cta-hot a {
+		color: inherit
+	}
+
+	/* ---- RESPONSIVE ---- */
+	@media (max-width: 991.98px) {
+		.tt-bar .tt-wrap {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 10px
+		}
+
+		.tt-tabs {
+			flex-wrap: nowrap;
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: none
+		}
+
+		.tt-tabs::-webkit-scrollbar {
+			display: none
+		}
+
+		.tt-tab {
+			white-space: nowrap;
+			flex: none
+		}
+
+		.tt-search {
+			flex: none;
+			width: 100%
+		}
+
+		.tt-feature {
+			grid-template-columns: 1fr
+		}
+
+		.tt-cta .tt-wrap {
+			grid-template-columns: 1fr
+		}
+
+		.tt-cta-act {
+			margin-right: 0;
+			max-width: 420px
+		}
+
+		.tt-grid {
+			grid-template-columns: repeat(2, 1fr)
+		}
+
+		.tt-hero-art {
+			width: 60%;
+			opacity: .55
+		}
+
+	}
+
+	@media (max-width: 640px) {
+		.tt-grid {
+			grid-template-columns: 1fr
+		}
+
+		.tt-wrap {
+			padding: 0 14px
+		}
+
+		.tt-hero-txt,
+		.tt-cta-txt {
+			padding-left: 16px
+		}
+
+		.tt-feature-body {
+			padding: 18px
+		}
+
+		.tt-cta-list {
+			grid-template-columns: 1fr
+		}
+
+		.tt-facts {
+			grid-template-columns: 1fr 1fr 1fr;
+			padding: 12px 10px
+		}
+
+		.tt-cta-art {
+			width: 55%;
+			opacity: .35
+		}
+	}
+</style>
+
+<style id="tt-mockup-fix">
+	/* ===== Căn chỉnh sát ảnh thiết kế mẫu ===== */
+	.tt-thumb { background: linear-gradient(135deg, #0a1f44, #123b86) }
+
+	/* Hero gọn hơn */
+	.tt-hero .tt-wrap { padding-top: 14px; padding-bottom: 14px }
+
+	/* Thanh tab + tìm kiếm: gọn, tab thường có vạch ngăn, tab đang chọn là nút xanh */
+	.tt-bar .tt-wrap { padding-top: 8px; padding-bottom: 8px }
+	.tt-tabs { gap: 0 }
+	.tt-tab { position: relative; padding: 11px 20px; font-size: 13px; font-weight: 700; border-radius: 7px }
+	.tt-tab.is-active { font-weight: 800 }
+	.tt-tab + .tt-tab::before {
+		content: ""; position: absolute; left: 0; top: 50%; width: 1px; height: 16px;
+		background: #d3dbe8; transform: translateY(-50%)
+	}
+	.tt-tab.is-active::before,
+	.tt-tab.is-active + .tt-tab::before { display: none }
+	.tt-search input { height: 36px; font-size: 12.5px; border-radius: 6px; padding-left: 40px }
+	.tt-search i { left: 14px; font-size: 14px }
+
+	/* Bài nổi bật: ảnh trái tràn khung, chữ phải, nút "Đọc bài viết" dạng chữ đỏ */
+	.tt-feature { grid-template-columns: 49.5% 1fr }
+	.tt-feature > a { position: relative; display: block; min-height: 196px }
+	.tt-feature > a img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
+	.tt-feature-body { padding: 20px 30px; justify-content: center; align-items: flex-start }
+	.tt-feature h2 { margin: 12px 0 8px; font-size: clamp(17px, 1.5vw, 22px); line-height: 1.3 }
+	.tt-feature p { margin: 0 0 14px; font-size: 15px; line-height: 1.5; color: #475569 }
+	.tt-more-red, .tt-more-blue { display: inline-flex; align-items: center; gap: 8px }
+	.tt-more-red i { font-size: 13px }
+	.tt-more-blue i { font-size: 11px }
+
+	/* Tiêu đề mục + thẻ bài viết */
+	.tt-sec-title { margin: 14px 0 10px; font-size: clamp(18px, 1.55vw, 22px) }
+	.tt-card .tt-tag { margin-top: 3px; border-radius: 5px; padding: 6px 10px }
+	.tt-card h3 {
+		margin: 8px 0 5px; font-size: 17px; line-height: 1.35;
+		display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden
+	}
+	.tt-card p {
+		font-size: 14px; line-height: 1.5; margin: 0 0 12px;
+		display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden
+	}
+
+	/* Dải đăng ký đại lý: thanh gọn, nút đỏ đặt trước phần ảnh nền bên phải */
+	.tt-cta-art { width: 30%; opacity: .9 }
+	.tt-cta .tt-wrap { padding-top: 16px; padding-bottom: 16px; gap: 24px }
+	.tt-cta h2 { font-size: clamp(18px, 1.75vw, 24px) }
+	.tt-cta-txt > p { margin: 4px 0 0; max-width: none; font-size: clamp(13px, 1vw, 15.5px); line-height: 1.5 }
+	.tt-cta-act { min-width: 0; margin-right: clamp(0px, 18vw, 300px) }
+	.tt-cta-btn {
+		display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+		padding: 13px 28px; white-space: nowrap
+	}
+
+	@media (max-width: 991.98px) {
+		.tt-tab { padding: 11px 16px }
+		.tt-cta-act { margin-right: 0; max-width: none }
+	}
+	@media (max-width: 640px) {
+		.tt-feature-body { padding: 18px }
+		.tt-cta-btn { width: 100% }
+	}
+</style>
+
+<div class="tt-page">
+
+	<!-- HERO -->
+	<section class="tt-hero">
+		<img class="tt-hero-art" src="../images/tin-tuc/hero-right.jpg" alt="" aria-hidden="true">
+		<div class="tt-wrap">
+			<div class="tt-hero-txt">
+				<h1>Tin tức &amp; Kiến thức CWORKS</h1>
+				<p>Thông tin thương hiệu, kiến thức phụ tùng và hoạt động phân phối từ Đào Phát.</p>
 			</div>
+		</div>
+	</section>
 
-		</section>
-
-
-		<!-- =====================================================
-	     NEWS CONTENT
-	====================================================== -->
-
-		<section class="news-content">
-
-			<div class="container">
-
-
-
-
-
-
-
-				<!-- =================================================
-			     CTA
-			================================================== -->
-
-				<div class="news-bottom">
-
-					<h2>
-						Cần tư vấn về phụ tùng?
-					</h2>
-
-					<p>
-						Liên hệ Phụ Tùng Đào Phát để được hỗ trợ lựa chọn
-						phụ tùng phù hợp cho xe máy và ô tô.
-					</p>
-
-					<a href="tel:0978229468">
-						☎ Gọi ngay 0978 229 468 -  0932 743 185
-					</a>
-
-				</div>
-
-
+	<!-- LỌC + TÌM KIẾM -->
+	<div class="tt-bar">
+		<div class="tt-wrap">
+			<div class="tt-tabs" id="ttTabs">
+				<button type="button" class="tt-tab is-active" data-filter="all">Tất cả</button>
+				<button type="button" class="tt-tab" data-filter="ve-cworks">Về CWORKS</button>
+				<button type="button" class="tt-tab" data-filter="kien-thuc">Kiến thức phụ tùng</button>
+				<button type="button" class="tt-tab" data-filter="san-pham">Sản phẩm &amp; ứng dụng</button>
+				<button type="button" class="tt-tab" data-filter="hoat-dong">Hoạt động Đào Phát</button>
 			</div>
-
-		</section>
-
+			<div class="tt-search">
+				<i class="fa-solid fa-magnifying-glass"></i>
+				<input type="search" id="ttSearch" placeholder="Tìm kiếm bài viết" autocomplete="off"
+					aria-label="Tìm kiếm bài viết">
+			</div>
+		</div>
 	</div>
+
+	<!-- NỘI DUNG -->
+	<main class="tt-main">
+		<div class="tt-wrap">
+
+			<!-- Bài nổi bật -->
+			<article class="tt-feature" data-cat="ve-cworks">
+				<a href="../gioi-thieu/gioi-thieu.html" title="CWORKS – Thương hiệu phụ tùng aftermarket được phát triển bởi Toyota Tsusho">
+					<img src="../images/tin-tuc/featured.jpg" alt="Toyota Tsusho – thương hiệu CWORKS">
+				</a>
+				<div class="tt-feature-body">
+					<span class="tt-tag">Bài viết nổi bật</span>
+					<h2><a href="../gioi-thieu/gioi-thieu.html">CWORKS – Thương hiệu phụ tùng aftermarket được phát triển bởi Toyota Tsusho</a></h2>
+					<p>Tìm hiểu nguồn gốc thương hiệu, quá trình phát triển từ năm 2010 và hệ thống kiểm soát chất lượng của CWORKS.</p>
+					<a class="tt-more-red" href="../gioi-thieu/gioi-thieu.html">Đọc bài viết <i class="fa-solid fa-arrow-right"></i></a>
+				</div>
+			</article>
+
+			<h2 class="tt-sec-title">Bài viết mới nhất</h2>
+
+			<div class="tt-grid" id="ttGrid">
+
+				<article class="tt-card" data-cat="ve-cworks">
+					<a class="tt-thumb" href="#"><img src="../images/tin-tuc/card-1.jpg" alt="CWORKS có phải là phụ tùng chính hãng Toyota không?" loading="lazy" onerror="this.style.display='none'"></a>
+					<div class="tt-card-body">
+						<span class="tt-tag">Về CWORKS</span>
+						<h3><a href="#">CWORKS có phải là phụ tùng chính hãng Toyota không?</a></h3>
+						<p>Tìm hiểu về định vị thương hiệu, danh mục sản phẩm và kênh phân phối của CWORKS tại Việt Nam.</p>
+						<div class="tt-card-foot">
+							<span class="tt-date"><i class="fa-regular fa-calendar"></i>04.10.2026</span>
+							<a class="tt-more-blue" href="#">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</article>
+				<article class="tt-card" data-cat="kien-thuc">
+					<a class="tt-thumb" href="#"><img src="../images/tin-tuc/card-2.jpg" alt="Dây curoa xe tay ga: Khi nào cần kiểm tra và thay thế?" loading="lazy" onerror="this.style.display='none'"></a>
+					<div class="tt-card-body">
+						<span class="tt-tag">Kiến thức phụ tùng</span>
+						<h3><a href="#">Dây curoa xe tay ga: Khi nào cần kiểm tra và thay thế?</a></h3>
+						<p>Những dấu hiệu nhận biết dây curoa xuống cấp và lưu ý khi lựa chọn sản phẩm thay thế.</p>
+						<div class="tt-card-foot">
+							<span class="tt-date"><i class="fa-regular fa-calendar"></i>04.10.2026</span>
+							<a class="tt-more-blue" href="#">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</article>
+				<article class="tt-card" data-cat="kien-thuc">
+					<a class="tt-thumb" href="#"><img src="../images/tin-tuc/card-3.jpg" alt="Lọc gió ảnh hưởng như thế nào đến khả năng vận hành của xe?" loading="lazy" onerror="this.style.display='none'"></a>
+					<div class="tt-card-body">
+						<span class="tt-tag">Kiến thức phụ tùng</span>
+						<h3><a href="#">Lọc gió ảnh hưởng như thế nào đến khả năng vận hành của xe?</a></h3>
+						<p>Tìm hiểu vai trò của lọc gió, dấu hiệu cần thay và cách lựa chọn lọc gió phù hợp.</p>
+						<div class="tt-card-foot">
+							<span class="tt-date"><i class="fa-regular fa-calendar"></i>04.10.2026</span>
+							<a class="tt-more-blue" href="#">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</article>
+				<article class="tt-card" data-cat="ve-cworks">
+					<a class="tt-thumb" href="#"><img src="../images/tin-tuc/featured.jpg" alt="Vì sao CWORKS được định vị là phụ tùng tiêu chuẩn Nhật Bản?" loading="lazy" onerror="this.style.display='none'"></a>
+					<div class="tt-card-body">
+						<span class="tt-tag">Về CWORKS</span>
+						<h3><a href="#">Vì sao CWORKS được định vị là phụ tùng tiêu chuẩn Nhật Bản?</a></h3>
+						<p>Cách CWORKS lựa chọn nhà cung cấp, kiểm soát nguyên vật liệu và kiểm tra sản phẩm trước khi xuất xưởng.</p>
+						<div class="tt-card-foot">
+							<span class="tt-date"><i class="fa-regular fa-calendar"></i>04.10.2026</span>
+							<a class="tt-more-blue" href="#">Xem chi tiết <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</article>
+				<article class="tt-card" data-cat="san-pham">
+					<a class="tt-thumb" href="../danh-muc/cworks.html"><img src="https://phutungnhapkhaudaophat.com/images/items/vetrc110/A/IMG_0232.jpg" alt="Cách lựa chọn phụ tùng phù hợp với từng dòng xe" loading="lazy" onerror="this.style.display='none'"></a>
+					<div class="tt-card-body">
+						<span class="tt-tag">Sản phẩm &amp; ứng dụng</span>
+						<h3><a href="../danh-muc/cworks.html">Cách lựa chọn phụ tùng phù hợp với từng dòng xe</a></h3>
+						<p>Đối chiếu mã sản phẩm, đời xe, phiên bản động cơ và thông số kỹ thuật trước khi lắp đặt.</p>
+						<div class="tt-card-foot">
+							<span class="tt-date"><i class="fa-regular fa-calendar"></i>04.10.2026</span>
+							<a class="tt-more-blue" href="../danh-muc/cworks.html">Tra cứu sản phẩm <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</article>
+				<article class="tt-card" data-cat="hoat-dong chinh-sach">
+					<a class="tt-thumb" href="../lien-he.html"><img src="../images/banner-trang-chu-1.png" alt="Đào Phát phát triển hệ thống phân phối CWORKS tại miền Nam" loading="lazy" onerror="this.style.display='none'"></a>
+					<div class="tt-card-body">
+						<span class="tt-tag">Hoạt động Đào Phát</span>
+						<h3><a href="../lien-he.html">Đào Phát phát triển hệ thống phân phối CWORKS tại miền Nam</a></h3>
+						<p>Với 13 năm kinh nghiệm nhập khẩu và phân phối phụ tùng xe máy, Đào Phát xây dựng mạng lưới CWORKS tại miền Nam.</p>
+						<div class="tt-card-foot">
+							<span class="tt-date"><i class="fa-regular fa-calendar"></i>04.10.2026</span>
+							<a class="tt-more-blue" href="../lien-he.html">Đăng ký đại lý <i class="fa-solid fa-arrow-right"></i></a>
+						</div>
+					</div>
+				</article>
+
+			</div>
+
+			<div class="tt-empty" id="ttEmpty">Chưa có bài viết phù hợp.</div>
+		</div>
+	</main>
+
+	<!-- DẢI ĐĂNG KÝ ĐẠI LÝ -->
+	<section class="tt-cta">
+		<img class="tt-cta-art" src="../images/tin-tuc/cta-right.jpg" alt="" aria-hidden="true">
+		<div class="tt-wrap">
+			<div class="tt-cta-txt">
+				<h2>Trở thành đại lý CWORKS cùng Đào Phát</h2>
+				<p>Đồng hành phát triển, cung cấp sản phẩm chính hãng và hỗ trợ toàn diện cho đại lý.</p>
+			</div>
+			<div class="tt-cta-act">
+				<a class="tt-cta-btn" href="../lien-he.html">Đăng ký đại lý <i class="fa-solid fa-arrow-right"></i></a>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+<script>
+	(function () {
+		var tabs = document.querySelectorAll('#ttTabs .tt-tab');
+		var search = document.getElementById('ttSearch');
+		var items = document.querySelectorAll('.tt-feature, .tt-card');
+		var empty = document.getElementById('ttEmpty');
+		var title = document.querySelector('.tt-sec-title');
+		var filter = 'all';
+
+		function norm(s) {
+			return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+		}
+
+		function apply() {
+			var q = norm(search.value.trim());
+			var shown = 0;
+			items.forEach(function (el) {
+				var okCat = filter === 'all' || (' ' + el.getAttribute('data-cat') + ' ').indexOf(' ' + filter + ' ') !== -1;
+				var okText = !q || norm(el.textContent).indexOf(q) !== -1;
+				var ok = okCat && okText;
+				el.style.display = ok ? '' : 'none';
+				if (ok) shown++;
+			});
+			var anyCard = document.querySelectorAll('.tt-card:not([style*="none"])').length;
+			title.style.display = anyCard ? '' : 'none';
+			empty.style.display = shown ? 'none' : 'block';
+		}
+
+		tabs.forEach(function (b) {
+			b.addEventListener('click', function () {
+				tabs.forEach(function (x) { x.classList.remove('is-active'); });
+				b.classList.add('is-active');
+				filter = b.getAttribute('data-filter');
+				apply();
+			});
+		});
+		search.addEventListener('input', apply);
+	})();
+</script>
 
 	<footer class="bg-white border-t border-slate-200 pt-8 pb-10">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
