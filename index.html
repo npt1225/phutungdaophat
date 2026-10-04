@@ -3587,6 +3587,97 @@
 			}
 		}
 	</style>
+	<!-- ===== LOGO ĐÀO PHÁT + KHỐI ĐỐI TÁC: to hơn, khẩu hiệu đậm & cân xứng ===== -->
+	<style id="dp-brand-bigger">
+		/* Khẩu hiệu: chữ đậm, không nghiêng, căn giữa dưới tên để cân xứng (mọi kích thước màn hình) */
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child>div:last-child {
+			align-items: flex-start;
+			text-align: left
+		}
+
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+			font-style: normal !important;
+			font-weight: 800 !important;
+			color: #006838 !important
+		}
+
+		@media (min-width: 992px) {
+
+			/* Logo + tên Đào Phát */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child {
+				gap: clamp(8px, .7vw, 12px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child img {
+				height: clamp(46px, 3.3vw, 58px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading {
+				font-size: clamp(23px, 1.65vw, 30px) !important;
+				letter-spacing: .02em;
+				text-align: left
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+				font-size: clamp(11px, .72vw, 13.5px) !important;
+				letter-spacing: 0;
+				margin-top: 4px;
+				text-align: left
+			}
+
+			/* Khối CWORKS × TOYOTA TSUSHO SERVICE PARTS */
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) {
+				height: clamp(50px, 3.2vw, 60px);
+				padding-left: clamp(10px, .8vw, 14px) !important;
+				padding-right: clamp(10px, .8vw, 14px) !important;
+				gap: clamp(6px, .5vw, 10px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img {
+				height: clamp(40px, 2.7vw, 50px)
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue {
+				font-size: clamp(10px, .65vw, 12px) !important;
+				padding: 4px 8px !important;
+				line-height: 1.2
+			}
+
+			/* Chống tràn: ô tìm kiếm tự co, các khối còn lại giữ nguyên kích thước */
+			.header.header-index .max-w-\[1380px\]>.flex>a:first-child,
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(2),
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3),
+			.header-index .header-action-buttons {
+				flex-shrink: 0
+			}
+
+			.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(4) {
+				flex: 1 1 110px;
+				min-width: 110px;
+				max-width: 240px
+			}
+
+			.header-index .header-action-buttons>button:not([onclick*="dpSearchOpen"]),
+			.header-index .header-action-buttons>a:not(.mobile-menu-toggle) {
+				font-size: clamp(13px, .72vw, 15px) !important;
+				padding-left: clamp(9px, .7vw, 14px) !important;
+				padding-right: clamp(9px, .7vw, 14px) !important;
+				gap: 7px !important
+			}
+		}
+
+		/* Màn 992–1439px: thu nhỏ nhẹ badge xanh lá để hàng header không bị tràn */
+		@media (min-width: 1280px) and (max-width: 1439.98px) {
+			.header.header-index .skew-badge {
+				padding-left: 14px !important;
+				padding-right: 14px !important
+			}
+
+			.header.header-index .skew-badge-content {
+				font-size: 11.5px !important
+			}
+		}
+	</style>
 	<style id="dp-contact-widget">
 		/* ===== NÚT LIÊN HỆ NỔI: đồng bộ tông xanh lá - vàng - đỏ - navy của Đào Phát ===== */
 		body .main-widget {
@@ -5804,19 +5895,21 @@
 		<style>
 			.dp-intro {
 				font-family: 'Be Vietnam Pro', 'Mulish', sans-serif;
-				background: linear-gradient(180deg, #f8fbff 0%, #eef4fa 100%);
-				padding: 34px 20px 40px
+				background: linear-gradient(180deg, #fffbee 0%, #fdf2d4 100%);
+				border-top: 1px solid #f3e4b8;
+				border-bottom: 1px solid #f3e4b8;
+				padding: 26px 20px 30px
 			}
 
 			.dp-intro-in {
-				max-width: 1180px;
+				max-width: 900px;
 				margin: 0 auto
 			}
 
 			.dp-intro h2 {
-				margin: 0 0 26px;
+				margin: 0 0 20px;
 				text-align: center;
-				font-size: clamp(24px, 3.6vw, 44px);
+				font-size: clamp(20px, 2.6vw, 32px);
 				font-weight: 900;
 				letter-spacing: -.5px;
 				line-height: 1.15;
@@ -5834,6 +5927,13 @@
 				color: #006838
 			}
 
+			/* Tiêu đề luôn nằm trên 1 hàng (máy tính / máy tính bảng); điện thoại vẫn xuống dòng như cũ */
+			@media (min-width: 768px) {
+				.dp-intro h2 {
+					white-space: nowrap
+				}
+			}
+
 			.dp-intro h2 .g .ul {
 				display: inline-block;
 				border-bottom: 3px solid #dc2626;
@@ -5842,10 +5942,10 @@
 
 			.dp-pair {
 				display: grid;
-				grid-template-columns: 1fr 150px 1fr;
+				grid-template-columns: 1fr 110px 1fr;
 				align-items: center;
 				gap: 0;
-				max-width: 1000px;
+				max-width: 820px;
 				margin: 0 auto
 			}
 
@@ -5853,9 +5953,9 @@
 				background: #fff;
 				border: 1px solid #dbe6f3;
 				border-radius: 14px;
-				padding: 22px 20px 18px;
+				padding: 18px 16px 14px;
 				text-align: center;
-				box-shadow: 0 10px 26px rgba(15, 23, 42, .08)
+				box-shadow: 0 8px 22px rgba(120, 90, 20, .10)
 			}
 
 			.dp-brand.gr {
@@ -5930,8 +6030,8 @@
 			}
 
 			.dp-quote {
-				max-width: 1000px;
-				margin: 24px auto;
+				max-width: 820px;
+				margin: 18px auto;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -5954,8 +6054,8 @@
 			.dp-stats {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
-				gap: 22px;
-				max-width: 1000px;
+				gap: 16px;
+				max-width: 820px;
 				margin: 0 auto
 			}
 
@@ -5963,12 +6063,12 @@
 				background: #fff;
 				border-radius: 10px;
 				border-top: 4px solid var(--c);
-				padding: 16px 14px;
+				padding: 14px 12px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				gap: 14px;
-				box-shadow: 0 8px 20px rgba(15, 23, 42, .08)
+				gap: 12px;
+				box-shadow: 0 6px 16px rgba(120, 90, 20, .10)
 			}
 
 			.dp-stat i {
