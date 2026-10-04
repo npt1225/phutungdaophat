@@ -12,6 +12,7 @@
 	<meta name="keywords" content="phụ tùng Đào Phát, CWORKS, phụ tùng xe máy, vòng bi, bố thắng, dây curoa, bugi, nhớt xe máy, báo giá sỉ phụ tùng" />
 
 	<link rel="canonical" href="https://phutungdaophat.com/" />
+	<link rel="icon" type="image/png" href="https://phutungdaophat.com/images/favicon.png" />
 	<meta name='revisit-after' content='1 days' />
 	<meta name="robots" content="noodp,index,follow" />
 	<!-- ================= Favicon ================== -->
@@ -156,8 +157,13 @@
 
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Phụ Tùng Nhập Khẩu Đào Phát">
-	<meta property="og:image" content="https://phutungdaophat.com/images/logo-dao-phat-text.png">
-	<meta property="og:image:secure_url" content="https://phutungdaophat.com/images/logo-dao-phat-text.png">
+	<meta property="og:image" content="https://phutungdaophat.com/images/logo-dao-phat-text-1.png">
+	<meta property="og:image:secure_url" content="https://phutungdaophat.com/images/logo-dao-phat-text-1.png">
+	<meta property="og:image:alt" content="Logo Phụ Tùng Đào Phát">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Phụ Tùng Nhập Khẩu Đào Phát">
+	<meta name="twitter:description" content="Đối tác phân phối CWORKS (Toyota Tsusho) tại miền Nam – vòng bi, bố thắng, dây curoa, bugi, nhớt xe máy. Báo giá sỉ cho đại lý, gara.">
+	<meta name="twitter:image" content="https://phutungdaophat.com/images/logo-dao-phat-text-1.png">
 
 	<meta property="og:description" content="Đối tác phân phối CWORKS (Toyota Tsusho) tại miền Nam – vòng bi, bố thắng, dây curoa, bugi, nhớt xe máy. Báo giá sỉ cho đại lý, gara.">
 	<meta property="og:url" content="https://phutungdaophat.com/">
@@ -6469,27 +6475,27 @@
 	.dp-navy-card .grid-cols-2 > div i { font-size: 20px !important }
 	.dp-navy-card .grid-cols-2 > div span { font-size: clamp(13.5px, 1.05vw, 17px) !important }
 
-	/* Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... to hơn bản gốc nhưng vẫn vừa 1 hàng */
-	@media (min-width: 992px) {
-		.header-menu ul.item_big { gap: 4px !important; flex-wrap: nowrap !important }
-		.header-menu ul.item_big>li.nav-item>a.a-img {
-			font-size: clamp(17px, 1.35vw, 24px) !important;
-			letter-spacing: .4px !important;
-			padding: 20px clamp(12px, 1.1vw, 22px) !important;
-			white-space: nowrap
-		}
-		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 28px !important }
-		.header-menu ul.item_big>li.nav-item>.fa-caret-down { font-size: 16px !important }
-	}
-	@media (min-width: 992px) and (max-width: 1199.98px) {
-		.header-menu ul.item_big>li.nav-item>a.a-img {
-			font-size: 15.5px !important;
-			padding: 20px 10px !important
-		}
-		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 24px !important }
-	}
+	/* Thanh menu: co giãn theo độ rộng màn hình để luôn đủ chữ trên 1 hàng (laptop 1280-1536px, màn lớn) */
+@media (min-width: 992px) {
+.header-menu { --dp-nav-px: clamp(8px, .75vw, 16px) }
+.header-menu ul.item_big { gap: 2px !important; flex-wrap: nowrap !important; justify-content: center !important }
+.header-menu ul.item_big>li.nav-item { flex: 0 0 auto !important }
+.header-menu ul.item_big>li.nav-item>a.a-img {
+font-size: clamp(13.5px, 1.1vw, 18px) !important;
+letter-spacing: .2px !important;
+white-space: nowrap
+}
+/* các mục thường */
+.header-menu ul.item_big>li.nav-item:not(.has-mega)>a.a-img { padding: 20px var(--dp-nav-px) !important }
+.header-menu ul.item_big>li.nav-item:not(.has-mega)>a.a-img::after { left: var(--dp-nav-px) !important; right: var(--dp-nav-px) !important }
+/* mục Cworks có mũi tên riêng: chỉ thu hẹp khoảng cách hai bên */
+.header-menu ul.item_big>li.has-mega { padding: 18px var(--dp-nav-px) !important }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+.header-menu ul.item_big>li.nav-item>a.a-img { font-size: 13px !important; letter-spacing: 0 !important }
+}
 
-	/* Footer: làm hẹp lại */
+/* Footer: làm hẹp lại */
 	footer.dp-footer-slim { padding-top: 14px !important; padding-bottom: 10px !important }
 	.dp-footer-slim .border-b { padding-bottom: 6px !important; margin-bottom: 10px !important }
 	.dp-footer-slim .grid { gap: 12px 24px !important }

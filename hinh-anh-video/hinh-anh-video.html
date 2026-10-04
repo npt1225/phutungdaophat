@@ -5,15 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <title>Hình Ảnh & Video - Phụ Tùng Đào Phát</title>
+    <title>Hình Ảnh &amp; Video Phụ Tùng CWORKS - Phụ Tùng Đào Phát</title>
 
     <!-- ================= Page description ================== -->
     <meta name="description"
-        content="Tin tức Phụ Tùng Đào Phát cập nhật thông tin về phụ tùng xe máy, phụ tùng ô tô, phụ tùng Honda Thái Lan, kinh nghiệm lựa chọn và bảo dưỡng phụ tùng xe.">
+        content="Xem hình ảnh, video sản phẩm phụ tùng chính hãng CWORKS (Toyota Tsusho) và hoạt động thực tế tại Phụ Tùng Đào Phát – đối tác phân phối tại miền Nam. Báo giá sỉ cho đại lý, gara. Hotline 0978 229 468.">
 
     <!-- ================= Meta ================== -->
     <meta name="keywords"
-        content="tin tức phụ tùng xe máy, tin tức phụ tùng ô tô, phụ tùng Honda, phụ tùng Honda Thái Lan, kinh nghiệm phụ tùng xe máy, Phụ Tùng Đào Phát" />
+        content="hình ảnh video CWORKS, video phụ tùng xe máy, hình ảnh phụ tùng CWORKS, CWORKS Toyota Tsusho, phụ tùng Đào Phát, báo giá sỉ phụ tùng" />
 
     <link rel="canonical" href="https://phutungdaophat.com/hinh-anh-video.html" />
 
@@ -28,14 +28,14 @@
 
     <meta property="og:type" content="website">
 
-    <meta property="og:title" content="Hình Ảnh & Video - Phụ Tùng Đào Phát">
+    <meta property="og:title" content="Hình Ảnh &amp; Video Phụ Tùng CWORKS - Phụ Tùng Đào Phát">
 
     <meta property="og:image" content="https://phutungdaophat.com/images/logo-dao-phat-text.png">
 
     <meta property="og:image:secure_url" content="https://phutungdaophat.com/images/logo-dao-phat-text.png">
 
     <meta property="og:description"
-        content="Cập nhật tin tức, kiến thức và kinh nghiệm về phụ tùng xe máy, phụ tùng ô tô và phụ tùng Honda nhập khẩu Thái Lan tại Phụ Tùng Đào Phát.">
+        content="Hình ảnh, video sản phẩm CWORKS (Toyota Tsusho) và hoạt động thực tế tại Phụ Tùng Đào Phát – báo giá sỉ cho đại lý, gara.">
 
     <meta property="og:url" content="https://phutungdaophat.com/hinh-anh-video.html">
 
@@ -4416,25 +4416,28 @@
 		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue { font-size: clamp(10.5px, .68vw, 12.5px) !important; padding: 5px 9px !important }
 	}
 
-	/* Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... to hơn bản gốc nhưng vẫn vừa 1 hàng */
-	@media (min-width: 992px) {
-		.header-menu ul.item_big { gap: 4px !important; flex-wrap: nowrap !important }
-		.header-menu ul.item_big>li.nav-item>a.a-img {
-			font-size: clamp(17px, 1.35vw, 24px) !important;
-			letter-spacing: .4px !important;
-			padding: 20px clamp(12px, 1.1vw, 22px) !important;
-			white-space: nowrap
-		}
-		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 28px !important }
-		.header-menu ul.item_big>li.nav-item>.fa-caret-down { font-size: 16px !important }
-	}
-	@media (min-width: 992px) and (max-width: 1199.98px) {
-		.header-menu ul.item_big>li.nav-item>a.a-img {
-			font-size: 15.5px !important;
-			padding: 20px 10px !important
-		}
-		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 24px !important }
-	}
+	/* Thanh menu: co giãn theo độ rộng màn hình để luôn đủ chữ trên 1 hàng (laptop 1280-1536px, màn lớn) */
+@media (min-width: 992px) {
+.header-menu { --dp-nav-px: clamp(8px, .75vw, 16px) }
+.header-menu ul.item_big { gap: 2px !important; flex-wrap: nowrap !important; justify-content: center !important }
+.header-menu ul.item_big>li.nav-item { flex: 0 0 auto !important }
+.header-menu ul.item_big>li.nav-item>a.a-img {
+font-size: clamp(13.5px, 1.1vw, 18px) !important;
+letter-spacing: .2px !important;
+white-space: nowrap
+}
+/* các mục thường */
+.header-menu ul.item_big>li.nav-item:not(.has-mega)>a.a-img { padding: 20px var(--dp-nav-px) !important }
+.header-menu ul.item_big>li.nav-item:not(.has-mega)>a.a-img::after { left: var(--dp-nav-px) !important; right: var(--dp-nav-px) !important }
+/* mục Cworks có mũi tên riêng: chỉ thu hẹp khoảng cách hai bên */
+.header-menu ul.item_big>li.has-mega { padding: 18px var(--dp-nav-px) !important }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+.header-menu ul.item_big>li.nav-item>a.a-img { font-size: 13px !important; letter-spacing: 0 !important }
+}
+
+/* h1 trang hình ảnh/video: cho phép xuống dòng khi chứa từ khoá SEO */
+	.gt-hero h1 { white-space: normal !important }
 
 	/* Footer: làm hẹp lại */
 	footer.dp-footer-slim { padding-top: 14px !important; padding-bottom: 10px !important }
@@ -5338,7 +5341,7 @@
                                         </ul>
 
                                     </li>
-                                    <li class="nav-item  ">
+                                    <li class="nav-item active">
                                         <a class="a-img" href="../hinh-anh-video/hinh-anh-video.html"
                                             title="Hình ảnh video">
                                             Hình ảnh/Video
@@ -5380,9 +5383,6 @@
             </div>
         </div>
     </header>
-
-
-    <h1 class="d-none"> - </h1>
     <style>
         :root {
             --mainColor: #ffb700;
@@ -6231,7 +6231,7 @@
             <div class="gt-wrap gt-hero-grid">
                 <div class="gt-hero-txt">
                     <span class="gt-eyebrow">CWORKS × Đào Phát</span>
-                    <h1>Hình ảnh &amp; Video</h1>
+                    <h1>Hình ảnh &amp; Video phụ tùng CWORKS</h1>
                     <p>Khám phá sản phẩm phụ tùng chính hãng và những khoảnh khắc hoạt động thực tế tại Đào Phát qua thư
                         viện hình ảnh, video sinh động.</p>
                     <div class="gt-hero-btns">

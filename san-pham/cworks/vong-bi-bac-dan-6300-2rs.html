@@ -5,15 +5,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <title>Vòng Bi 6300-2RS Chính Hãng - Phụ Tùng Đào Phát</title>
+    <title>Vòng Bi 6300-2RS CWORKS Chính Hãng - Phụ Tùng Đào Phát</title>
 
     <!-- ================= Page description ================== -->
     <meta name="description"
-        content="Vòng bi 6300-2RS chính hãng CWORKS, chất lượng cao, phớt cao su 2 mặt, độ bền tốt, phù hợp nhiều ứng dụng xe máy, ô tô và cơ khí. Liên hệ Phụ Tùng Đào Phát để được tư vấn.">
+        content="Vòng bi 6300-2RS CWORKS (Toyota Tsusho) chính hãng, phớt cao su 2 mặt, bền bỉ cho xe máy, ô tô. Phụ Tùng Đào Phát báo giá sỉ cho đại lý, gara. Hotline 0978 229 468.">
 
     <!-- ================= Meta ================== -->
     <meta name="keywords"
-        content="vòng bi 6300-2RS, bạc đạn 6300-2RS, 6300-2RS CWORKS, vòng bi 6300, bạc đạn 6300, mua vòng bi 6300-2RS, phụ tùng Đào Phát" />
+        content="vòng bi 6300-2RS, bạc đạn 6300-2RS, 6300-2RS CWORKS, vòng bi 6300, bạc đạn 6300, mua vòng bi 6300-2RS, phụ tùng Đào Phát, báo giá sỉ vòng bi" />
 
     <link rel="canonical" href="https://phutungdaophat.com/san-pham/cworks/vong-bi-bac-dan-6300-2rs.html" />
 
@@ -26,14 +26,14 @@
     <!-- ================= Open Graph ================== -->
     <meta property="og:type" content="product">
 
-    <meta property="og:title" content="Vòng Bi 6300-2RS Chính Hãng - Phụ Tùng Đào Phát">
+    <meta property="og:title" content="Vòng Bi 6300-2RS CWORKS Chính Hãng - Phụ Tùng Đào Phát">
 
     <meta property="og:image" content="../../images/shipment picture/Bearings/6300-2RS/6300-2RS(3).jpg">
 
     <meta property="og:image:secure_url" content="../../images/shipment picture/Bearings/6300-2RS/6300-2RS(3).jpg">
 
     <meta property="og:description"
-        content="Vòng bi 6300-2RS chính hãng CWORKS, phớt cao su 2 mặt, chất lượng cao, độ bền tốt. Liên hệ Phụ Tùng Đào Phát để được tư vấn và báo giá.">
+        content="Vòng bi 6300-2RS CWORKS (Toyota Tsusho) chính hãng tại Phụ Tùng Đào Phát – phớt cao su 2 mặt. Báo giá sỉ cho đại lý, gara.">
 
     <meta property="og:url" content="https://phutungdaophat.com/san-pham/cworks/vong-bi-bac-dan-6300-2rs.html">
 
@@ -4196,27 +4196,37 @@
 		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue { font-size: clamp(10.5px, .68vw, 12.5px) !important; padding: 5px 9px !important }
 	}
 
-	/* Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... to hơn bản gốc nhưng vẫn vừa 1 hàng */
-	@media (min-width: 992px) {
-		.header-menu ul.item_big { gap: 4px !important; flex-wrap: nowrap !important }
-		.header-menu ul.item_big>li.nav-item>a.a-img {
-			font-size: clamp(17px, 1.35vw, 24px) !important;
-			letter-spacing: .4px !important;
-			padding: 20px clamp(12px, 1.1vw, 22px) !important;
-			white-space: nowrap
-		}
-		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 28px !important }
-		.header-menu ul.item_big>li.nav-item>.fa-caret-down { font-size: 16px !important }
-	}
-	@media (min-width: 992px) and (max-width: 1199.98px) {
-		.header-menu ul.item_big>li.nav-item>a.a-img {
-			font-size: 15.5px !important;
-			padding: 20px 10px !important
-		}
-		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 24px !important }
-	}
+	/* Thanh menu: co giãn theo độ rộng màn hình để luôn đủ chữ trên 1 hàng (laptop 1280-1536px, màn lớn) */
+@media (min-width: 992px) {
+.header-menu { --dp-nav-px: clamp(8px, .75vw, 16px) }
+.header-menu ul.item_big { gap: 2px !important; flex-wrap: nowrap !important; justify-content: center !important }
+.header-menu ul.item_big>li.nav-item { flex: 0 0 auto !important }
+.header-menu ul.item_big>li.nav-item>a.a-img {
+font-size: clamp(13.5px, 1.1vw, 18px) !important;
+letter-spacing: .2px !important;
+white-space: nowrap
+}
+/* các mục thường */
+.header-menu ul.item_big>li.nav-item:not(.has-mega)>a.a-img { padding: 20px var(--dp-nav-px) !important }
+.header-menu ul.item_big>li.nav-item:not(.has-mega)>a.a-img::after { left: var(--dp-nav-px) !important; right: var(--dp-nav-px) !important }
+/* mục Cworks có mũi tên riêng: chỉ thu hẹp khoảng cách hai bên */
+.header-menu ul.item_big>li.has-mega { padding: 18px var(--dp-nav-px) !important }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+.header-menu ul.item_big>li.nav-item>a.a-img { font-size: 13px !important; letter-spacing: 0 !important }
+}
 
-	/* Footer: làm hẹp lại */
+/* Trang đang xem thuộc mục Cworks: giữ màu vàng giống các mục khác */
+@media (min-width: 992px) {
+.header-menu ul.item_big>li.has-mega.active { background: rgba(255, 183, 0, .10) !important; border-radius: 8px 8px 0 0 }
+.header-menu ul.item_big>li.has-mega.active>a.a-img,
+.header-menu ul.item_big>li.has-mega.active:not(.is-open)>a.a-img,
+.header-menu ul.item_big>li.has-mega.active:not(.is-open):hover>a.a-img { color: var(--nav-accent) !important; background: transparent !important; border-radius: 0 !important }
+.header-menu ul.item_big>li.has-mega.active:not(.is-open)>a.a-img::after,
+.header-menu ul.item_big>li.has-mega.active:not(.is-open):hover>a.a-img::after { transform: scaleX(1) !important }
+}
+
+/* Footer: làm hẹp lại */
 	footer.dp-footer-slim { padding-top: 14px !important; padding-bottom: 10px !important }
 	.dp-footer-slim .border-b { padding-bottom: 6px !important; margin-bottom: 10px !important }
 	.dp-footer-slim .grid { gap: 12px 24px !important }
@@ -4557,7 +4567,7 @@
                                             Giới thiệu
                                         </a>
                                     </li>
-                                    <li class="nav-item has-mega">
+                                    <li class="nav-item has-mega active">
 
                                         <a class="a-img caret-down" href="../../danh-muc/cworks.html" title="Cworks">
                                             Phụ tùng xe máy Cworks
@@ -5162,10 +5172,6 @@
             </div>
         </div>
     </header>
-
-
-
-    <h1 class="d-none"> - </h1>
     <style>
         /* ===== GRID SẢN PHẨM - 4 SẢN PHẨM / DÒNG ===== */
         .section_product_1 .product1-swiper {
@@ -6261,7 +6267,7 @@
                             đạn</span>
                         <span class="pdp-tag pdp-tag-ok"><i></i>Còn hàng</span>
                     </div>
-                    <h1 class="pdp-title" itemprop="name">VÒNG BI 6300-2RS</h1>
+                    <h1 class="pdp-title" itemprop="name" data-name="VÒNG BI 6300-2RS">VÒNG BI 6300-2RS CWORKS CHÍNH HÃNG</h1>
                     <div class="pdp-meta">
                         <div class="pdp-meta-item"><i class="fa-solid fa-barcode"></i><span>Mã sản
                                 phẩm</span><strong>6300-2RS</strong></div>
@@ -10005,7 +10011,7 @@
                 return isNaN(v) ? 1 : Math.min(999, Math.max(1, v));
             }
             function item() {
-                var name = document.querySelector('h1.pdp-title').textContent.replace(/\s+/g, ' ').trim();
+                var name = (document.querySelector('h1.pdp-title').getAttribute('data-name') || document.querySelector('h1.pdp-title').textContent).replace(/\s+/g, ' ').trim();
                 var sku = (document.querySelector('.pdp-meta-item strong') || {}).textContent || '';
                 input().value = q();
                 return { id: sku || name, name: name, sku: sku.trim(), image: imgs[0].src, quantity: q() };

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Tin Tức Phụ Tùng Xe Máy & Ô Tô - Phụ Tùng Đào Phát</title>
 
@@ -30,9 +30,9 @@
 
 	<meta property="og:title" content="Tin Tức Phụ Tùng Xe Máy & Ô Tô - Phụ Tùng Đào Phát">
 
-	<meta property="og:image" content="https://phutungdaophat.com/images/logo-dao-phat-text.png">
+	<meta property="og:image" content="https://phutungdaophat.com/images/logo-dao-phat-text-1.png">
 
-	<meta property="og:image:secure_url" content="https://phutungdaophat.com/images/logo-dao-phat-text.png">
+	<meta property="og:image:secure_url" content="https://phutungdaophat.com/images/logo-dao-phat-text-1.png">
 
 	<meta property="og:description"
 		content="Cập nhật tin tức, kiến thức và kinh nghiệm về phụ tùng xe máy, phụ tùng ô tô và phụ tùng Honda nhập khẩu Thái Lan tại Phụ Tùng Đào Phát.">
@@ -4380,27 +4380,37 @@
 		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue { font-size: clamp(10.5px, .68vw, 12.5px) !important; padding: 5px 9px !important }
 	}
 
-	/* Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... to hơn bản gốc nhưng vẫn vừa 1 hàng */
-	@media (min-width: 992px) {
-		.header-menu ul.item_big { gap: 4px !important; flex-wrap: nowrap !important }
-		.header-menu ul.item_big>li.nav-item>a.a-img {
-			font-size: clamp(17px, 1.35vw, 24px) !important;
-			letter-spacing: .4px !important;
-			padding: 20px clamp(12px, 1.1vw, 22px) !important;
-			white-space: nowrap
-		}
-		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 28px !important }
-		.header-menu ul.item_big>li.nav-item>.fa-caret-down { font-size: 16px !important }
-	}
-	@media (min-width: 992px) and (max-width: 1199.98px) {
-		.header-menu ul.item_big>li.nav-item>a.a-img {
-			font-size: 15.5px !important;
-			padding: 20px 10px !important
-		}
-		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 24px !important }
-	}
+	/* Thanh menu: co giãn theo độ rộng màn hình để luôn đủ chữ trên 1 hàng (laptop 1280-1536px, màn lớn) */
+@media (min-width: 992px) {
+.header-menu { --dp-nav-px: clamp(8px, .75vw, 16px) }
+.header-menu ul.item_big { gap: 2px !important; flex-wrap: nowrap !important; justify-content: center !important }
+.header-menu ul.item_big>li.nav-item { flex: 0 0 auto !important }
+.header-menu ul.item_big>li.nav-item>a.a-img {
+font-size: clamp(13.5px, 1.1vw, 18px) !important;
+letter-spacing: .2px !important;
+white-space: nowrap
+}
+/* các mục thường */
+.header-menu ul.item_big>li.nav-item:not(.has-mega)>a.a-img { padding: 20px var(--dp-nav-px) !important }
+.header-menu ul.item_big>li.nav-item:not(.has-mega)>a.a-img::after { left: var(--dp-nav-px) !important; right: var(--dp-nav-px) !important }
+/* mục Cworks có mũi tên riêng: chỉ thu hẹp khoảng cách hai bên */
+.header-menu ul.item_big>li.has-mega { padding: 18px var(--dp-nav-px) !important }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+.header-menu ul.item_big>li.nav-item>a.a-img { font-size: 13px !important; letter-spacing: 0 !important }
+}
 
-	/* Footer: làm hẹp lại */
+/* Trang đang xem thuộc mục Cworks: giữ màu vàng giống các mục khác */
+@media (min-width: 992px) {
+.header-menu ul.item_big>li.has-mega.active { background: rgba(255, 183, 0, .10) !important; border-radius: 8px 8px 0 0 }
+.header-menu ul.item_big>li.has-mega.active>a.a-img,
+.header-menu ul.item_big>li.has-mega.active:not(.is-open)>a.a-img,
+.header-menu ul.item_big>li.has-mega.active:not(.is-open):hover>a.a-img { color: var(--nav-accent) !important; background: transparent !important; border-radius: 0 !important }
+.header-menu ul.item_big>li.has-mega.active:not(.is-open)>a.a-img::after,
+.header-menu ul.item_big>li.has-mega.active:not(.is-open):hover>a.a-img::after { transform: scaleX(1) !important }
+}
+
+/* Footer: làm hẹp lại */
 	footer.dp-footer-slim { padding-top: 14px !important; padding-bottom: 10px !important }
 	.dp-footer-slim .border-b { padding-bottom: 6px !important; margin-bottom: 10px !important }
 	.dp-footer-slim .grid { gap: 12px 24px !important }
@@ -5309,7 +5319,7 @@
 										</a>
 									</li>
 
-									<li class="nav-item  ">
+									<li class="nav-item active  ">
 										<a class="a-img" href="../tin-tuc/tin-tuc.html" title="Tin tức">
 											Tin Tức
 										</a>
@@ -5346,7 +5356,6 @@
 	</header>
 
 
-	<h1 class="d-none"> - </h1>
 	<style>
 		:root {
 			--mainColor: #ffb700;
@@ -6835,7 +6844,7 @@
 		</div>
 	</footer>
 
-	<a href="../index.html#" class="backtop" title="Lên đầu trang">
+	<a href="#" class="backtop" title="Lên đầu trang">
 		<svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-up" role="img"
 			xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-angle-up fa-w-10">
 			<path fill="currentColor"
