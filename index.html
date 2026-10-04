@@ -6428,6 +6428,74 @@
 			}
 		</style>
 
+		<!-- ===== CHỈNH THEO YÊU CẦU: header to hơn, khối giới thiệu hẹp + nền vàng kem, khối xanh tràn viền + chữ lớn, footer hẹp ===== -->
+<style id="dp-user-tweaks">
+	@media (min-width: 992px) {
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child img { height: 60px !important; width: auto }
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child .font-heading { font-size: clamp(28px, 1.8vw, 34px) !important }
+		.header.header-index .max-w-\[1380px\]>.flex>a:first-child span:last-child {
+			font-size: clamp(12.5px, .82vw, 15px) !important; font-weight: 800 !important; letter-spacing: 0 !important; margin-top: 4px !important }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) { height: 62px !important; padding-left: 14px !important; padding-right: 14px !important; gap: 8px }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) img { height: 50px !important; width: auto }
+		.header.header-index .max-w-\[1380px\]>.flex>div:nth-child(3) .bg-brandBlue { font-size: clamp(10.5px, .68vw, 12.5px) !important; padding: 5px 9px !important }
+	}
+
+	/* Khối "CWORKS Toàn Cầu x Đào Phát": thấp lại + nền vàng kem nhạt */
+	@media (min-width: 768px) {
+		.dp-intro { padding: 16px 20px 20px !important }
+		.dp-intro h2 { margin-bottom: 12px !important }
+		.dp-brand { padding: 12px 18px 10px !important }
+		.dp-brand .lg { height: 50px !important }
+		.dp-brand .lg img { max-height: 50px !important }
+		.dp-brand p { margin-top: 8px !important }
+		.dp-quote { margin: 10px auto !important }
+		.dp-quote b { font-size: 40px !important }
+		.dp-stat { padding: 10px 14px !important }
+	}
+	.dp-intro { background: linear-gradient(180deg, #fffdf4 0%, #fdf5dc 100%) !important }
+
+	/* Khối xanh "CWORKS – Giải pháp phụ tùng toàn cầu": tràn hết chiều ngang, chữ lớn hơn */
+	.dp-navy-sec { max-width: none !important; width: 100%; padding-left: 0 !important; padding-right: 0 !important }
+	.dp-navy-card {
+		border-radius: 0 !important; border-left: 0 !important; border-right: 0 !important;
+		padding: clamp(28px, 4vw, 56px) max(16px, calc((100% - 1280px) / 2 + 24px)) !important
+	}
+	.dp-navy-card .max-w-3xl { max-width: 1100px !important }
+	.dp-navy-card .inline-flex { font-size: clamp(13px, 1vw, 16px) !important }
+	.dp-navy-card h3 { font-size: clamp(26px, 3.3vw, 46px) !important; line-height: 1.15 !important }
+	.dp-navy-card .grid > p { font-size: clamp(16px, 1.3vw, 20px) !important; line-height: 1.7 !important; padding: 24px !important }
+	.dp-navy-card .grid > p strong { font-weight: 800 !important }
+	.dp-navy-card .grid-cols-2 > div { padding: 16px 10px !important }
+	.dp-navy-card .grid-cols-2 > div i { font-size: 20px !important }
+	.dp-navy-card .grid-cols-2 > div span { font-size: clamp(13.5px, 1.05vw, 17px) !important }
+
+	/* Thanh menu: TRANG CHỦ / GIỚI THIỆU / PHỤ TÙNG XE MÁY CWORKS ... to hơn bản gốc nhưng vẫn vừa 1 hàng */
+	@media (min-width: 992px) {
+		.header-menu ul.item_big { gap: 4px !important; flex-wrap: nowrap !important }
+		.header-menu ul.item_big>li.nav-item>a.a-img {
+			font-size: clamp(17px, 1.35vw, 24px) !important;
+			letter-spacing: .4px !important;
+			padding: 20px clamp(12px, 1.1vw, 22px) !important;
+			white-space: nowrap
+		}
+		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 28px !important }
+		.header-menu ul.item_big>li.nav-item>.fa-caret-down { font-size: 16px !important }
+	}
+	@media (min-width: 992px) and (max-width: 1199.98px) {
+		.header-menu ul.item_big>li.nav-item>a.a-img {
+			font-size: 15.5px !important;
+			padding: 20px 10px !important
+		}
+		.header-menu ul.item_big>li.has-mega>a.a-img { padding-right: 24px !important }
+	}
+
+	/* Footer: làm hẹp lại */
+	footer.dp-footer-slim { padding-top: 14px !important; padding-bottom: 10px !important }
+	.dp-footer-slim .border-b { padding-bottom: 6px !important; margin-bottom: 10px !important }
+	.dp-footer-slim .grid { gap: 12px 24px !important }
+	.dp-footer-slim p.mt-1 { margin-top: 2px !important; line-height: 1.4 !important }
+	.dp-footer-slim .mt-8 { margin-top: 12px !important; padding-top: 10px !important }
+</style>
 		<section id="partner-section" class="dp-intro">
 			<div class="dp-intro-in">
 				<h2>CWORKS Toàn Cầu <span class="x">×</span> <span class="g"><span class="ul">Đào Phát</span> Tại Miền
@@ -6459,9 +6527,9 @@
 			</div>
 		</section>
 
-		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+		<section class="dp-navy-sec max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
 			<div
-				class="bg-gradient-to-br from-brandNavyDark via-brandNavy to-slate-900 text-white rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-800">
+				class="dp-navy-card bg-gradient-to-br from-brandNavyDark via-brandNavy to-slate-900 text-white rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-800">
 
 				<div class="max-w-3xl mb-8">
 					<div
@@ -6559,7 +6627,7 @@
 	</main>
 
 	<!-- FOOTER SECTION -->
-	<footer class="bg-white border-t border-slate-200 pt-8 pb-10">
+	<footer class="dp-footer-slim bg-white border-t border-slate-200 pt-8 pb-10">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 			<div class="border-b border-slate-100 pb-4 mb-6">
