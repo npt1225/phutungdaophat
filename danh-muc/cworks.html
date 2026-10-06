@@ -7672,85 +7672,108 @@ white-space: nowrap
     </section>
 
 
-    <footer class="dp-footer-slim bg-white border-t border-slate-200 pt-8 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<style id="dp-footer-sync">
+/* ===== Footer: hotline + email 1 hàng, dòng chữ xanh dưới cùng to + đậm ===== */
+.dp-footer-slim .dp-contact{grid-column:1/-1}
+.dp-footer-slim .dp-contact-in{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 48px}
+.dp-footer-slim .dp-contact-in .dp-c{display:flex;align-items:baseline;gap:10px;flex-wrap:nowrap}
+.dp-footer-slim .dp-contact-in strong{margin:0 !important;display:inline !important;white-space:nowrap}
+.dp-footer-slim .dp-contact-in a{display:inline !important;margin:0 !important;white-space:nowrap;word-break:normal !important}
+.dp-footer-slim .dp-copy{font-size:clamp(14px,1.25vw,17px) !important;font-weight:800 !important;line-height:1.5}
+@media (max-width:640px){.dp-footer-slim .dp-contact-in .dp-c{flex-wrap:wrap}.dp-footer-slim .dp-contact-in a{white-space:normal;word-break:break-all !important}}
+</style>
+<style id="dp-footer-layout">
+.dp-footer-slim .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:14px 40px !important}
+@media (max-width:991px){.dp-footer-slim .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
+@media (max-width:640px){.dp-footer-slim .grid{grid-template-columns:1fr !important}}
+.dp-footer-slim .dp-contact{grid-column:1/-1 !important;align-items:center !important;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:10px 18px;margin-top:4px}
+.dp-footer-slim .dp-contact>div:first-child{margin-top:0 !important}
+.dp-footer-slim .dp-contact-in{flex:1;display:flex;flex-wrap:wrap;align-items:center !important;gap:6px 64px !important}
+.dp-footer-slim .dp-contact-in .dp-c{align-items:center !important}
+.dp-footer-slim .dp-contact-in a.text-lg{font-size:20px !important}
+.dp-footer-slim .dp-copy{margin-top:14px !important;padding-top:12px !important;text-align:center;
+ font-size:clamp(10px,calc((100vw - 64px)/88),15.5px) !important;font-weight:800 !important;white-space:nowrap;letter-spacing:0}
+@media (max-width:899px){.dp-footer-slim .dp-copy{white-space:normal;font-size:14px !important;line-height:1.5}}
+</style>
+	<footer class="dp-footer-slim bg-white border-t border-slate-200 pt-8 pb-10">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="border-b border-slate-100 pb-4 mb-6">
-                <h3 class="font-extrabold font-heading text-base sm:text-lg text-brandGreen uppercase tracking-tight">
-                    CÔNG TY TNHH THƯƠNG MẠI PHỤ TÙNG ĐÀO PHÁT
-                </h3>
-            </div>
+			<div class="border-b border-slate-100 pb-4 mb-6">
+				<h3 class="font-extrabold font-heading text-base sm:text-lg text-brandGreen uppercase tracking-tight">
+					CÔNG TY TNHH THƯƠNG MẠI PHỤ TÙNG ĐÀO PHÁT
+				</h3>
+			</div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-[15px] text-slate-600">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-[15px] text-slate-600">
 
-                <div class="flex items-start space-x-3">
-                    <div
-                        class="w-8 h-8 bg-red-50 text-brandRed rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <div>
-                        <strong class="block font-bold text-slate-900 uppercase text-[14px]">VĂN PHÒNG LÀM VIỆC</strong>
-                        <p class="mt-1 leading-relaxed text-slate-600">
-                            Số 257, Đường III, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ
-                            Chí
-                            Minh.
-                        </p>
-                    </div>
-                </div>
+				<div class="flex items-start space-x-3">
+					<div
+						class="w-8 h-8 bg-red-50 text-brandRed rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						<i class="fa-solid fa-location-dot"></i>
+					</div>
+					<div>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">VĂN PHÒNG LÀM VIỆC</strong>
+						<p class="mt-1 leading-relaxed text-slate-600">
+							Số 257, Đường III, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ
+							Chí
+							Minh.
+						</p>
+					</div>
+				</div>
 
-                <div class="flex items-start space-x-3">
-                    <div
-                        class="w-8 h-8 bg-red-50 text-brandRed rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                        <i class="fa-solid fa-warehouse"></i>
-                    </div>
-                    <div>
-                        <strong class="block font-bold text-slate-900 uppercase text-[14px]">KHO HÀNG</strong>
-                        <p class="mt-1 leading-relaxed text-slate-600">
-                            Số 52, Đường 11, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ Chí
-                            Minh.
-                        </p>
-                    </div>
-                </div>
+				<div class="flex items-start space-x-3">
+					<div
+						class="w-8 h-8 bg-red-50 text-brandRed rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						<i class="fa-solid fa-warehouse"></i>
+					</div>
+					<div>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">KHO HÀNG</strong>
+						<p class="mt-1 leading-relaxed text-slate-600">
+							Số 52, Đường 11, Khu dân cư Khang Điền, Đường Dương Đình Hội, Phường Phước Long, TP. Hồ Chí
+							Minh.
+						</p>
+					</div>
+				</div>
 
-                <div class="flex items-start space-x-3">
-                    <div
-                        class="w-8 h-8 bg-blue-50 text-brandBlue rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                        <i class="fa-solid fa-clock"></i>
-                    </div>
-                    <div>
-                        <strong class="block font-bold text-slate-900 uppercase text-[14px]">THỜI GIAN LÀM VIỆC</strong>
-                        <p class="mt-1 text-slate-600">T2 – T7 (8h00 – 17h00)</p>
-                    </div>
-                </div>
+				<div class="flex items-start space-x-3">
+					<div
+						class="w-8 h-8 bg-blue-50 text-brandBlue rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						<i class="fa-solid fa-clock"></i>
+					</div>
+					<div>
+						<strong class="block font-bold text-slate-900 uppercase text-[14px]">THỜI GIAN LÀM VIỆC</strong>
+						<p class="mt-1 text-slate-600">T2 – T7 (8h00 – 17h00)</p>
+					</div>
+				</div>
 
-                <div class="flex items-start space-x-3">
-                    <div
-                        class="w-8 h-8 bg-green-50 text-brandGreen rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <div>
-                        <strong class="block font-bold text-slate-900 uppercase text-[14px]">HOTLINE / ZALO</strong>
-                        <a href="tel:0978229468"
-                            class="text-brandRed font-black text-lg hover:underline block my-0.5">0978 229 468 -  0932 743 185</a>
-                        <strong class="block font-bold text-slate-900 uppercase text-[13px] mt-2">EMAIL</strong>
-                        <a href="mailto:phutungnhapkhaudaophat@gmail.com"
-                            class="text-slate-600 hover:text-brandGreen text-[15px] break-all">
-                            phutungnhapkhaudaophat@gmail.com
-                        </a>
-                    </div>
-                </div>
+				<div class="flex items-start space-x-3 dp-contact">
+					<div
+						class="w-8 h-8 bg-green-50 text-brandGreen rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						<i class="fa-solid fa-headset"></i>
+					</div>
+					<div class="dp-contact-in">
+						<div class="dp-c">
+							<strong class="font-bold text-slate-900 uppercase text-[14px]">HOTLINE / ZALO:</strong>
+							<a href="tel:0978229468" class="text-brandRed font-black text-lg hover:underline">0978 229 468 - 0932 743 185</a>
+						</div>
+						<div class="dp-c">
+							<strong class="font-bold text-slate-900 uppercase text-[14px]">EMAIL:</strong>
+							<a href="mailto:phutungnhapkhaudaophat@gmail.com" class="text-slate-600 hover:text-brandGreen text-[15px]">phutungnhapkhaudaophat@gmail.com</a>
+						</div>
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="mt-8 pt-6 border-t border-slate-100 text-center text-[13px] font-semibold"
-                style="color:#006838">
-                &copy; 2026 CÔNG TY TNHH THƯƠNG MẠI PHỤ TÙNG ĐÀO PHÁT. Tất cả quyền được bảo lưu. Nhà phân phối chính
-                thức CWORKS
-                Toyota Tsusho tại Miền Nam.
-            </div>
+			<div class="mt-8 pt-6 border-t border-slate-100 text-center text-[13px] font-semibold dp-copy"
+				style="color:#006838">
+				&copy; 2026 CÔNG TY TNHH THƯƠNG MẠI PHỤ TÙNG ĐÀO PHÁT. Tất cả quyền được bảo lưu. Nhà phân phối chính
+				thức CWORKS
+				Toyota Tsusho tại Miền Nam.
+			</div>
 
-        </div>
-    </footer>
+		</div>
+	</footer>
 
     <a href="#" class="backtop" title="Lên đầu trang">
         <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-up" role="img"
