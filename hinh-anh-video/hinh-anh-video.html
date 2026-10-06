@@ -2275,7 +2275,7 @@
 
         @media (min-width: 992px) {
             .header-menu {
-                background: linear-gradient(180deg, #16213b 0%, var(--nav-bg) 100%) !important;
+                background: #006838 !important;
                 border-top: 1px solid rgba(255, 255, 255, .06);
                 border-bottom: 3px solid var(--nav-accent);
                 box-shadow: 0 6px 20px rgba(15, 23, 42, .35);
@@ -6389,11 +6389,20 @@ white-space: nowrap
 .dp-footer-slim .dp-contact>div:first-child{margin-top:0 !important}
 .dp-footer-slim .dp-contact-in{flex:1;display:flex;flex-wrap:wrap;align-items:center !important;gap:6px 64px !important}
 .dp-footer-slim .dp-contact-in .dp-c{align-items:center !important}
-.dp-footer-slim .dp-contact-in a.text-lg{font-size:20px !important}
+.dp-footer-slim .dp-contact-in a.text-lg{font-size:14px !important}
 .dp-footer-slim .dp-copy{margin-top:14px !important;padding-top:12px !important;text-align:center;
  font-size:clamp(10px,calc((100vw - 64px)/88),15.5px) !important;font-weight:800 !important;white-space:nowrap;letter-spacing:0}
 @media (max-width:899px){.dp-footer-slim .dp-copy{white-space:normal;font-size:14px !important;line-height:1.5}}
 </style>
+<style id="dp-footer-labels">
+/* Nhãn footer cùng xanh lá thương hiệu; SĐT và Email cùng cỡ chữ, in đậm */
+.dp-footer-slim .grid strong{color:#05256B !important;font-weight:800 !important}
+.dp-footer-slim .dp-contact-in a.text-lg{font-size:14px !important;font-weight:800 !important;line-height:1.3}
+.dp-footer-slim .dp-contact-in a[href^="mailto"]{font-size:16px !important;font-weight:800 !important;line-height:1.3}
+.dp-footer-slim .dp-contact-in a[href^="mailto"]{color:#1e293b !important}
+.dp-footer-slim .dp-contact-in a[href^="mailto"]:hover{color:#05256B !important}
+</style>
+
 	<footer class="dp-footer-slim bg-white border-t border-slate-200 pt-8 pb-10">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -6436,7 +6445,7 @@ white-space: nowrap
 
 				<div class="flex items-start space-x-3">
 					<div
-						class="w-8 h-8 bg-blue-50 text-brandBlue rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+						class="w-8 h-8 bg-red-50 text-brandRed rounded-lg flex items-center justify-center shrink-0 mt-0.5">
 						<i class="fa-solid fa-clock"></i>
 					</div>
 					<div>
@@ -6453,7 +6462,7 @@ white-space: nowrap
 					<div class="dp-contact-in">
 						<div class="dp-c">
 							<strong class="font-bold text-slate-900 uppercase text-[14px]">HOTLINE / ZALO:</strong>
-							<a href="tel:0978229468" class="text-brandRed font-black text-lg hover:underline">0978 229 468 - 0932 743 185</a>
+							<a href="tel:0978229468" class="text-slate-900 font-black text-lg hover:underline">0978 229 468 - 0932 743 185</a>
 						</div>
 						<div class="dp-c">
 							<strong class="font-bold text-slate-900 uppercase text-[14px]">EMAIL:</strong>
