@@ -6618,6 +6618,11 @@ white-space: nowrap
 .dp-footer-slim .dp-copy{font-size:clamp(14px,1.25vw,17px) !important;font-weight:800 !important;line-height:1.5}
 @media (max-width:640px){.dp-footer-slim .dp-contact-in .dp-c{flex-wrap:wrap}.dp-footer-slim .dp-contact-in a{white-space:normal;word-break:break-all !important}}
 </style>
+<style id="dp-wide-pages">
+/* Bung rộng nội dung các trang, chừa ~4,5cm mỗi bên */
+.pc-container,.pcx-hero-in,.cw-hero-inner,.cw-cta-inner,.tt-wrap{max-width:none !important;padding-left:clamp(16px,10vw,4.5cm) !important;padding-right:clamp(16px,10vw,4.5cm) !important}
+@media (max-width:767px){.pc-container,.pcx-hero-in,.cw-hero-inner,.cw-cta-inner,.tt-wrap{padding-left:14px !important;padding-right:14px !important}}
+</style>
 <style id="dp-footer-layout">
 .dp-footer-slim .grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:14px 40px !important}
 @media (max-width:991px){.dp-footer-slim .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
@@ -6630,6 +6635,8 @@ white-space: nowrap
 .dp-footer-slim .dp-copy{margin-top:14px !important;padding-top:12px !important;text-align:center;
  font-size:clamp(10px,calc((100vw - 64px)/88),15.5px) !important;font-weight:800 !important;white-space:nowrap;letter-spacing:0}
 @media (max-width:899px){.dp-footer-slim .dp-copy{white-space:normal;font-size:14px !important;line-height:1.5}}
+.dp-footer-slim > div{max-width:none !important;padding-left:clamp(16px,10vw,4.5cm) !important;padding-right:clamp(16px,10vw,4.5cm) !important}
+@media (max-width:767px){.dp-footer-slim > div{padding-left:16px !important;padding-right:16px !important}}
 </style>
 <style id="dp-footer-labels">
 /* Nhãn footer cùng xanh lá thương hiệu; SĐT và Email cùng cỡ chữ, in đậm */

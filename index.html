@@ -5648,7 +5648,7 @@
 				display: flex;
 				align-items: center;
 				gap: 28px;
-				padding: 12px clamp(16px, 3.6vw, 56px);
+				padding: 20px clamp(16px, 3.6vw, 56px);
 				background: #011947;
 				font-family: 'Be Vietnam Pro', 'Inter', Arial, sans-serif;
 				color: #fff
@@ -5673,7 +5673,7 @@
 			}
 
 			.dp-hero .dp-hero-bar .dp-hero-bar-title {
-				margin: 0 0 5px;
+				margin: 0 0 8px;
 				font-family: inherit;
 				font-size: clamp(11px, calc(1.25vw - 6.5px), 19px);
 				font-weight: 800;
@@ -5690,17 +5690,16 @@
 
 			.dp-hero .dp-hero-bar .dp-hero-bar-sub {
 				margin: 0;
-				font-size: clamp(9px, calc(.9vw - 4.5px), 12.5px);
+				font-size: clamp(11px, calc(1.25vw - 6.5px), 19px);
 				font-weight: 500;
-				line-height: 1.4;
+				line-height: 1.45;
 				text-transform: uppercase;
 				color: rgba(255, 255, 255, .9)
 			}
 
 			@media (min-width: 1500px) {
 
-				.dp-hero .dp-hero-bar .dp-hero-bar-title,
-				.dp-hero .dp-hero-bar .dp-hero-bar-sub {
+				.dp-hero .dp-hero-bar .dp-hero-bar-title {
 					white-space: nowrap
 				}
 			}
@@ -5786,7 +5785,7 @@
 				}
 
 				.dp-hero-bar-sub {
-					font-size: 10.5px
+					font-size: 12.5px
 				}
 
 				.dp-hero-bar-cta {
@@ -6546,9 +6545,9 @@ white-space: nowrap
   repeating-linear-gradient(90deg,rgba(56,130,255,.22) 0 1px,transparent 1px 70px),
   repeating-linear-gradient(0deg,rgba(56,130,255,.22) 0 1px,transparent 1px 34px);
  -webkit-mask-image:linear-gradient(0deg,#000,transparent);mask-image:linear-gradient(0deg,#000,transparent)}
-.dp-intro-in{position:relative;z-index:1;max-width:980px !important}
+.dp-intro-in{position:relative;z-index:1;max-width:1320px !important}
 .dp-intro h2{margin:0 0 26px !important}
-.dp-pair{grid-template-columns:1fr 96px 1fr !important;max-width:900px !important}
+.dp-pair{grid-template-columns:1fr 96px 1fr !important;max-width:1280px !important}
 .dp-brand{padding:16px 22px 12px !important;border-radius:8px !important;min-height:0}
 .dp-brand .lg{height:62px !important}
 .dp-brand .lg img{max-height:58px !important;max-width:80% !important}
@@ -6556,7 +6555,7 @@ white-space: nowrap
 .dp-brand p,.dp-brand.gr p{margin:12px 0 0 !important;padding-top:10px !important;font-size:14px !important;font-weight:600 !important;letter-spacing:.2px}
 .dp-quote{max-width:820px !important;margin:26px auto 26px !important;font-size:clamp(14px,1.3vw,17px) !important;line-height:1.6;gap:22px !important}
 .dp-quote b{font-size:46px !important;line-height:.7 !important}
-.dp-stats{max-width:900px !important;gap:24px !important}
+.dp-stats{max-width:1280px !important;gap:24px !important}
 .dp-stat{padding:14px 16px !important;border-radius:8px !important;gap:16px !important}
 .dp-stat i{font-size:44px !important}
 .dp-stat strong{font-size:clamp(24px,2.5vw,34px) !important}
@@ -6624,6 +6623,20 @@ white-space: nowrap
 			</div>
 		</section>
 
+<style id="dp-navy-compact">
+/* Khối xanh "CWORKS – Giải pháp phụ tùng toàn cầu": bung rộng, chừa ~4,5cm mỗi bên, thấp lại còn ~2/3 */
+.dp-navy-card{padding:clamp(18px,2vw,28px) clamp(16px,10vw,4.5cm) !important}
+.dp-navy-card .max-w-3xl{max-width:none !important;margin-bottom:16px !important}
+.dp-navy-card .inline-flex{margin-bottom:4px !important}
+.dp-navy-card h3{font-size:clamp(22px,2.2vw,32px) !important;line-height:1.15 !important}
+.dp-navy-card .max-w-3xl > .w-20{margin-top:8px !important}
+.dp-navy-card .grid{gap:24px !important}
+.dp-navy-card .grid > p{font-size:clamp(14px,1.05vw,17px) !important;line-height:1.6 !important;padding:16px 20px !important}
+.dp-intro,.dp-navy-card{background:#001841 !important}
+.dp-cta-sec{max-width:none !important;width:100%;padding-left:0 !important;padding-right:0 !important}
+.dp-cta-sec > div{border-radius:0 !important;border-left:0 !important;border-right:0 !important;padding-left:clamp(16px,10vw,4.5cm) !important;padding-right:clamp(16px,10vw,4.5cm) !important}
+@media (max-width:767px){.dp-navy-card{padding:20px 16px !important}.dp-cta-sec > div{padding-left:16px !important;padding-right:16px !important}}
+</style>
 		<section class="dp-navy-sec max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
 			<div
 				class="dp-navy-card bg-gradient-to-br from-brandNavyDark via-brandNavy to-slate-900 text-white rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-800">
@@ -6656,7 +6669,7 @@ white-space: nowrap
 		</section>
 
 		<!-- CALL TO ACTION BANNER -->
-		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+		<section class="dp-cta-sec max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
 			<div
 				class="bg-gradient-to-r from-brandGreen via-[#00572e] to-emerald-800 rounded-2xl p-5 sm:p-6 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 border border-green-700">
 
@@ -6700,6 +6713,8 @@ white-space: nowrap
 .dp-footer-slim .dp-copy{margin-top:14px !important;padding-top:12px !important;text-align:center;
  font-size:clamp(10px,calc((100vw - 64px)/88),15.5px) !important;font-weight:800 !important;white-space:nowrap;letter-spacing:0}
 @media (max-width:899px){.dp-footer-slim .dp-copy{white-space:normal;font-size:14px !important;line-height:1.5}}
+.dp-footer-slim > div{max-width:none !important;padding-left:clamp(16px,10vw,4.5cm) !important;padding-right:clamp(16px,10vw,4.5cm) !important}
+@media (max-width:767px){.dp-footer-slim > div{padding-left:16px !important;padding-right:16px !important}}
 </style>
 <style id="dp-footer-labels">
 /* Nhãn footer cùng xanh lá thương hiệu; SĐT và Email cùng cỡ chữ, in đậm */
