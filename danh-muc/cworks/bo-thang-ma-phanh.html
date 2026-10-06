@@ -9354,6 +9354,50 @@ white-space: nowrap
 				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 			})();
 		</script>
+<style id="dp-footer-bigger">
+/* Footer cùng cỡ chữ với trang Giới thiệu */
+.dp-footer-slim h3{font-size:clamp(18px,1.6vw,22px) !important}
+.dp-footer-slim .grid{font-size:17px !important}
+.dp-footer-slim .grid p{font-size:17px !important;line-height:1.55 !important}
+.dp-footer-slim .grid strong{font-size:16px !important}
+.dp-footer-slim .dp-contact-in a.text-lg{font-size:18px !important}
+.dp-footer-slim .dp-contact-in a[href^="mailto"]{font-size:18px !important}
+.dp-footer-slim .dp-copy{font-size:16px !important;white-space:normal !important;line-height:1.55 !important}
+@media (max-width:767px){
+.dp-footer-slim .grid p{font-size:16px !important}
+.dp-footer-slim .grid strong{font-size:15px !important}
+.dp-footer-slim .dp-contact-in a.text-lg,.dp-footer-slim .dp-contact-in a[href^="mailto"]{font-size:16px !important}
+.dp-footer-slim .dp-copy{font-size:14px !important}
+}
+</style>
+<style id="pc-bigger-text">
+/* Trang sản phẩm: chữ nội dung to lên cho dễ đọc */
+.pcx-hero p,.cw-hero-title p{font-size:clamp(17px,1.4vw,20px) !important;line-height:1.7 !important}
+.cw-btn,.pcx-catalog{font-size:16px !important}
+.pc-eyebrow{font-size:14.5px !important}
+.pc-head p{font-size:17px !important}
+.pc-back{font-size:16px !important}
+.pcx-search input,.cw-filter .pcx-search input,.cw-select select{font-size:16px !important}
+.pcx-tab{font-size:15.5px !important}
+.pcx-count,.cw-updated{font-size:15.5px !important}
+.cw-filter-head strong{font-size:17px !important}
+.cw-filter-head small{font-size:14px !important}
+.pc-tag{font-size:13.5px !important}
+.pc-photos{font-size:14.5px !important}
+.pc-meta{font-size:14.5px !important}
+.pc-name{font-size:19.5px !important;line-height:1.35 !important}
+.pc-desc{font-size:16px !important;line-height:1.65 !important}
+.pc-price{font-size:17px !important}
+.pc-btn{font-size:15.5px !important}
+.pcx-cta p,.cw-cta-text p{font-size:17px !important;line-height:1.65 !important}
+.pcx-zalo{font-size:16.5px !important}
+@media (max-width:767px){
+.pcx-hero p,.cw-hero-title p{font-size:16px !important}
+.pc-desc{font-size:15.5px !important}
+.pc-name{font-size:18px !important}
+.pc-head p,.pcx-cta p,.cw-cta-text p{font-size:16px !important}
+}
+</style>
 </body>
 
 </html>

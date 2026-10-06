@@ -9151,6 +9151,22 @@ white-space: nowrap
 				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 			})();
 		</script>
+<style id="dp-footer-bigger">
+/* Footer cùng cỡ chữ với trang Giới thiệu */
+.dp-footer-slim h3{font-size:clamp(18px,1.6vw,22px) !important}
+.dp-footer-slim .grid{font-size:17px !important}
+.dp-footer-slim .grid p{font-size:17px !important;line-height:1.55 !important}
+.dp-footer-slim .grid strong{font-size:16px !important}
+.dp-footer-slim .dp-contact-in a.text-lg{font-size:18px !important}
+.dp-footer-slim .dp-contact-in a[href^="mailto"]{font-size:18px !important}
+.dp-footer-slim .dp-copy{font-size:16px !important;white-space:normal !important;line-height:1.55 !important}
+@media (max-width:767px){
+.dp-footer-slim .grid p{font-size:16px !important}
+.dp-footer-slim .grid strong{font-size:15px !important}
+.dp-footer-slim .dp-contact-in a.text-lg,.dp-footer-slim .dp-contact-in a[href^="mailto"]{font-size:16px !important}
+.dp-footer-slim .dp-copy{font-size:14px !important}
+}
+</style>
 </body>
 
 </html>

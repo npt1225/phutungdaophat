@@ -9459,6 +9459,53 @@ white-space: nowrap
 				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 			})();
 		</script>
+<style id="dp-footer-bigger">
+/* Footer cùng cỡ chữ với trang Giới thiệu */
+.dp-footer-slim h3{font-size:clamp(18px,1.6vw,22px) !important}
+.dp-footer-slim .grid{font-size:17px !important}
+.dp-footer-slim .grid p{font-size:17px !important;line-height:1.55 !important}
+.dp-footer-slim .grid strong{font-size:16px !important}
+.dp-footer-slim .dp-contact-in a.text-lg{font-size:18px !important}
+.dp-footer-slim .dp-contact-in a[href^="mailto"]{font-size:18px !important}
+.dp-footer-slim .dp-copy{font-size:16px !important;white-space:normal !important;line-height:1.55 !important}
+@media (max-width:767px){
+.dp-footer-slim .grid p{font-size:16px !important}
+.dp-footer-slim .grid strong{font-size:15px !important}
+.dp-footer-slim .dp-contact-in a.text-lg,.dp-footer-slim .dp-contact-in a[href^="mailto"]{font-size:16px !important}
+.dp-footer-slim .dp-copy{font-size:14px !important}
+}
+</style>
+<style id="tt-article-bigger">
+/* Bài viết: chữ nội dung to lên cho dễ đọc */
+.tt-crumb{font-size:15px !important}
+.tt-art-hero h1{font-size:clamp(25px,2.8vw,38px) !important}
+.tt-art-meta{font-size:15.5px !important}
+.tt-tag{font-size:13px !important}
+.tt-art-body{font-size:19px !important;line-height:1.85 !important}
+.tt-art-lead{font-size:21px !important;line-height:1.75 !important}
+.tt-art-body h2{font-size:clamp(22px,2vw,28px) !important}
+.tt-art-body h3{font-size:21px !important}
+.tt-note{font-size:18px !important;line-height:1.7 !important}
+.tt-table{font-size:17px !important}
+.tt-box h3{font-size:17px !important}
+.tt-box-list a{font-size:16.5px !important}
+.tt-box-cta p{font-size:16.5px !important;line-height:1.65 !important}
+.tt-box-cta .tt-cta-btn,.tt-box-cta .tt-cta-btn2{font-size:15.5px !important}
+.tt-box-hot{font-size:15.5px !important}
+.tt-box-hot b{font-size:18px !important}
+.tt-sec-title{font-size:clamp(22px,1.95vw,28px) !important}
+.tt-card h3{font-size:20px !important}
+.tt-card p{font-size:16.5px !important;line-height:1.65 !important}
+.tt-date,.tt-more-blue{font-size:14.5px !important}
+@media (max-width:767px){
+.tt-art-body{font-size:17.5px !important}
+.tt-art-lead{font-size:18.5px !important}
+.tt-note{font-size:16.5px !important}
+.tt-table{font-size:15.5px !important}
+.tt-card h3{font-size:18.5px !important}
+.tt-card p{font-size:16px !important}
+}
+</style>
 </body>
 
 </html>
